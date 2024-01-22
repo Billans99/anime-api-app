@@ -1,6 +1,9 @@
-import Button from 'react-bootstrap/Button';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from './Header.jsx'
 import Foo from './Foo.jsx'
+
+
 
 
 const App = () => {
@@ -8,13 +11,13 @@ const App = () => {
 
 
 
-
+ 
 
   return (
     <>
-   
-      <Foo/> 
-      
+      <Header/>
+      <Foo/>
+     
     </>
   )
 }
