@@ -4,8 +4,6 @@ import Header from './Header.jsx'
 import Foo from './Foo.jsx'
 
 
-
-
 const App = () => {
 
 
