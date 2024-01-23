@@ -4,3 +4,85 @@
     margin: 0;
 }
 
+.heading-container{
+    text-align: center;
+    height: 30vh;
+    padding-top: 10px;
+    border: 1px solid #979797;
+    background-color: #e6e6e6;
+}
+
+.heading-container{
+    color: #616161;
+}
+
+.heading-category{
+    font-size: 40px;
+    font-weight: 500;
+    padding-top: 20px;
+}
+
+.categories-container{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    /* border: 1px solid black;  */
+    display: inline-block;
+    height: 100px;
+}
+
+.upcoming-category{
+    margin-right: 15px;
+    margin-bottom: 18px; 
+}
+
+.popular-category{
+ margin-bottom: 18px;
+}
+
+.search-container{
+    display: flex;
+    justify-content: center;
+    width: 800px;
+    margin-top: 10px;
+    height: 30px;
+}
+
+.search-bar{
+    width: 350px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    border: 1px solid grey;
+    height: 30px;
+}
+
+.search-button {
+    padding-bottom: 10px;
+    width: 
+}
+
+
+
+/* .search-container{
+    display: flex;
+    justify-content: center;
+    width: 800px;
+    padding-top: 0px;
+    border: 1px solid black; 
+    display: block;
+    height: 59px;
+
+}
+
+.search-bar{
+    margin-top: 15px;
+    width: 400px;
+    display: inline;
+    border-radius: 3px;
+    border: 1px solid grey;
+    height: 30px;
+}
+
+.search-button {
+    padding-bottom: 10px;
+} */

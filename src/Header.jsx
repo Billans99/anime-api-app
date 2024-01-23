@@ -1,5 +1,7 @@
-import Badge from 'react-bootstrap/Badge'
-import Stack from 'react-bootstrap/Stack'
+// import Badge from 'react-bootstrap/Badge'
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
+
 
 const Header = () => {
 
@@ -8,13 +10,37 @@ const Header = () => {
         {/* Heading text  */}
         <div className="heading-container">
             <h1 className="heading-category">
-                Popular Anime <Badge bg="primary">New</Badge>
+                Popular Anime 
+                {/* <Badge bg="primary">Hot</Badge> */}
             </h1>
-        </div>
+        
+                {/* upcoming, popular, and search container  */}
+            <div className="categories-container">
 
-        <div className="search">
-            <input type="text" placeholder="Search for popular anime titles..." />
+
+                {/* upcoming anime category (onClick function)  */}
+                <Button className="upcoming-category" variant="primary">Upcoming</Button>
+                
+                {/* popular anime category (onClick function) */}
+                <Button className="popular-category" variant="warning">Popular</Button>
+
+                
+                <div className="search-container">
+                    {/* Search bar  */}
+                    <input className="search-bar" type="text" placeholder=" Search for anime titles..." />
+                    
+                    {/* Search button  */}
+                    <Button className="search-button" variant="secondary" size="sm">
+                        Search
+                     </Button>
+                </div>
+
+            </div>
+
+
         </div>
+        
+       
 
         </>
     )
