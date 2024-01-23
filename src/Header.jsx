@@ -27,7 +27,7 @@ const Header = () => {
                 
                 <div className="search-container">
                     {/* Search bar  */}
-                    <input className="search-bar" type="text" placeholder=" Search for anime titles..." />
+                    <input className="search-bar" type="text" placeholder="Search for anime titles..." />
                     
                     {/* Search button  */}
                     <Button className="search-button" variant="primary" size="sm">
