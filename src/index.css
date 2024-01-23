@@ -12,14 +12,11 @@
     background-color: #e6e6e6;
 }
 
-.heading-container{
-    color: #616161;
-}
-
 .heading-category{
     font-size: 40px;
     font-weight: 500;
     padding-top: 20px;
+    color: #393939;
 }
 
 .categories-container{
@@ -52,7 +49,7 @@
     width: 350px;
     border-bottom-left-radius: 5px;
     border-top-left-radius: 5px;
-    border: 1px solid grey;
+    border: 1px solid #808080;
     height: 30px;
 }
 

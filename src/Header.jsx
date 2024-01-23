@@ -30,7 +30,7 @@ const Header = () => {
                     <input className="search-bar" type="text" placeholder=" Search for anime titles..." />
                     
                     {/* Search button  */}
-                    <Button className="search-button" variant="secondary" size="sm">
+                    <Button className="search-button" variant="primary" size="sm">
                         Search
                      </Button>
                 </div>
