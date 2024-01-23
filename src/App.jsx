@@ -1,7 +1,8 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './Header.jsx'
-import Foo from './Foo.jsx'
+import Search from './Search.jsx'
+
 
 
 const App = () => {
@@ -14,7 +15,7 @@ const App = () => {
   return (
     <>
       <Header/>
-      <Foo/>
+      <Search/>
      
     </>
   )

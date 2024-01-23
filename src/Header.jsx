@@ -1,11 +1,14 @@
-
+import Badge from 'react-bootstrap/Badge'
+import Stack from 'react-bootstrap/Stack'
 
 const Header = () => {
 
     return(
         <>
-        <div className="category-title">
-            <h1>Popular Anime</h1>
+        <div className="heading-container">
+            <h1 className="heading-category">
+                Popular Anime <Badge bg="primary">New</Badge>
+            </h1>
         </div>
 
 
