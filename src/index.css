@@ -62,13 +62,16 @@
 /* Cards components  */
 .cards-container{
     display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
     justify-content: space-evenly;
     padding-top: 25px;
-
+    
 }
 
 .cards-image{
     height: auto;
     border: 1px solid #808080;
     border-radius: 5px;
+    
 }
