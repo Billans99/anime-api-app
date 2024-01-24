@@ -1,9 +1,11 @@
+/* CSS reset */
 *{
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
 
+/* Header components  */
 .heading-container{
     text-align: center;
     height: 30vh;
@@ -23,7 +25,6 @@
     display: flex;
     justify-content: center;
     padding-top: 10px;
-    /* border: 1px solid black;  */
     display: inline-block;
     height: 100px;
 }
@@ -56,31 +57,18 @@
 
 .search-button {
     padding-bottom: 10px;
-    width: 
 }
 
-
-
-/* .search-container{
+/* Cards components  */
+.cards-container{
     display: flex;
-    justify-content: center;
-    width: 800px;
-    padding-top: 0px;
-    border: 1px solid black; 
-    display: block;
-    height: 59px;
+    justify-content: space-evenly;
+    padding-top: 25px;
 
 }
 
-.search-bar{
-    margin-top: 15px;
-    width: 400px;
-    display: inline;
-    border-radius: 3px;
-    border: 1px solid grey;
-    height: 30px;
+.cards-image{
+    height: auto;
+    border: 1px solid #808080;
+    border-radius: 5px;
 }
-
-.search-button {
-    padding-bottom: 10px;
-} */
