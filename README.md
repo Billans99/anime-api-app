@@ -11,8 +11,7 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 >>>>>>> efa3844 (Initial commit)
 
+
 1. npm install
 
 2. npm install axios
-
-3. 
