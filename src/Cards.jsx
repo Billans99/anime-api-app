@@ -1,4 +1,5 @@
 // importing components from React-bootstrap import React, { useState, useEffect } from 'react'
+// TO DO LIST: 
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import { useState, useEffect } from 'react'
@@ -51,7 +52,7 @@ const Cards = () => {
                         {animeData.map((animeTitle) => {
                             
                             return( <Card style={{ width: '21rem' }}>
-                                        {/* <Card.Img className="cards-image" variant="top" src={} /> */}
+                                        <Card.Img className="cards-image" variant="top" src={animeTitle.images.jpg.image_url} />
                                         <Card.Body className="cards-body">
                                             <Card.Title className="anime-title">{animeTitle.title}</Card.Title>
                                             {animeTitle.genres.map((genre) => {
