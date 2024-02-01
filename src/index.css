@@ -82,11 +82,10 @@
 
 .genre-score-container{
     
-    background-color:
 }
 
 .score-container{
-
+    margin-top: 50px;
 }
 
 .anime-title{
@@ -103,7 +102,7 @@
     right: 10px;
 }
 
-.prev-next-container{
+.load-more-container{
     display: flex;
     justify-content: center;
     padding-top: 50px;
@@ -111,12 +110,12 @@
     padding-bottom: 50px;
 }
 
-.load-prev-btn{
-    margin-right: 20px;
+.load-more-btn{
+    
 }
 
-.load-more-btn{
-    margin-left: 20px;
+.load-more-btn:hover{
+    cursor: pointer;
 }
 
 
