@@ -66,6 +66,7 @@
     gap: 20px;
     justify-content: space-evenly;
     padding-top: 25px;
+    background: #f1f1f1;
 }
 
 .cards-image{
@@ -79,12 +80,13 @@
 
 }
 
-.genre-container{
-    float: left;
+.genre-score-container{
+    
+    background-color:
 }
 
 .score-container{
-    float: right;
+    
 }
 
 .anime-title{

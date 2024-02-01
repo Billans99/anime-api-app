@@ -1,6 +1,5 @@
 
 // TO DO LIST: 
-// - Add more information to each card (producers, rank, rating, score)
 // - Add another component for loading more animeTitles, then do logic for loading that data
 // - Add a view more component onClick of button 
 // - Complete logic for the search feature
@@ -44,14 +43,12 @@ const Cards = () => {
                                     <Card.Body className="cards-body">
                                         <Card.Title className="anime-title"><h3>{animeTitle.title}</h3></Card.Title>
                                         
-                                        <div className="genre-container">
+                                        <div className="genre-score-container">
                                             {animeTitle.genres.map((genre) => {
                                                 return <Card.Subtitle className="anime-genre">{genre.name}</Card.Subtitle>
                                             })}
-                                        </div>
-
-                                        <div className="score-container">
-                                            <h2>{animeTitle.score}</h2>
+                                            
+                                            <h2 className="score-info">{animeTitle.score}</h2>
                                         </div>
                         
                                         
