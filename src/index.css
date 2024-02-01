@@ -86,7 +86,7 @@
 }
 
 .score-container{
-    
+
 }
 
 .anime-title{
@@ -102,4 +102,21 @@
     bottom: 10px;
     right: 10px;
 }
+
+.prev-next-container{
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    background: #f1f1f1;
+    padding-bottom: 50px;
+}
+
+.load-prev-btn{
+    margin-right: 20px;
+}
+
+.load-more-btn{
+    margin-left: 20px;
+}
+
 

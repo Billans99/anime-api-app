@@ -16,6 +16,9 @@ import axios from 'axios'
 const Cards = () => {
     const [animeData, setAnimeData] = useState([])
     const [url, setUrl] = useState('https://api.jikan.moe/v4/anime?q=&sfw')
+    const [currentPage, setCurrentPage] = useState('')
+
+// Assign 
   
 // fetch data from api using axios, set the data to animeData state, then log that data
     const getAnimeData = async () => {
@@ -23,13 +26,24 @@ const Cards = () => {
         .get(url)
         .then(response => {
             setAnimeData(response.data.data)
+            setCurrentPage(response.data.pagination.current_page)
             console.log('response (data)', response)
+
         })
     }
+
+// function that gets next page by response.data.pagination.current_page + 1
+    const getNextPage = () => {
+        setCurrenPage(currentPage + 1)
+    }
+
+// load next page function - onClick
   
     useEffect(() => {
       getAnimeData()
     }, [])
+
+
   
                                     
     return (
@@ -57,10 +71,18 @@ const Cards = () => {
                                         <Card.Text></Card.Text>
                                         <Button className="view-more-btn" variant="primary">View more</Button>
                                     </Card.Body>
-
                                 </Card>
                         )
                         })}
+                </div>
+                
+
+                <div className="prev-next-container">
+                    {/* Load previous page button */}
+                    <Button className="load-prev-btn" variant="secondary">Previous Page</Button>
+                    {/* Load next page button */}
+                    <Button className="load-more-btn" variant="primary">Next Page</Button>
+                    
                 </div>
 
             </>
