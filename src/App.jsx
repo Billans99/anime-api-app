@@ -5,8 +5,10 @@
 // - Add a 'MoreInfo' Modal component onClick of "view-more" button 
 // - 1. Add more data from api to modal
 // - 2. Change colour of view-more modal cards to match theme
-// - 3. Put everything after bio in a flexbox/grid container to take advantage of space
-// - 4. Fix issue where if a modal is opened from a higher index of view-more btn, 
+// - 3. Put rating next to name on cards
+// - 4. Make the modal wider to fit more content, and creates less scrolling for user
+// - 5. Put everything after bio in a flexbox/grid container to take advantage of space
+// - 6. Fix issue where if a modal is opened from a higher index of view-more btn, 
 // then a previous indexed view more btn is clicked, the higher index modal will open
 // instead of the intended modal
 

@@ -53,10 +53,12 @@ const Cards = () => {
                             <Card.Img className="cards-image" variant="top" src={animeTitle.images.jpg.image_url} />
                             <Card.Body className="cards-body">
 
-                                <Card.Title className="anime-title"><h3>{animeTitle.title}</h3></Card.Title>
+                                <Card.Title className="anime-title">
+                                    <h3>{animeTitle.title}</h3>
+                                </Card.Title>
 
                                         
-                                <h2 className="score-info">{animeTitle.score}</h2>
+                                <p className="score-info">{animeTitle.score} / 10</p>
 
 
 {/* View more button shows modal (popup)  */}
@@ -97,7 +99,7 @@ const Cards = () => {
 
                                 <div className="view-more-score">
                                     <h3>Score</h3>
-                                    <p>{animeTitle.score}</p>
+                                    <p>{animeTitle.score} / 10</p>
                                 </div>
                                 
                                 <div className="genre-score-container">
