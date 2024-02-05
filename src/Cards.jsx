@@ -100,7 +100,7 @@ const Cards = () => {
                                 <div className="view-more-score">
                                     <h3>Score</h3>
                                     <p>{animeTitle.score} / 10</p>
-                                </div>
+                                </div>             
                                 
                                 <div className="genre-score-container">
                                     <h3>Genres</h3>
@@ -109,9 +109,19 @@ const Cards = () => {
                                         })}                                         
                                 </div>
 
+                                <div className="view-more-release">
+                                    <h3>Release date</h3>
+                                    <p>{animeTitle.aired.prop.from.year}</p>
+                                </div>
+
                                 <div className="view-more-rank">
                                     <h3>Rank</h3>
                                     <p>{animeTitle.rank}</p>
+                                </div>
+
+                                <div className="view-more-popularity">
+                                    <h3>Popularity</h3>
+                                    <p>{animeTitle.popularity}</p>
                                 </div>
 
                                 <div className="view-more-episodes">
@@ -124,29 +134,24 @@ const Cards = () => {
                                     <p>{animeTitle.rating}</p>
                                 </div>
 
+                                <div className="view-more-producers">
+                                    <h3>Producers</h3>
+                                    {animeTitle.producers.map((producer) => {
+                                        return <p>{producer.name}</p>
+                                    })}
+                                </div>
+
+                                <div className="view-more-studios">
+                                    <h3>Studios</h3>
+                                    {animeTitle.studios.map((studio) => {
+                                        return <p>{studio.name}</p>
+                                    })}
+                                </div>
+
+                                
+
                             </Modal.Body>
                         </Modal>
-                        
-                            // <Card style={{ width: '21rem' }}>
-
-                            //     <Card.Img className="view-more-image" variant="top" src={animeTitle.images.jpg.image_url} />
-
-                            //     <Card.Body className="view-more-body">
-
-                            //         <Card.Title className="view-more-title"><h3>{animeTitle.title}</h3></Card.Title>
-
-                            //         <div className="genre-score-container">
-                            //                 {animeTitle.genres.map((genre) => {
-                            //                     return <Card.Subtitle className="anime-genre">{genre.name}</Card.Subtitle>
-                            //                 })}                                         
-                            //         </div>
-                                        
-                            //         <h2 className="score-info">{animeTitle.score}</h2>
-
-                            //         <Button onClick={() => handleViewMore(index)} className="view-more-btn" variant="primary">View more</Button>
-
-                            //     </Card.Body>
-                            // </Card>
                         )}
 
                         

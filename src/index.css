@@ -116,6 +116,10 @@
     
 }
 
+.view-more-modal h3{
+    font-size: 25px;
+}
+
 .view-more-header{
     justify-content: center;
 }
@@ -150,5 +154,6 @@
 .load-more-btn:hover{
     cursor: pointer;
 }
+
 
 
