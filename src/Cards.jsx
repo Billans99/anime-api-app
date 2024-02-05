@@ -43,6 +43,7 @@ const Cards = () => {
 
     return (
         <>
+{/* Individual cards display different anime titles from the api */}
             <div className="cards-container">
                 {animeData.map((animeTitle, index) => {
                     return(
@@ -53,64 +54,76 @@ const Cards = () => {
                             <Card.Body className="cards-body">
 
                                 <Card.Title className="anime-title"><h3>{animeTitle.title}</h3></Card.Title>
-                
-    {/* Use this code for the view-more functionality  */}
 
-                                {/* <div className="genre-score-container">
-                                            {animeTitle.genres.map((genre) => {
-                                                return <Card.Subtitle className="anime-genre">{genre.name}</Card.Subtitle>
-                                            })}                                         
-                                </div> */}
                                         
                                 <h2 className="score-info">{animeTitle.score}</h2>
 
 
-                                {/* View more button shows modal (popup)  */}
+{/* View more button shows modal (popup)  */}
                                 <Button onClick={() => handleViewMore(index)} className="view-more-btn" variant="primary">View more</Button>
                             </Card.Body>
                         </Card>
                         
                         {viewMore[index] && (
-                            <Modal
-                            show={show}
-                            onHide={() => setShow(false)}
-                            dialogClassName="modal-90w"
-                            aria-labelledby="example-custom-modal-styling-title"
-                          >
-                            <Modal.Header closeButton>
-                                <Modal.Title id="example-custom-modal-styling-title">
+                        <Modal className="view-more-modal"
+                                show={show}
+                                onHide={() => setShow(false)}
+                                dialogClassName="modal-90w"
+                                aria-labelledby="more anime info modal">
+                            
+                            <Modal.Header closeButton className="view-more-header">
+                                {/* View-more info image */}
+                                <Card style={{ width: '21rem' }}>
+                                    <Card.Img className="view-more-image" variant="top" src={animeTitle.images.jpg.image_url} />
+                                </Card>
+
+                                <Modal.Title className="view-more-title" id="example-custom-modal-styling-title">
                                 <h2>{animeTitle.title}</h2>
                                 </Modal.Title>
                             </Modal.Header>
-                            <Modal.Body>
-                            
-                            <div className="more-info-episodes">
-                                <h3>Episodes</h3>
-                                <p>{animeTitle.episodes}</p>
-                            </div>
-                            
-                            {animeTitle.background ? 
-                                <div className="more-info-bio">
-                                    <h3>Bio</h3>
-                                    <p>{animeTitle.background}</p>
+
+                            <Modal.Body>               
+                                {animeTitle.background ? 
+                                    <div className="more-info-bio">
+                                        <h3>Bio</h3>
+                                        <p>{animeTitle.background}</p>
+                                    </div>
+                                    : 
+                                    <div className="more-info-bio">
+                                        <h3>Bio</h3>
+                                        <p>The bio for {animeTitle.title} is unavailable</p>
+                                    </div>
+                                }      
+
+                                <div className="view-more-score">
+                                    <h3>Score</h3>
+                                    <p>{animeTitle.score}</p>
                                 </div>
-                                : 
-                                <div className="more-info-bio">
-                                    <h3>Bio</h3>
-                                    <p>The bio for {animeTitle.title} is unavailable</p>
+                                
+                                <div className="genre-score-container">
+                                    <h3>Genres</h3>
+                                        {animeTitle.genres.map((genre) => {
+                                            return <Card.Subtitle className="view-more-genre">{genre.name}</Card.Subtitle>
+                                        })}                                         
                                 </div>
-                            }      
-                            
-                              
-                              <div className="genre-score-container">
-                                            <h3>Genres</h3>
-                                            {animeTitle.genres.map((genre) => {
-                                                return <Card.Subtitle className="view-more-genre">{genre.name}</Card.Subtitle>
-                                            })}                                         
+
+                                <div className="view-more-rank">
+                                    <h3>Rank</h3>
+                                    <p>{animeTitle.rank}</p>
                                 </div>
-                              
+
+                                <div className="view-more-episodes">
+                                    <h3>Episodes</h3>
+                                    <p>{animeTitle.episodes}</p>
+                                </div>
+
+                                <div className="view-more-rating">
+                                    <h3>Rating</h3>
+                                    <p>{animeTitle.rating}</p>
+                                </div>
+
                             </Modal.Body>
-                          </Modal>
+                        </Modal>
                         
                             // <Card style={{ width: '21rem' }}>
 

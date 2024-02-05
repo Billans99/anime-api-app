@@ -112,6 +112,21 @@
     right: 10px;
 }
 
+.view-more-header{
+    justify-content: center;
+}
+
+.view-more-image{
+    height: 300px;
+    width: auto;
+    border: 1px solid #808080;
+    border-radius: 5px;
+}
+
+.view-more-title{
+    margin-left: 15px;
+}
+
 .view-more-genre{
     margin-bottom: 10px;
 }
