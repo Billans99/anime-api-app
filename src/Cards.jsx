@@ -68,6 +68,7 @@ const Cards = () => {
                         
                         {viewMore[index] && (
                         <Modal className="view-more-modal"
+                                size="lg"
                                 show={show}
                                 onHide={() => setShow(false)}
                                 dialogClassName="modal-90w"
@@ -86,12 +87,12 @@ const Cards = () => {
 
                             <Modal.Body>               
                                 {animeTitle.background ? 
-                                    <div className="more-info-bio">
+                                    <div className="view-more-bio">
                                         <h3>Bio</h3>
                                         <p>{animeTitle.background}</p>
                                     </div>
                                     : 
-                                    <div className="more-info-bio">
+                                    <div className="view-more-title">
                                         <h3>Bio</h3>
                                         <p>The bio for {animeTitle.title} is unavailable</p>
                                     </div>
