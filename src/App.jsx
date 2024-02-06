@@ -23,7 +23,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Header from './Header.jsx'
 import Cards from './Cards.jsx'
-import MoreInfo from './MoreInfo.jsx'
 import { useState, useEffect } from 'react'
 
 
@@ -38,7 +37,6 @@ const App = () => {
     <>
       <Header/>
       <Cards/>
-      {/* <MoreInfo/> */}
     </>
   )
 }
