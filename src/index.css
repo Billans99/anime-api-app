@@ -135,6 +135,25 @@
     margin-left: 15px;
 }
 
+.view-more-bio{
+    border-bottom: 1px solid #e2e2e2;
+    padding-bottom: 10px;
+}
+
+.view-more-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.view-more-container > div {
+    width: 33%;
+    padding-top: 15px;
+    margin-top: 5px;
+}
+
 .view-more-genre{
     margin-bottom: 10px;
 }

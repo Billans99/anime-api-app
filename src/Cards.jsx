@@ -92,63 +92,64 @@ const Cards = () => {
                                         <p>{animeTitle.background}</p>
                                     </div>
                                     : 
-                                    <div className="view-more-title">
+                                    <div>
                                         <h3>Bio</h3>
                                         <p>The bio for {animeTitle.title} is unavailable</p>
                                     </div>
                                 }      
 
-                                <div className="view-more-score">
-                                    <h3>Score</h3>
-                                    <p>{animeTitle.score} / 10</p>
-                                </div>             
-                                
-                                <div className="genre-score-container">
-                                    <h3>Genres</h3>
-                                        {animeTitle.genres.map((genre) => {
-                                            return <Card.Subtitle className="view-more-genre">{genre.name}</Card.Subtitle>
-                                        })}                                         
-                                </div>
+                                <div className="view-more-container">
+                                    <div className="view-more-score">
+                                        <h3>Score</h3>
+                                        <p>{animeTitle.score} / 10</p>
+                                    </div>             
+                                    
+                                    <div className="genre-score-container">
+                                        <h3>Genres</h3>
+                                            {animeTitle.genres.map((genre) => {
+                                                return <Card.Subtitle className="view-more-genre">{genre.name}</Card.Subtitle>
+                                            })}                                         
+                                    </div>
 
-                                <div className="view-more-release">
-                                    <h3>Release date</h3>
-                                    <p>{animeTitle.aired.prop.from.year}</p>
-                                </div>
+                                    <div className="view-more-release">
+                                        <h3>Release date</h3>
+                                        <p>{animeTitle.aired.prop.from.year}</p>
+                                    </div>
 
-                                <div className="view-more-rank">
-                                    <h3>Rank</h3>
-                                    <p>{animeTitle.rank}</p>
-                                </div>
+                                    <div className="view-more-rank">
+                                        <h3>Rank</h3>
+                                        <p>{animeTitle.rank}</p>
+                                    </div>
 
-                                <div className="view-more-popularity">
-                                    <h3>Popularity</h3>
-                                    <p>{animeTitle.popularity}</p>
-                                </div>
+                                    <div className="view-more-popularity">
+                                        <h3>Popularity</h3>
+                                        <p>{animeTitle.popularity}</p>
+                                    </div>
 
-                                <div className="view-more-episodes">
-                                    <h3>Episodes</h3>
-                                    <p>{animeTitle.episodes}</p>
-                                </div>
+                                    <div className="view-more-episodes">
+                                        <h3>Episodes</h3>
+                                        <p>{animeTitle.episodes}</p>
+                                    </div>
 
-                                <div className="view-more-rating">
-                                    <h3>Rating</h3>
-                                    <p>{animeTitle.rating}</p>
-                                </div>
+                                    <div className="view-more-rating">
+                                        <h3>Rating</h3>
+                                        <p>{animeTitle.rating}</p>
+                                    </div>
 
-                                <div className="view-more-producers">
-                                    <h3>Producers</h3>
-                                    {animeTitle.producers.map((producer) => {
-                                        return <p>{producer.name}</p>
-                                    })}
-                                </div>
+                                    <div className="view-more-producers">
+                                        <h3>Producers</h3>
+                                        {animeTitle.producers.map((producer) => {
+                                            return <p>{producer.name}</p>
+                                        })}
+                                    </div>
 
-                                <div className="view-more-studios">
-                                    <h3>Studios</h3>
-                                    {animeTitle.studios.map((studio) => {
-                                        return <p>{studio.name}</p>
-                                    })}
+                                    <div className="view-more-studios">
+                                        <h3>Studios</h3>
+                                        {animeTitle.studios.map((studio) => {
+                                            return <p>{studio.name}</p>
+                                        })}
+                                    </div>
                                 </div>
-
                                 
 
                             </Modal.Body>
