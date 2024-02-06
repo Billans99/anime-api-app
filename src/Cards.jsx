@@ -6,7 +6,7 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
-
+    // Cards component
 const Cards = () => {
     const [animeData, setAnimeData] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
@@ -14,14 +14,18 @@ const Cards = () => {
     const [show, setShow] = useState()
     const [selectedCard, setSelectedCard] = useState(null)
 
+    // Immediately load anime data (once) on initial render of page
     useEffect(() => {
         getAnimeData();
     }, [currentPage]);
 
+    // Immediately set viewMore state to false for each anime title in the array of animeData
+    // on initial render
     useEffect(() => {
         setViewMore(new Array(animeData.length).fill(false));
     }, [animeData]);
 
+    // Fetch anime data from Jikan API, and set the state of animeData to the response data
     const getAnimeData = async () => {
         try {
             const response = await axios.get(`https://api.jikan.moe/v4/anime?page=${currentPage}&q=&sfw`);
@@ -33,10 +37,12 @@ const Cards = () => {
         }
     }
 
+    // load more button that loads additional 25 anime titles to page
     const loadMore = () => {
         setCurrentPage(currentPage + 1);
     }
 
+    // Handles logic for view more button
     const handleViewMore = (index) => {
         setSelectedCard(index)
         setViewMore(viewMore.map((value, i) => i === index ? !value : value));
@@ -45,11 +51,13 @@ const Cards = () => {
 
     return (
         <>
-{/* Individual cards display different anime titles from the api */}
+            {/* Individual cards display different anime titles from the api */}
             <div className="cards-container">
+                {/* Map each anime title to a card  */}
                 {animeData.map((animeTitle, index) => {
                     return(
                 
+                    // Cards that display anime titles and view-more button that opens view-more modal
                     <div>
                         <Card style={{ width: '21rem' }}>
                             <Card.Img className="cards-image" variant="top" src={animeTitle.images.jpg.image_url} />
@@ -58,18 +66,18 @@ const Cards = () => {
                                 <Card.Title className="anime-title">
                                     <h3>{animeTitle.title}</h3>
                                 </Card.Title>
-
                                         
                                 <p className="score-info">{animeTitle.score} / 10</p>
 
-
-{/* View more button shows modal (popup)  */}
                                 <Button onClick={() => handleViewMore(index)} className="view-more-btn" variant="primary">View more</Button>
                             
                             </Card.Body>
                         </Card>
                         
+                        {/* Evaluates to thruthy and executes the modal code block  */}
                         {selectedCard === index && (
+                        // Modal popup that displays more information about the anime title
+                        //  when view-more button is clicked
                         <Modal className="view-more-modal"
                                 size="lg"
                                 show={show}
@@ -163,6 +171,8 @@ const Cards = () => {
                     </div>
                 )})}
             </div>
+            
+            {/* Load another 25 anime titles button */}
             <div className="load-more-container">
                 <Button onClick={loadMore} className="load-more-btn" variant="secondary">Load More</Button>
             </div>
