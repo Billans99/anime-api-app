@@ -12,6 +12,7 @@ const Cards = () => {
     const [currentPage, setCurrentPage] = useState(1)
     const [viewMore, setViewMore] = useState([])
     const [show, setShow] = useState()
+    const [selectedCard, setSelectedCard] = useState(null)
 
     useEffect(() => {
         getAnimeData();
@@ -37,6 +38,7 @@ const Cards = () => {
     }
 
     const handleViewMore = (index) => {
+        setSelectedCard(index)
         setViewMore(viewMore.map((value, i) => i === index ? !value : value));
         setShow(true)
     }
@@ -63,10 +65,11 @@ const Cards = () => {
 
 {/* View more button shows modal (popup)  */}
                                 <Button onClick={() => handleViewMore(index)} className="view-more-btn" variant="primary">View more</Button>
+                            
                             </Card.Body>
                         </Card>
                         
-                        {viewMore[index] && (
+                        {selectedCard === index && (
                         <Modal className="view-more-modal"
                                 size="lg"
                                 show={show}
@@ -92,9 +95,9 @@ const Cards = () => {
                                         <p>{animeTitle.background}</p>
                                     </div>
                                     : 
-                                    <div>
+                                    <div className="view-more-bio">
                                         <h3>Bio</h3>
-                                        <p>The bio for {animeTitle.title} is unavailable</p>
+                                        <p>The bio for {animeTitle.title} is unavailable.</p>
                                     </div>
                                 }      
 
@@ -118,12 +121,12 @@ const Cards = () => {
 
                                     <div className="view-more-rank">
                                         <h3>Rank</h3>
-                                        <p>{animeTitle.rank}</p>
+                                        <p>#{animeTitle.rank}</p>
                                     </div>
 
                                     <div className="view-more-popularity">
                                         <h3>Popularity</h3>
-                                        <p>{animeTitle.popularity}</p>
+                                        <p>#{animeTitle.popularity}</p>
                                     </div>
 
                                     <div className="view-more-episodes">
