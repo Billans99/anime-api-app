@@ -58,7 +58,7 @@ const Cards = () => {
                     return(
                 
                     // Cards that display anime titles and view-more button that opens view-more modal
-                    <div>
+                    <div className="Cards-content">
                         <Card style={{ width: '21rem' }}>
                             <Card.Img className="cards-image" variant="top" src={animeTitle.images.jpg.image_url} />
                             <Card.Body className="cards-body">

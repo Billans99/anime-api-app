@@ -62,15 +62,21 @@
 /* Cards components  */
 .cards-container{
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; 
+    flex-direction: row;
     gap: 20px;
     justify-content: space-evenly;
     padding-top: 25px;
     background: #f1f1f1;
+
+}
+
+.cards-content{
+    width: 20%;
 }
 
 .cards-image{
-    height: 300px;
+    max-height: 450px;
     width: auto;
     border: 1px solid #808080;
     border-radius: 5px;   
@@ -88,9 +94,11 @@
     margin-top: 50px;
 }
 
-.anime-title{
+.anime-title h3{
     text-align: center;
     margin-bottom: 30px;
+    height: 60px;
+    font-size: 1.4rem;
 }
 
 .genre-score-container{
@@ -104,6 +112,8 @@
 
 .score-info{
     text-align: center;
+    font-weight: bold;
+    color: #474747;
 }
 
 /* view-more modal classes  */
