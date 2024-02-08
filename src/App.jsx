@@ -1,7 +1,6 @@
 
 // TO DO LIST: 
 
-// - 1. Make each card in the row the same height.
 // - 2. Add load more to a footer component. (use props to pass data from Cards to Footer)
 // - 3. Fix issue where each animeTitle is being displayed one extra time (supposed to be 25 not 50).
 

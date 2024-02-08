@@ -58,7 +58,7 @@ const Cards = () => {
                     return(
                 
                     // Cards that display anime titles and view-more button that opens view-more modal
-                    <div className="Cards-content">
+                    <div className="cards-content">
                         <Card style={{ width: '21rem' }}>
                             <Card.Img className="cards-image" variant="top" src={animeTitle.images.jpg.image_url} />
                             <Card.Body className="cards-body">
@@ -66,11 +66,16 @@ const Cards = () => {
                                 <Card.Title className="anime-title">
                                     <h3>{animeTitle.title}</h3>
                                 </Card.Title>
-                                        
-                                <p className="score-info">{animeTitle.score} / 10</p>
 
-                                <Button onClick={() => handleViewMore(index)} className="view-more-btn" variant="primary">View more</Button>
-                            
+                                <div className="cards-footer-container">
+                                    <div>
+                                        <p className="score-info">{animeTitle.score} / 10</p>
+                                    </div>
+
+                                    <div>
+                                        <Button onClick={() => handleViewMore(index)} className="view-more-btn" variant="primary">View more</Button>
+                                    </div>
+                                </div>
                             </Card.Body>
                         </Card>
                         

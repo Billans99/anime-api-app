@@ -68,16 +68,46 @@
     justify-content: space-evenly;
     padding-top: 25px;
     background: #f1f1f1;
-
 }
 
 .cards-content{
-    width: 20%;
+    
+}
+
+.cards-footer-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.cards-footer-container > div{
+    width: 33%;
+    margin-top: 5px;
+}
+
+.score-info{
+    text-align: center;
+    font-weight: bold;
+    color: #474747;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.view-more-btn{
+    /* position: absolute; */
+    /* bottom: 10px; */
+    /* right: 10px; */
+    cursor: pointer;
+    display: inline-block;
+    justify-content: flex-end;
+    height: 40px;
 }
 
 .cards-image{
-    max-height: 450px;
-    width: auto;
+    max-height: 400px;
+    /* width: auto; */
     border: 1px solid #808080;
     border-radius: 5px;   
 }
@@ -110,20 +140,7 @@
     text-align: center;
 }
 
-.score-info{
-    text-align: center;
-    font-weight: bold;
-    color: #474747;
-}
-
 /* view-more modal classes  */
-.view-more-btn{
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    cursor: pointer;
-}
-
 .view-more-modal{
     
 }
@@ -160,11 +177,11 @@
     text-align: center;
 }
 
-.view-more-container > div {
+/* .view-more-container > div {
     width: 33%;
     padding-top: 15px;
     margin-top: 5px;
-}
+} */
 
 .view-more-genre{
     margin-bottom: 10px;
