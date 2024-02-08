@@ -18,7 +18,6 @@ const Cards = () => {
     // Immediately load anime data (once) on initial render of page
     useEffect(() => {
         getAnimeData()
-        console.log('I should fire once')
     }, [currentPage])
 
     // Immediately set viewMore state to false for each anime title in the array of animeData
@@ -109,18 +108,32 @@ const Cards = () => {
                                 </Modal.Title>
                             </Modal.Header>
 
-                            <Modal.Body>               
+                            <Modal.Body className="modal-body">  
+
+                                {animeTitle.synopsis ? 
+                                        <div className="view-more-summary">
+                                            <h3>Summary</h3>
+                                            <p>{animeTitle.synopsis}</p>
+                                        </div>
+                                        : 
+                                        <div className="view-more-summary">
+                                            <h3>Summary</h3>
+                                            <p>The summary for {animeTitle.title} is unavailable.</p>
+                                        </div>
+                                    }   
+
                                 {animeTitle.background ? 
-                                    <div className="view-more-bio">
-                                        <h3>Bio</h3>
+                                    <div className="view-more-background">
+                                        <h3>Background</h3>
                                         <p>{animeTitle.background}</p>
                                     </div>
                                     : 
-                                    <div className="view-more-bio">
-                                        <h3>Bio</h3>
-                                        <p>The bio for {animeTitle.title} is unavailable.</p>
+                                    <div className="view-more-background">
+                                        <h3>Background</h3>
+                                        <p>The background for {animeTitle.title} is unavailable.</p>
                                     </div>
                                 }      
+
 
                                 <div className="view-more-container">
                                     <div className="view-more-score">

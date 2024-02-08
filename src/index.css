@@ -151,6 +151,8 @@
 
 .view-more-header{
     justify-content: center;
+    background-color: #4c4646;
+    color: white;
 }
 
 .view-more-image{
@@ -164,9 +166,20 @@
     margin-left: 15px;
 }
 
-.view-more-bio{
+.modal-body{
+    background-color: #786f6f;
+    color: #ffffff;
+}
+
+.view-more-summary{
     border-bottom: 1px solid #e2e2e2;
     padding-bottom: 10px;
+}
+
+.view-more-background{
+    border-bottom: 1px solid #e2e2e2;
+    padding-bottom: 10px;
+    padding-top: 15px;
 }
 
 .view-more-container{
@@ -177,11 +190,11 @@
     text-align: center;
 }
 
-/* .view-more-container > div {
+.view-more-container > div {
     width: 33%;
     padding-top: 15px;
     margin-top: 5px;
-} */
+}
 
 .view-more-genre{
     margin-bottom: 10px;

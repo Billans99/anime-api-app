@@ -1,10 +1,6 @@
 
 // TO DO LIST: 
 
-
-// - 1. Make 5 cards fit per page to reduce scrolling and wasted space
-
-
 // - Complete logic for the search feature
 // - Do upcoming and popular animes list
 
