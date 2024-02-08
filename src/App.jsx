@@ -1,8 +1,8 @@
 
 // TO DO LIST: 
 
-// - 2. Add load more to a footer component. (use props to pass data from Cards to Footer)
-// - 3. Fix issue where each animeTitle is being displayed one extra time (supposed to be 25 not 50).
+
+// - 1. Make 5 cards fit per page to reduce scrolling and wasted space
 
 
 // - Complete logic for the search feature
@@ -11,7 +11,7 @@
 
 
 
-
+ß
 // Using Jikan 4.0 API (REST) to fetch data
 
 import 'bootstrap/dist/css/bootstrap.min.css'

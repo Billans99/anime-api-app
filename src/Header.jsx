@@ -8,8 +8,8 @@ const Header = () => {
         <>
         {/* Heading text  */}
         <div className="heading-container">
-            <h1 className="heading-category">
-                Popular Anime 
+            <h1 className="heading-title">
+                Anime List
                 {/* <Badge bg="primary">Hot</Badge> */}
             </h1>
         

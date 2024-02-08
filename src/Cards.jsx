@@ -13,39 +13,47 @@ const Cards = () => {
     const [viewMore, setViewMore] = useState([])
     const [show, setShow] = useState()
     const [selectedCard, setSelectedCard] = useState(null)
+    const [loading, setLoading] = useState(false)
 
     // Immediately load anime data (once) on initial render of page
     useEffect(() => {
-        getAnimeData();
-    }, [currentPage]);
+        getAnimeData()
+        console.log('I should fire once')
+    }, [currentPage])
 
     // Immediately set viewMore state to false for each anime title in the array of animeData
     // on initial render
     useEffect(() => {
-        setViewMore(new Array(animeData.length).fill(false));
-    }, [animeData]);
+        setViewMore(new Array(animeData.length).fill(false))
+    }, [animeData])
 
     // Fetch anime data from Jikan API, and set the state of animeData to the response data
     const getAnimeData = async () => {
         try {
-            const response = await axios.get(`https://api.jikan.moe/v4/anime?page=${currentPage}&q=&sfw`);
-            setAnimeData(prevData => [...prevData, ...response.data.data]);
-            setCurrentPage(response.data.pagination.current_page);
+            if (loading) {
+                return
+            }
+
+            setLoading(true)
+            const response = await axios.get(`https://api.jikan.moe/v4/anime?page=${currentPage}&q=&sfw`)
+            setAnimeData(prevData => [...prevData, ...response.data.data])
+            setCurrentPage(response.data.pagination.current_page)
+            setLoading(false)
             console.log('data', response.data)
         } catch (error) {
-            console.error("Error fetching data: ", error);
+            console.error("Error fetching data: ", error)
         }
     }
 
     // load more button that loads additional 25 anime titles to page
     const loadMore = () => {
-        setCurrentPage(currentPage + 1);
+        setCurrentPage(currentPage + 1)
     }
 
     // Handles logic for view more button
     const handleViewMore = (index) => {
         setSelectedCard(index)
-        setViewMore(viewMore.map((value, i) => i === index ? !value : value));
+        setViewMore(viewMore.map((value, i) => i === index ? !value : value))
         setShow(true)
     }
 
