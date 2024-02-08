@@ -177,11 +177,11 @@
     text-align: center;
 }
 
-/* .view-more-container > div {
+.view-more-container > div {
     width: 33%;
     padding-top: 15px;
     margin-top: 5px;
-} */
+}
 
 .view-more-genre{
     margin-bottom: 10px;
