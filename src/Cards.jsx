@@ -204,7 +204,6 @@ const Cards = () => {
                 <Button onClick={loadMore} className="load-more-btn" variant="secondary">Load More</Button>
             </div>
 
-            <Foo/>
         </>
     )
 }
