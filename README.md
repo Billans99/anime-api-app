@@ -28,3 +28,5 @@ Each card displays an image, title, score, and view button.
 
 Clicking the view button displays a modal popup with even more data such as genre, summary, background, and more. 
 Scroll down to view all the information about the anime.
+
+To load more anime, click the Load More button at the bottom of the page.

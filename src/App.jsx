@@ -3,7 +3,7 @@
 
 
 // find the api endpoint and update README.md
-// - 1. Added characters to the bottom of view-more-modals.
+// - 1. Add characters to the bottom of view-more-modals.
 
 
 
