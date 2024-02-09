@@ -5,6 +5,7 @@ import axios from 'axios'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
+import Foo from './Foo.jsx'
 
     // Cards component
 const Cards = () => {
@@ -202,6 +203,7 @@ const Cards = () => {
             <div className="load-more-container">
                 <Button onClick={loadMore} className="load-more-btn" variant="secondary">Load More</Button>
             </div>
+
         </>
     )
 }
