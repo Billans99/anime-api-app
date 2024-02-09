@@ -20,12 +20,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Header from './Header.jsx'
 import Cards from './Cards.jsx'
-<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
-=======
-import Foo from './Foo.jsx'
-import Searchbar from './Searchbar.jsx'
->>>>>>> 9dbbcf4d40ebcd1b0a68b3a3ba14b6182bf673cd
 
 
 

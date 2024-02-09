@@ -1,8 +1,11 @@
 // import Badge from 'react-bootstrap/Badge'
 import Button from 'react-bootstrap/Button'
+import axios from 'axios'
 
 
-const Header = () => {
+const Header = (props) => {
+
+        
 
     return(
         <>
@@ -14,27 +17,27 @@ const Header = () => {
             </h1>
         
                 {/* upcoming, popular, and search container  */}
-            <div className="categories-container">
+            {/* <div className="categories-container"> */}
 
 
                 {/* upcoming anime category (onClick function)  */}
-                <Button className="upcoming-category" variant="primary">Upcoming</Button>
+                {/* <Button className="upcoming-category" variant="primary">Upcoming</Button> */}
                 
                 {/* popular anime category (onClick function) */}
-                <Button className="popular-category" variant="warning">Popular</Button>
+                {/* <Button className="popular-category" variant="warning">Popular</Button> */}
 
                 
-                <div className="search-container">
+                {/* <div className="search-container"> */}
                     {/* Search bar  */}
-                    <input className="search-bar" type="text" placeholder="Search for anime titles..." />
+                    {/* <input className="search-bar" name="search-form" id="search-form" type="search" placeholder="Search for anime titles..." /> */}
                     
                     {/* Search button  */}
-                    <Button className="search-button" variant="primary" size="sm">
-                        Search
-                     </Button>
-                </div>
+                    {/* <Button className="search-button" variant="primary" size="sm"> */}
+                        {/* Search */}
+                     {/* </Button> */}
+                {/* </div> */}
 
-            </div>
+            {/* </div> */}
 
 
         </div>
