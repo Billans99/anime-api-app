@@ -3,7 +3,9 @@
 
 
 // find the api endpoint and update README.md
-// - 1. Add characters to the bottom of view-more-modals.
+// - 1. Do list of things baker mentioned (discord)
+// - 2. Add characters to the bottom of view-more-modals. (get)
+// - 3. Add trailers to the bottom of view-more-modals.
 
 
 

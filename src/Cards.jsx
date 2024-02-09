@@ -5,7 +5,7 @@ import axios from 'axios'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
-import Foo from './Foo.jsx'
+
 
     // Cards component
 const Cards = () => {
@@ -87,7 +87,7 @@ const Cards = () => {
                             </Card.Body>
                         </Card>
                         
-                        {/* Evaluates to thruthy and executes the modal code block  */}
+                        {/* Evaluates to truthy and executes the modal code block  */}
                         {selectedCard === index && (
                         // Modal popup that displays more information about the anime title
                         //  when view-more button is clicked
