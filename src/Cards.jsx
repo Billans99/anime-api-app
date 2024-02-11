@@ -21,7 +21,7 @@ const Cards = () => {
         getAnimeData()
     }, [currentPage])
 
-    // Immediately set viewMore state to false for each anime title in the array of animeData
+    // Immediately set viewMore state to false for each anime in the array of animeData
     // on initial render
     useEffect(() => {
         setViewMore(new Array(animeData.length).fill(false))
@@ -59,25 +59,25 @@ const Cards = () => {
 
     return (
         <>
-            {/* Individual cards display different anime titles from the api */}
+            {/* Individual cards display different anime from the api */}
             <div className="cards-container">
-                {/* Map each anime title to a card  */}
-                {animeData.map((animeTitle, index) => {
+                {/* Map each anime anime to a card  */}
+                {animeData.map((anime, index) => {
                     return(
                 
                     // Cards that display anime titles and view-more button that opens view-more modal
                     <div className="cards-content">
                         <Card style={{ width: '21rem' }}>
-                            <Card.Img className="cards-image" variant="top" src={animeTitle.images.jpg.image_url} />
+                            <Card.Img className="cards-image" variant="top" src={anime.images.jpg.image_url} />
                             <Card.Body className="cards-body">
 
                                 <Card.Title className="anime-title">
-                                    <h3>{animeTitle.title}</h3>
+                                    <h3>{anime.title}</h3>
                                 </Card.Title>
 
                                 <div className="cards-footer-container">
                                     <div>
-                                        <p className="score-info">{animeTitle.score} / 10</p>
+                                        <p className="score-info">{anime.score} / 10</p>
                                     </div>
 
                                     <div>
@@ -101,37 +101,37 @@ const Cards = () => {
                             <Modal.Header closeButton className="view-more-header">
                                 {/* View-more info image */}
                                 <Card style={{ width: '21rem' }}>
-                                    <Card.Img className="view-more-image" variant="top" src={animeTitle.images.jpg.image_url} />
+                                    <Card.Img className="view-more-image" variant="top" src={anime.images.jpg.image_url} />
                                 </Card>
 
                                 <Modal.Title className="view-more-title" id="example-custom-modal-styling-title">
-                                <h2>{animeTitle.title}</h2>
+                                <h2>{anime.title}</h2>
                                 </Modal.Title>
                             </Modal.Header>
 
                             <Modal.Body className="modal-body">  
 
-                                {animeTitle.synopsis ? 
+                                {anime.synopsis ? 
                                         <div className="view-more-summary">
                                             <h3>Summary</h3>
-                                            <p>{animeTitle.synopsis}</p>
+                                            <p>{anime.synopsis}</p>
                                         </div>
                                         : 
                                         <div className="view-more-summary">
                                             <h3>Summary</h3>
-                                            <p>The summary for {animeTitle.title} is unavailable.</p>
+                                            <p>The summary for {anime.title} is unavailable.</p>
                                         </div>
                                     }   
 
-                                {animeTitle.background ? 
+                                {anime.background ? 
                                     <div className="view-more-background">
                                         <h3>Background</h3>
-                                        <p>{animeTitle.background}</p>
+                                        <p>{anime.background}</p>
                                     </div>
                                     : 
                                     <div className="view-more-background">
                                         <h3>Background</h3>
-                                        <p>The background for {animeTitle.title} is unavailable.</p>
+                                        <p>The background for {anime.title} is unavailable.</p>
                                     </div>
                                 }      
 
@@ -139,51 +139,51 @@ const Cards = () => {
                                 <div className="view-more-container">
                                     <div className="view-more-score">
                                         <h3>Score</h3>
-                                        <p>{animeTitle.score} / 10</p>
+                                        <p>{anime.score} / 10</p>
                                     </div>             
                                     
                                     <div className="genre-score-container">
                                         <h3>Genres</h3>
-                                            {animeTitle.genres.map((genre) => {
+                                            {anime.genres.map((genre) => {
                                                 return <Card.Subtitle className="view-more-genre">{genre.name}</Card.Subtitle>
                                             })}                                         
                                     </div>
 
                                     <div className="view-more-release">
                                         <h3>Release date</h3>
-                                        <p>{animeTitle.aired.prop.from.year}</p>
+                                        <p>{anime.aired.prop.from.year}</p>
                                     </div>
 
                                     <div className="view-more-rank">
                                         <h3>Rank</h3>
-                                        <p>#{animeTitle.rank}</p>
+                                        <p>#{anime.rank}</p>
                                     </div>
 
                                     <div className="view-more-popularity">
                                         <h3>Popularity</h3>
-                                        <p>#{animeTitle.popularity}</p>
+                                        <p>#{anime.popularity}</p>
                                     </div>
 
                                     <div className="view-more-episodes">
                                         <h3>Episodes</h3>
-                                        <p>{animeTitle.episodes}</p>
+                                        <p>{anime.episodes}</p>
                                     </div>
 
                                     <div className="view-more-rating">
                                         <h3>Rating</h3>
-                                        <p>{animeTitle.rating}</p>
+                                        <p>{anime.rating}</p>
                                     </div>
 
                                     <div className="view-more-producers">
                                         <h3>Producers</h3>
-                                        {animeTitle.producers.map((producer) => {
+                                        {anime.producers.map((producer) => {
                                             return <p>{producer.name}</p>
                                         })}
                                     </div>
 
                                     <div className="view-more-studios">
                                         <h3>Studios</h3>
-                                        {animeTitle.studios.map((studio) => {
+                                        {anime.studios.map((studio) => {
                                             return <p>{studio.name}</p>
                                         })}
                                     </div>
