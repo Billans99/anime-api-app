@@ -7,14 +7,16 @@ import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
 
+
     // Cards component
 const Cards = () => {
     const [animeData, setAnimeData] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
     const [viewMore, setViewMore] = useState([])
     const [show, setShow] = useState()
-    const [selectedCard, setSelectedCard] = useState(null)
+    
     const [loading, setLoading] = useState(false)
+    const [selectedAnime, setSelectedAnime] = useState(null)
 
     // Immediately load anime data (once) on initial render of page
     useEffect(() => {
@@ -51,11 +53,11 @@ const Cards = () => {
     }
 
     // Handles logic for view more button
-    const handleViewMore = (index) => {
-        setSelectedCard(index)
-        setViewMore(viewMore.map((value, i) => i === index ? !value : value))
-        setShow(true)
+    const handleViewMore = (anime) => {
+        setSelectedAnime(anime)
     }
+    
+    console.log('selectedAnime', selectedAnime)
 
     return (
         <>
@@ -81,57 +83,63 @@ const Cards = () => {
                                     </div>
 
                                     <div>
-                                        <Button onClick={() => handleViewMore(index)} className="view-more-btn" variant="primary">View more</Button>
+                                        <Button onClick={() => handleViewMore(anime)} className="view-more-btn" variant="primary">View more</Button>
                                     </div>
                                 </div>
                             </Card.Body>
                         </Card>
                         
                         {/* Evaluates to truthy and executes the modal code block  */}
-                        {selectedCard === index && (
+                        
+
+                        
+                    </div>
+                )})}
+            </div>
+            {selectedAnime && (
                         // Modal popup that displays more information about the anime title
                         //  when view-more button is clicked
                         <Modal className="view-more-modal"
                                 size="lg"
-                                show={show}
-                                onHide={() => setShow(false)}
+                                show={!!selectedAnime}
+                                onHide={() => setSelectedAnime(null)}
                                 dialogClassName="modal-90w"
                                 aria-labelledby="more anime info modal">
                             
                             <Modal.Header closeButton className="view-more-header">
                                 {/* View-more info image */}
                                 <Card style={{ width: '21rem' }}>
-                                    <Card.Img className="view-more-image" variant="top" src={anime.images.jpg.image_url} />
+                                    <Card.Img className="view-more-image" variant="top" src={selectedAnime.images.jpg.image_url} />
                                 </Card>
 
                                 <Modal.Title className="view-more-title" id="example-custom-modal-styling-title">
-                                <h2>{anime.title}</h2>
+                                <h2>{selectedAnime.title}</h2>
                                 </Modal.Title>
                             </Modal.Header>
 
                             <Modal.Body className="modal-body">  
 
-                                {anime.synopsis ? 
+                                {selectedAnime.synopsis ? 
                                         <div className="view-more-summary">
                                             <h3>Summary</h3>
-                                            <p>{anime.synopsis}</p>
+                                            <p>{selectedAnime.synopsis}</p>
                                         </div>
                                         : 
                                         <div className="view-more-summary">
                                             <h3>Summary</h3>
-                                            <p>The summary for {anime.title} is unavailable.</p>
+                                            <p>The summary for {selectedAnime.title} is unavailable.</p>
                                         </div>
                                     }   
 
-                                {anime.background ? 
+                                {selectedAnime.background ? 
                                     <div className="view-more-background">
                                         <h3>Background</h3>
-                                        <p>{anime.background}</p>
+                                        <p>{selectedAnime.background}</p>
                                     </div>
                                     : 
                                     <div className="view-more-background">
                                         <h3>Background</h3>
-                                        <p>The background for {anime.title} is unavailable.</p>
+                                        <p>The background for {selectedAnime.title} is unavailable.</p>
                                     </div>
                                 }      
 
@@ -139,51 +147,51 @@ const Cards = () => {
                                 <div className="view-more-container">
                                     <div className="view-more-score">
                                         <h3>Score</h3>
-                                        <p>{anime.score} / 10</p>
+                                        <p>{selectedAnime.score} / 10</p>
                                     </div>             
                                     
                                     <div className="genre-score-container">
                                         <h3>Genres</h3>
-                                            {anime.genres.map((genre) => {
+                                            {selectedAnime.genres.map((genre) => {
                                                 return <Card.Subtitle className="view-more-genre">{genre.name}</Card.Subtitle>
                                             })}                                         
                                     </div>
 
                                     <div className="view-more-release">
                                         <h3>Release date</h3>
-                                        <p>{anime.aired.prop.from.year}</p>
+                                        <p>{selectedAnime.aired.prop.from.year}</p>
                                     </div>
 
                                     <div className="view-more-rank">
                                         <h3>Rank</h3>
-                                        <p>#{anime.rank}</p>
+                                        <p>#{selectedAnime.rank}</p>
                                     </div>
 
                                     <div className="view-more-popularity">
                                         <h3>Popularity</h3>
-                                        <p>#{anime.popularity}</p>
+                                        <p>#{selectedAnime.popularity}</p>
                                     </div>
 
                                     <div className="view-more-episodes">
                                         <h3>Episodes</h3>
-                                        <p>{anime.episodes}</p>
+                                        <p>{selectedAnime.episodes}</p>
                                     </div>
 
                                     <div className="view-more-rating">
                                         <h3>Rating</h3>
-                                        <p>{anime.rating}</p>
+                                        <p>{selectedAnime.rating}</p>
                                     </div>
 
                                     <div className="view-more-producers">
                                         <h3>Producers</h3>
-                                        {anime.producers.map((producer) => {
+                                        {selectedAnime.producers.map((producer) => {
                                             return <p>{producer.name}</p>
                                         })}
                                     </div>
 
                                     <div className="view-more-studios">
                                         <h3>Studios</h3>
-                                        {anime.studios.map((studio) => {
+                                        {selectedAnime.studios.map((studio) => {
                                             return <p>{studio.name}</p>
                                         })}
                                     </div>
@@ -193,12 +201,6 @@ const Cards = () => {
                             </Modal.Body>
                         </Modal>
                         )}
-
-                        
-                    </div>
-                )})}
-            </div>
-            
             {/* Load another 25 anime titles button */}
             <div className="load-more-container">
                 <Button onClick={loadMore} className="load-more-btn" variant="secondary">Load More</Button>
