@@ -18,9 +18,9 @@ Currently, two official plugins are available:
 3. npm run dev (npm run dev in terminal and paste the local host url in a browser)
 
 # Info
-Title: Anime-api-app
+Title: ANIME-API-APP
 
-A functional anime app that displays information cards about different anime titles. More information can be viewed by clicking the View buttons located inside each card. Some of the data displayed include genre, title, background, and summary. This data is fetched from the Jikan Rest api v4 endpoint.
+A functional anime app that displays information cards about different anime titles. More information can be viewed by clicking the View buttons located inside each card. Some of the data displayed include genre, title, background, and summary. This data is fetched from the Jikan Rest api v4 endpoints. Jikan API is an unofficial MyAnimeList API, which scrapes the website. 
 
 # How to use this app:
 Scroll up and down to view various anime titles fetched by Jikan api v4. 
