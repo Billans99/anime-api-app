@@ -11,14 +11,16 @@ import Modal from 'react-bootstrap/Modal'
     // Cards component
 const Cards = () => {
     const [animeData, setAnimeData] = useState([])
+    const [animeCharactersData, setAnimeCharactersData] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
     const [viewMore, setViewMore] = useState([])
     const [show, setShow] = useState()
-    
     const [loading, setLoading] = useState(false)
     const [selectedAnime, setSelectedAnime] = useState(null)
+    const [selectedAnimeID, setSelectedAnimeID] = useState(null)
+    
 
-    // Immediately load anime data (once) on initial render of page
+    // Immediately load anime data (once) on initial render of page, if current page changes, useEffect will run again
     useEffect(() => {
         getAnimeData()
     }, [currentPage])
@@ -38,14 +40,34 @@ const Cards = () => {
 
             setLoading(true)
             const response = await axios.get(`https://api.jikan.moe/v4/anime?page=${currentPage}&q=&sfw`)
+            console.log('response', response)
             setAnimeData(prevData => [...prevData, ...response.data.data])
             setCurrentPage(response.data.pagination.current_page)
             setLoading(false)
-            console.log('data', response.data)
+    
         } catch (error) {
             console.error("Error fetching data: ", error)
         }
     }
+
+    //  get data from character endpoint after clicking view-more button
+   const getCharactersData = async () => {
+        try {
+            if (loading) {
+                return
+            }
+
+            setLoading(true)
+            const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/characters`)
+            console.log('charResponse', response)
+            setAnimeCharactersData(response.data.data)
+            
+        } catch (error) {
+            console.error("Error fetching data", error)
+        }
+   }
+
+
 
     // load more button that loads additional 25 anime titles to page
     const loadMore = () => {
@@ -55,16 +77,20 @@ const Cards = () => {
     // Handles logic for view more button
     const handleViewMore = (anime) => {
         setSelectedAnime(anime)
+        getCharactersData()
+        setSelectedAnimeID(anime.mal_id)
+
     }
     
     console.log('selectedAnime', selectedAnime)
+    console.log('selectedAnimeID', selectedAnimeID)
 
     return (
         <>
             {/* Individual cards display different anime from the api */}
             <div className="cards-container">
                 {/* Map each anime anime to a card  */}
-                {animeData.map((anime, index) => {
+                {animeData.map((anime) => {
                     return(
                 
                     // Cards that display anime titles and view-more button that opens view-more modal
@@ -83,7 +109,7 @@ const Cards = () => {
                                     </div>
 
                                     <div>
-                                        <Button onClick={() => handleViewMore(anime)} className="view-more-btn" variant="primary">View more</Button>
+                                        <Button onClick={() => handleViewMore(anime, anime.mal_id)} className="view-more-btn" variant="primary">View more</Button>
                                     </div>
                                 </div>
                             </Card.Body>
@@ -101,6 +127,7 @@ const Cards = () => {
                         //  when view-more button is clicked
                         <Modal className="view-more-modal"
                                 size="lg"
+                                // If selected anime is truthy, show the modal
                                 show={!!selectedAnime}
                                 onHide={() => setSelectedAnime(null)}
                                 dialogClassName="modal-90w"
@@ -195,6 +222,14 @@ const Cards = () => {
                                             return <p>{studio.name}</p>
                                         })}
                                     </div>
+                                </div>
+
+                                <div className="characters-container">
+                                        {animeCharactersData.map((character) => {
+                                            return(
+                                                <p>{character.character.name}</p>
+                                            )
+                                        })}
                                 </div>
                                 
 
