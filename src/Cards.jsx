@@ -16,13 +16,17 @@ const Cards = () => {
     const [show, setShow] = useState()
     const [loading, setLoading] = useState(false)
     const [selectedAnime, setSelectedAnime] = useState(null)
-    const [selectedAnimeID, setSelectedAnimeID] = useState()
+    const [selectedAnimeID, setSelectedAnimeID] = useState(null)
     
 
     // Immediately load anime data (once) on initial render of page, if current page changes, useEffect will run again
     useEffect(() => {
         getAnimeData()
     }, [currentPage])
+
+    useEffect(() => {
+        getCharactersData()
+    }, [selectedAnimeID])
 
     // Fetch anime data from Jikan API, and set the state of animeData to the response data
     const getAnimeData = async () => {
@@ -70,7 +74,7 @@ const Cards = () => {
     // Handles logic for view more button
     const handleViewMore = (anime) => {
         setSelectedAnime(anime)
-        getCharactersData()
+        // getCharactersData()
         setSelectedAnimeID(anime.mal_id)
 
     }
@@ -122,7 +126,10 @@ const Cards = () => {
                                 size="lg"
                                 // If selected anime is truthy, show the modal
                                 show={!!selectedAnime}
-                                onHide={() => setSelectedAnime(null)}
+                                onHide={() => {
+                                    setSelectedAnime(null)
+                                    setSelectedAnimeID(null)
+                                }}
                                 dialogClassName="modal-90w"
                                 aria-labelledby="more anime info modal">
                             
