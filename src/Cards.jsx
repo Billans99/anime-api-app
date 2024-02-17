@@ -50,14 +50,11 @@ const Cards = () => {
     //  get data from character endpoint after clicking view-more button
    const getCharactersData = async () => {
         try {
-            if (loading) {
-                return
-            }
-
             setLoading(true)
             const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/characters`)
             console.log('charResponse', response)
             setAnimeCharactersData(response.data.data)
+            setLoading(false)
             
         } catch (error) {
             console.error("Error fetching data", error)
@@ -74,7 +71,6 @@ const Cards = () => {
     // Handles logic for view more button
     const handleViewMore = (anime) => {
         setSelectedAnime(anime)
-        // getCharactersData()
         setSelectedAnimeID(anime.mal_id)
 
     }
