@@ -13,23 +13,16 @@ const Cards = () => {
     const [animeData, setAnimeData] = useState([])
     const [animeCharactersData, setAnimeCharactersData] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
-    const [viewMore, setViewMore] = useState([])
     const [show, setShow] = useState()
     const [loading, setLoading] = useState(false)
     const [selectedAnime, setSelectedAnime] = useState(null)
-    const [selectedAnimeID, setSelectedAnimeID] = useState(null)
+    const [selectedAnimeID, setSelectedAnimeID] = useState()
     
 
     // Immediately load anime data (once) on initial render of page, if current page changes, useEffect will run again
     useEffect(() => {
         getAnimeData()
     }, [currentPage])
-
-    // Immediately set viewMore state to false for each anime in the array of animeData
-    // on initial render
-    useEffect(() => {
-        setViewMore(new Array(animeData.length).fill(false))
-    }, [animeData])
 
     // Fetch anime data from Jikan API, and set the state of animeData to the response data
     const getAnimeData = async () => {
