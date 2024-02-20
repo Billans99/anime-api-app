@@ -8,8 +8,8 @@ const NewsletterAlert = () => {
         <>
         
             <Alert variant='dark' className="newsletter-alert">
-            Want to sign up for our newsletter? 
-            <Alert.Link href="#"> Click here! </Alert.Link>
+            Want to sign up for our newsletter?&nbsp; 
+            <Alert.Link href="#">Click here!</Alert.Link>
             </Alert>
         
         </>
