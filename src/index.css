@@ -181,6 +181,7 @@
     flex-wrap: wrap;
     text-align: center;
     padding-bottom: 30px;
+    border-bottom: 1px solid #e2e2e2;
 }
 
 .view-more-container > div {
@@ -192,6 +193,38 @@
 
 .view-more-genre{
     margin-bottom: 10px;
+}
+
+.characters-heading{
+    display: block;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.characters-container{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    
+}
+
+.characters-content{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.character-name{
+    font-weight: bold;
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 5px;
+}
+
+.character-image{
+    width: 12vw;
+    height: 180px;
+    border: 1px solid white;
 }
 
 .load-more-container{

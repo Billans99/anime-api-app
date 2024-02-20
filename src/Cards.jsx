@@ -223,12 +223,15 @@ const Cards = () => {
                                 </div>
                                     
                                 {/* view-more characters data */}
+                                <h3 className="characters-heading">Characters</h3>
                                 <div className="characters-container">
                                         {animeCharactersData.map((character) => {
                                             return(
                                                 <>
-                                                    <p>{character.character.name}</p>
-                                                    <img src={character.character.images.jpg.image_url} alt="Image of anime character"></img>
+                                                    <div className="characters-content">
+                                                        <img className="character-image" src={character.character.images.jpg.image_url} alt="Image of anime character"></img>
+                                                        <p className="character-name">{character.character.name}</p>
+                                                    </div>
                                                 </>
                                             )
                                         })}

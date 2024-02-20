@@ -1,13 +1,13 @@
 
 // TO DO LIST: 
 
-// - 1. Add alert "Want to sign up for our newsletter? Click here!" (react bootstrap component) (Make alert.jsx component)
-// - 2. Add Accordion component to view-more modal to display the characters via main and supporting character tabs
-// - 3. Format characters css to look tidier
-// - 4. Flesh out app and add as much data as possible to the view-more-modals and anime-app to keep learning more
-// - 5. Maybe change charactersData useState so it doesnt try to get data from initial render and only when btn is
+//      Add border line to separate character data in view-more modal
+// - 1. Add Accordion component to view-more modal to display the characters via main and supporting character tabs
+// - 2. Format characters css to look tidier
+// - 3. Flesh out app and add as much data as possible to the view-more-modals and anime-app to keep learning more
+// - 4. Maybe change charactersData useState so it doesnt try to get data from initial render and only when btn is
 //      clicked.
-// - 6. Makes more comments to explain code
+// - 5. Makes more comments to explain code
 
 
 
