@@ -5,6 +5,7 @@ import axios from 'axios'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
+import YouTube from "react-youtube"
 
 
 
@@ -77,6 +78,7 @@ const Cards = () => {
     
     console.log('selectedAnime', selectedAnime)
     console.log('selectedAnimeID', selectedAnimeID)
+    
 
     return (
         <>
@@ -219,11 +221,15 @@ const Cards = () => {
                                         })}
                                     </div>
                                 </div>
-
+                                    
+                                {/* view-more characters data */}
                                 <div className="characters-container">
                                         {animeCharactersData.map((character) => {
                                             return(
-                                                <p>{character.character.name}</p>
+                                                <>
+                                                    <p>{character.character.name}</p>
+                                                    <img src={character.character.images.jpg.image_url} alt="Image of anime character"></img>
+                                                </>
                                             )
                                         })}
                                 </div>
