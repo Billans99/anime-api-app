@@ -1,14 +1,24 @@
 
 // TO DO LIST: 
 
+//  {const reviewsArray = animeReviewsData.slice(0, 5).map((review)
+//  then on handleNextReviews, add 5 to both A and B of the state, reviewsArray[a, and b]
+//  then animeReviewsData.slice(reviewsArray).map((review) => {
+    // return(
 
+// - 1. Give reviews ability to load next set of reviews
+// - 2. Add news section to tabs of Cards.jsx and fix css for news
+//      Convert the UTC time to a more readable format
 
-// - 1. Make reviews tab of component to display carousel of reviews
-// - 2. Add spinner component to show loading state when fetching data
-// - 3. Possibly change charactersData useState so it doesnt try to get data from initial render and only when btn is
+// - 3. Add spinner component to show loading state when fetching data
+// - 4. Possibly change charactersData useState so it doesnt try to get data from initial render and only when btn is
 //      clicked.
-// - 4. Makes more comments to explain code
-// - 5. Flesh out app and add as much data as possible to the view-more-modals and anime-app to keep learning more
+// - 5. Makes more comments to explain code
+// - 6. Flesh out app and add as much data as possible to the view-more-modals and anime-app to keep learning more
+// - Add staff, stats, recommendations, pictures, suggested order of viewing (More info section @ MAL website),
+// - voice actors, staff names and photos, 
+// - 7. Add top anime and popular anime to the app
+// - 8. Add manga to the app
 
 
 

@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import Tab from 'react-bootstrap/Tab'
 import Tabs from 'react-bootstrap/Tabs'
-
+       
 
 
 
@@ -15,12 +15,14 @@ import Tabs from 'react-bootstrap/Tabs'
 const Cards = () => {
     const [animeData, setAnimeData] = useState([])
     const [animeCharactersData, setAnimeCharactersData] = useState([])
+    const [animeReviewsData, setAnimeReviewsData] = useState([])
+    const [newsData, setNewsData] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
+    const [reviewsArray, setReviewsArray] = useState([0, 5])
     const [show, setShow] = useState()
     const [loading, setLoading] = useState(false)
     const [selectedAnime, setSelectedAnime] = useState(null)
     const [selectedAnimeID, setSelectedAnimeID] = useState(null)
-    const [animeReviewsData, setAnimeReviewsData] = useState([])
     
 
     // Immediately load anime data (once) on initial render of page, if current page changes, useEffect will run again
@@ -34,6 +36,10 @@ const Cards = () => {
 
     useEffect(() => {
         getReviewsData()
+    }, [selectedAnimeID])
+
+    useEffect(() => {
+        getNewsData()
     }, [selectedAnimeID])
 
     // Fetch anime data from Jikan API, and set the state of animeData to the response data
@@ -81,6 +87,17 @@ const Cards = () => {
         
    }
 
+   const getNewsData = async () => {
+        try {
+            const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/news`)
+            console.log('newsResponse', response)
+            setNewsData(response.data.data)
+
+        }   catch (error) {
+            console.error('error fetching data', error)
+        }
+   }
+
 
 
     // load more button that loads additional 25 anime titles to page
@@ -92,7 +109,17 @@ const Cards = () => {
     const handleViewMore = (anime) => {
         setSelectedAnime(anime)
         setSelectedAnimeID(anime.mal_id)
+    }
+
+    const handleNewsClick = () => {
         
+    }
+
+    const handleNextReviews = () => {
+
+    }
+
+    const handlePrevReviews = () => {
 
     }
     
@@ -281,6 +308,10 @@ const Cards = () => {
                                                         </div> 
 
                                                         <p className="review-body">{review.review}</p>
+
+
+                                                        <Button onClick={() => handlePrevReviews()} className="view-more-btn" variant="primary">View more</Button>
+                                                        <Button onClick={() => handleNextReviews()} className="view-more-btn" variant="primary">View more</Button>
                                                     </>
                                                 )
                                             })}
@@ -305,7 +336,34 @@ const Cards = () => {
                                                     })}
                                             </div>
                                         </Tab>
-                                        
+
+                                        {/* News data */}
+                                        <Tab className="news-tab" eventKey="news" title="News">
+                                            
+                                            {/* view-more characters data */}
+                                            <h3 className="news-heading">News for {selectedAnime.title}</h3>
+                                            
+                                                    {newsData.map((newsItem) => {
+                                                        return(
+                                                            <>
+                                                                <div className="news-container">
+                                                                    <img className="news-image" src={newsItem.images.jpg.image_url}></img>
+                                                                    <p className="news-excerpt">{newsItem.excerpt}</p>
+                                                                    <p className="author-date-news">{newsItem.author_username} {newsItem.date}</p>
+                                                                    <div className="primary-btn-container">
+                                                                        <Button onClick={() => handleNewsClick()} className="full-story-btn" variant="primary">Full story</Button>
+                                                                    </div>
+                                                                </div>
+
+                
+                                                                   
+                                                                
+                                                            </>
+                                                        )
+                                                    })}
+                                            
+                                        </Tab>
+
                                     </Tabs>
                                 </div>      
 
