@@ -242,7 +242,7 @@ const Cards = () => {
                                 
                                 <h3 className="reviews-heading">Reviews</h3>
                                 {/* view-more reviews data */}
-                                {animeReviewsData.slice(0, 5).map((review, index) => {
+                                {animeReviewsData.slice(0, 5).map((review) => {
                                     return(
                                         <>
                                             <div className="reviews-container">
@@ -274,6 +274,7 @@ const Cards = () => {
                                                     <div className="characters-content">
                                                         <img className="character-image" src={character.character.images.jpg.image_url} alt="Image of anime character"></img>
                                                         <p className="character-name">{character.character.name}</p>
+                                                        <p className="character-role">{character.role}</p>
                                                     </div>
                                                 </>
                                             )
