@@ -5,6 +5,8 @@ import axios from 'axios'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
+import Tab from 'react-bootstrap/Tab'
+import Tabs from 'react-bootstrap/Tabs'
 
 
 
@@ -101,6 +103,7 @@ const Cards = () => {
 
     return (
         <>
+
             {/* Individual cards display different anime from the api */}
             <div className="cards-container">
                 {/* Map each anime anime to a card  */}
@@ -163,6 +166,7 @@ const Cards = () => {
 
                             <Modal.Body className="modal-body">  
 
+                        
                                 {selectedAnime.synopsis ? 
                                         <div className="view-more-summary">
                                             <h3>Summary</h3>
@@ -185,115 +189,127 @@ const Cards = () => {
                                         <h3>Background</h3>
                                         <p>The background for {selectedAnime.title} is unavailable.</p>
                                     </div>
-                                }      
+                                }
 
-                                <div className="view-more-container">
-                                    <div className="view-more-score">
-                                        <h3>Score</h3>
-                                        <p>{selectedAnime.score} / 10</p>
-                                    </div>             
+                                {/* Tabs with more info */}
+                                <div className="modal-tab-container">
+                                    <Tabs
+                                        defaultActiveKey="profile"
+                                        id="uncontrolled-tab-example"
+                                        className="tabs-container"
+
+                                    >
+                                        <Tab className="general-info-tab" eventKey="general" title="General Info">
+                                            <div className="view-more-container">
+                                                <div className="view-more-score">
+                                                    <h3>Score</h3>
+                                                    <p>{selectedAnime.score} / 10</p>
+                                                </div>             
                                     
-                                    <div className="genre-score-container">
-                                        <h3>Genres</h3>
-                                            {selectedAnime.genres.map((genre) => {
-                                                return <Card.Subtitle className="view-more-genre">{genre.name}</Card.Subtitle>
-                                            })}                                         
-                                    </div>
-
-                                    <div className="view-more-release">
-                                        <h3>Release date</h3>
-                                        <p>{selectedAnime.aired.prop.from.year}</p>
-                                    </div>
-
-                                    <div className="view-more-rank">
-                                        <h3>Rank</h3>
-                                        <p>#{selectedAnime.rank}</p>
-                                    </div>
-
-                                    <div className="view-more-popularity">
-                                        <h3>Popularity</h3>
-                                        <p>#{selectedAnime.popularity}</p>
-                                    </div>
-
-                                    <div className="view-more-episodes">
-                                        <h3>Episodes</h3>
-                                        <p>{selectedAnime.episodes}</p>
-                                    </div>
-
-                                    <div className="view-more-rating">
-                                        <h3>Rating</h3>
-                                        <p>{selectedAnime.rating}</p>
-                                    </div>
-
-                                    <div className="view-more-producers">
-                                        <h3>Producers</h3>
-                                        {selectedAnime.producers.map((producer) => {
-                                            return <p>{producer.name}</p>
-                                        })}
-                                    </div>
-
-                                    <div className="view-more-studios">
-                                        <h3>Studios</h3>
-                                        {selectedAnime.studios.map((studio) => {
-                                            return <p>{studio.name}</p>
-                                        })}
-                                    </div>
-                                </div>
-                                
-                                <h3 className="reviews-heading">Reviews</h3>
-                                {/* view-more reviews data */}
-                                {animeReviewsData.slice(0, 5).map((review) => {
-                                    return(
-                                        <>
-                                            {/* <div className="review-avatar-container">
-                                                        <img className="avatar-image" 
-                                                            src={review.user.images.jpg.image_url} 
-                                                            alt="Image of anime character">
-                                                        </img>
-                                            </div> */}
-
-                                            <div className="reviews-container">
-
-                                                        <img className="avatar-image" 
-                                                            src={review.user.images.jpg.image_url} 
-                                                            alt="Image of anime character">
-                                                        </img>
-
-                                                <div className="review-username">
-                                                    <h4>{review.user.username}</h4>
+                                                <div className="genre-score-container">
+                                                    <h3>Genres</h3>
+                                                        {selectedAnime.genres.map((genre) => {
+                                                            return <Card.Subtitle className="view-more-genre">{genre.name}</Card.Subtitle>
+                                                        })}                                         
                                                 </div>
 
-                                                <div className="review-score">
-                                                    <h4>{review.score}/10</h4>
+                                                <div className="view-more-release">
+                                                    <h3>Release date</h3>
+                                                    <p>{selectedAnime.aired.prop.from.year}</p>
                                                 </div>
 
-                                            </div> 
+                                                <div className="view-more-rank">
+                                                    <h3>Rank</h3>
+                                                    <p>#{selectedAnime.rank}</p>
+                                                </div>
 
-                                            <p className="review-body">{review.review}</p>
-    
+                                                <div className="view-more-popularity">
+                                                    <h3>Popularity</h3>
+                                                    <p>#{selectedAnime.popularity}</p>
+                                                </div>
+
+                                                <div className="view-more-episodes">
+                                                    <h3>Episodes</h3>
+                                                    <p>{selectedAnime.episodes}</p>
+                                                </div>
+
+                                                <div className="view-more-rating">
+                                                    <h3>Rating</h3>
+                                                    <p>{selectedAnime.rating}</p>
+                                                </div>
+
+                                                <div className="view-more-producers">
+                                                    <h3>Producers</h3>
+                                                    {selectedAnime.producers.map((producer) => {
+                                                        return <p>{producer.name}</p>
+                                                    })}
+                                                </div>
+
+                                                <div className="view-more-studios">
+                                                    <h3>Studios</h3>
+                                                    {selectedAnime.studios.map((studio) => {
+                                                        return <p>{studio.name}</p>
+                                                    })}
+                                                </div>
+                                            </div>
+                                        </Tab>
+
+
+                                        <Tab className="reviews-tab" eventKey="reviews" title="Reviews">
+
+                                            <h3 className="reviews-heading">Reviews</h3>
+
+                                            {/* view-more reviews data */}
+                                            {animeReviewsData.slice(0, 5).map((review) => {
+                                                return(
+                                                    <>
+                                                        <div className="reviews-container">
+
+                                                            <img className="avatar-image" 
+                                                                    src={review.user.images.jpg.image_url} 
+                                                                    alt="Image of anime character">
+                                                            </img>
+
+                                                            <div className="review-username">
+                                                                <h4>{review.user.username}</h4>
+                                                            </div>
+
+                                                            <div className="review-score">
+                                                                <h4>{review.score}/10</h4>
+                                                            </div>
+
+                                                        </div> 
+
+                                                        <p className="review-body">{review.review}</p>
+                                                    </>
+                                                )
+                                            })}
+                                        </Tab>
+
+
+                                        <Tab className="characters-tab" eventKey="characters" title="Characters">
                                             
-                                        </>
-                                    )
-                                })}
-                                   
-                                    
-                                {/* view-more characters data */}
-                                <h3 className="characters-heading">Characters</h3>
-                                <div className="characters-container">
-                                        {animeCharactersData.map((character) => {
-                                            return(
-                                                <>
-                                                    <div className="characters-content">
-                                                        <img className="character-image" src={character.character.images.jpg.image_url} alt="Image of anime character"></img>
-                                                        <p className="character-name">{character.character.name}</p>
-                                                        <p className="character-role">{character.role}</p>
-                                                    </div>
-                                                </>
-                                            )
-                                        })}
-                                </div>
-                                
+                                            {/* view-more characters data */}
+                                            <h3 className="characters-heading">Characters</h3>
+                                            <div className="characters-container">
+                                                    {animeCharactersData.map((character) => {
+                                                        return(
+                                                            <>
+                                                                <div className="characters-content">
+                                                                    <img className="character-image" src={character.character.images.jpg.image_url} alt="Image of anime character"></img>
+                                                                    <p className="character-name">{character.character.name}</p>
+                                                                    <p className="character-role">{character.role}</p>
+                                                                </div>
+                                                            </>
+                                                        )
+                                                    })}
+                                            </div>
+                                        </Tab>
+                                        
+                                    </Tabs>
+                                </div>      
 
+                        
                             </Modal.Body>
                         </Modal>
                         )}

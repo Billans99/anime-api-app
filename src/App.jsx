@@ -2,8 +2,9 @@
 // TO DO LIST: 
 
 
-// - 1. Add reviews to app
-// - 2. Make tabbed component for info, characters, and reviews to separate display of data 
+
+// - 1. Make reviews tab of component to display carousel of reviews
+// - 2. Add spinner component to show loading state when fetching data
 // - 3. Possibly change charactersData useState so it doesnt try to get data from initial render and only when btn is
 //      clicked.
 // - 4. Makes more comments to explain code
@@ -19,6 +20,7 @@ import Header from './Header.jsx'
 import NewsletterAlert from './NewsletterAlert.jsx'
 import Cards from './Cards.jsx'
 import React, { useEffect, useState } from "react"
+
 
 
 
