@@ -195,6 +195,43 @@
     margin-bottom: 10px;
 }
 
+.reviews-heading{
+    text-align: center;
+    margin: 30px 0px;
+}
+
+.reviews-container{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.reviews-container > h4 {
+    font-size: 2.5rem;
+
+}
+
+.review-username{
+    width: 40%;
+    color: #e1e1ff;
+    font-size: 2.5rem;
+}
+
+.review-username > h4{
+    font-size: 1.8rem;
+}
+
+.review-score > h4{
+    font-size: 1.8rem;
+    width: 40%;
+    color: #ffffff;
+    margin-right: 20px;
+}
+
+.review-body{
+    margin-bottom: 80px;
+}
+
 .characters-heading{
     display: block;
     margin-top: 30px;

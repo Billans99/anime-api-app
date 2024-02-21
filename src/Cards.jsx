@@ -5,7 +5,7 @@ import axios from 'axios'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
-import YouTube from "react-youtube"
+
 
 
 
@@ -18,6 +18,7 @@ const Cards = () => {
     const [loading, setLoading] = useState(false)
     const [selectedAnime, setSelectedAnime] = useState(null)
     const [selectedAnimeID, setSelectedAnimeID] = useState(null)
+    const [animeReviewsData, setAnimeReviewsData] = useState([])
     
 
     // Immediately load anime data (once) on initial render of page, if current page changes, useEffect will run again
@@ -27,6 +28,10 @@ const Cards = () => {
 
     useEffect(() => {
         getCharactersData()
+    }, [selectedAnimeID])
+
+    useEffect(() => {
+        getReviewsData()
     }, [selectedAnimeID])
 
     // Fetch anime data from Jikan API, and set the state of animeData to the response data
@@ -62,6 +67,18 @@ const Cards = () => {
         }
    }
 
+   const getReviewsData = async () => {
+        try {
+            const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/reviews`)
+            console.log('reviewResponse', response)
+            setAnimeReviewsData(response.data.data)
+
+        } catch (error) {
+            console.error("error fetching data", error)
+        }
+        
+   }
+
 
 
     // load more button that loads additional 25 anime titles to page
@@ -73,11 +90,13 @@ const Cards = () => {
     const handleViewMore = (anime) => {
         setSelectedAnime(anime)
         setSelectedAnimeID(anime.mal_id)
+        
 
     }
     
     console.log('selectedAnime', selectedAnime)
     console.log('selectedAnimeID', selectedAnimeID)
+    
     
 
     return (
@@ -168,7 +187,6 @@ const Cards = () => {
                                     </div>
                                 }      
 
-
                                 <div className="view-more-container">
                                     <div className="view-more-score">
                                         <h3>Score</h3>
@@ -221,6 +239,31 @@ const Cards = () => {
                                         })}
                                     </div>
                                 </div>
+                                
+                                <h3 className="reviews-heading">Reviews</h3>
+                                {/* view-more reviews data */}
+                                {animeReviewsData.slice(0, 5).map((review, index) => {
+                                    return(
+                                        <>
+                                            <div className="reviews-container">
+
+                                                <div className="review-username">
+                                                    <h4>{review.user.username}</h4>
+                                                </div>
+
+                                                <div className="review-score">
+                                                    <h4>{review.score}/10</h4>
+                                                </div>
+
+                                            </div> 
+
+                                            <p className="review-body">{review.review}</p>
+    
+                                            
+                                        </>
+                                    )
+                                })}
+                                   
                                     
                                 {/* view-more characters data */}
                                 <h3 className="characters-heading">Characters</h3>
@@ -241,6 +284,8 @@ const Cards = () => {
                             </Modal.Body>
                         </Modal>
                         )}
+
+
             {/* Load another 25 anime titles button */}
             <div className="load-more-container">
                 <Button onClick={loadMore} className="load-more-btn" variant="secondary">Load More</Button>
