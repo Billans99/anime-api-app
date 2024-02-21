@@ -245,7 +245,19 @@ const Cards = () => {
                                 {animeReviewsData.slice(0, 5).map((review) => {
                                     return(
                                         <>
+                                            {/* <div className="review-avatar-container">
+                                                        <img className="avatar-image" 
+                                                            src={review.user.images.jpg.image_url} 
+                                                            alt="Image of anime character">
+                                                        </img>
+                                            </div> */}
+
                                             <div className="reviews-container">
+
+                                                        <img className="avatar-image" 
+                                                            src={review.user.images.jpg.image_url} 
+                                                            alt="Image of anime character">
+                                                        </img>
 
                                                 <div className="review-username">
                                                     <h4>{review.user.username}</h4>
