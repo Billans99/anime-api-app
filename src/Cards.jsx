@@ -122,6 +122,7 @@ const Cards = () => {
     const handlePrevReviews = () => {
 
     }
+
     
     console.log('selectedAnime', selectedAnime)
     console.log('selectedAnimeID', selectedAnimeID)
@@ -166,6 +167,8 @@ const Cards = () => {
                     </div>
                 )})}
             </div>
+
+
             {selectedAnime && (
                         // Modal popup that displays more information about the anime title
                         //  when view-more button is clicked
@@ -344,8 +347,25 @@ const Cards = () => {
                                             <h3 className="news-heading">News for {selectedAnime.title}</h3>
                                             
                                                     {newsData.map((newsItem) => {
+                                                    
+                                                    // create new date object with the date from newsItem (api data)
+                                                    const date = new Date(newsItem.date)
+
+                                                    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                                                    
+                                                    // format the date to a more readable format, get the day, year, hour, and minutes
+                                                    // Add leading 0 string to minutes if minutes is less than 10
+                                                    // Get the hours into 12-hour format, and replace 0 with 12.
+                                                    // Add AM or PM
+                                                    const formattedDate = `${monthNames[date.getMonth()]}                                                                           
+                                                                            ${date.getDate()} 
+                                                                            ${date.getFullYear()} 
+                                                                            ${date.getHours() % 12 === 0 ? 12 : date.getHours() % 12}:${date.getMinutes().toString().padStart(2, '0')}  
+                                                                            ${date.getHours >= 12 ? 'PM' : 'AM'}`
+
                                                         return(
                                                             <>
+                                                            {/* ${date.getHours() === 0 ? date.getHours() + 12 : date.getHours()}:${date.getMinutes()} */}
                                                                 <div className="news-container">
 
                                                                     <img className="news-image" src={newsItem.images.jpg.image_url}></img>
@@ -353,10 +373,11 @@ const Cards = () => {
                                                                         <h4 className="news-title">{newsItem.title}</h4>
                                                                         <p className="news-excerpt">{newsItem.excerpt}</p>
                                                                     </div>
-                                                                    
 
-                                                                    <div className="primary-btn-container">   
-                                                                        <p className="author-date-news">{newsItem.author_username} {newsItem.date}</p>
+
+                                                                    <div className="primary-btn-container">
+                                                                        <p className="news-author">{newsItem.author_username}</p>
+                                                                        <p className="news-date">{formattedDate}</p>
                                                                         <Button onClick={() => handleNewsClick()} className="full-story-btn" variant="primary">Full story</Button>
                                                                     </div>
 
