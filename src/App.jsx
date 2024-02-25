@@ -1,14 +1,13 @@
 
 // TO DO LIST: 
 
-//  {const reviewsArray = animeReviewsData.slice(0, 5).map((review)
-//  then on handleNextReviews, add 5 to both A and B of the state, reviewsArray[a, and b]
+//  set reviewsArray state to animeReviewsData.slice(0, 5).map((review)
+//  then on handleNextReviews, add 5 to both A and B of the state reviewsArray[a, and b]
 //  then animeReviewsData.slice(reviewsArray).map((review) => {
-    // return(
+//  return(
 
 // - 1. Give reviews ability to load next set of reviews
-// - 2. Add news section to tabs of Cards.jsx and fix css for news
-//      Convert the UTC time to a more readable format
+// - 2. Add title and change date to a readable time format to news section
 
 // - 3. Add spinner component to show loading state when fetching data
 // - 4. Possibly change charactersData useState so it doesnt try to get data from initial render and only when btn is

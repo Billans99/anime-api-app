@@ -347,12 +347,19 @@ const Cards = () => {
                                                         return(
                                                             <>
                                                                 <div className="news-container">
+
                                                                     <img className="news-image" src={newsItem.images.jpg.image_url}></img>
-                                                                    <p className="news-excerpt">{newsItem.excerpt}</p>
-                                                                    <p className="author-date-news">{newsItem.author_username} {newsItem.date}</p>
-                                                                    <div className="primary-btn-container">
+                                                                    <div className="news-body-container">
+                                                                        <h4 className="news-title">{newsItem.title}</h4>
+                                                                        <p className="news-excerpt">{newsItem.excerpt}</p>
+                                                                    </div>
+                                                                    
+
+                                                                    <div className="primary-btn-container">   
+                                                                        <p className="author-date-news">{newsItem.author_username} {newsItem.date}</p>
                                                                         <Button onClick={() => handleNewsClick()} className="full-story-btn" variant="primary">Full story</Button>
                                                                     </div>
+
                                                                 </div>
 
                 
