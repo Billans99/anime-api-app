@@ -310,7 +310,9 @@ const Cards = () => {
 
                                                         </div> 
 
-                                                        <p className="review-body">{review.review}</p>
+                                                        <p className="review-body">{review.review.length > 500 ?
+                                                            `${review.review.substring(0, 500)}...` : item.description}                                                       
+                                                        </p>
 
 
                                                         <Button onClick={() => handlePrevReviews()} className="view-more-btn" variant="primary">View more</Button>

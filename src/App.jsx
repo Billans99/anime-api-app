@@ -8,7 +8,7 @@
 
 // - 1. Give reviews ability to load next set of reviews
 //        Add a tag to reviews saying if they recommend or not (its in the reviewresponse)
-//        Reduce to text to less characters and add a "read more" button to expand the review
+//        Remove mapped reviews buttons and place a single set of btns at the bottom of the reviews
 
 
 // - 2. Add spinner component to show loading state when fetching data
