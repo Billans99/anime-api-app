@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import Tab from 'react-bootstrap/Tab'
 import Tabs from 'react-bootstrap/Tabs'
-       
+
 
 
 
@@ -23,6 +23,7 @@ const Cards = () => {
     const [loading, setLoading] = useState(false)
     const [selectedAnime, setSelectedAnime] = useState(null)
     const [selectedAnimeID, setSelectedAnimeID] = useState(null)
+  
     
 
     // Immediately load anime data (once) on initial render of page, if current page changes, useEffect will run again
@@ -109,10 +110,6 @@ const Cards = () => {
     const handleViewMore = (anime) => {
         setSelectedAnime(anime)
         setSelectedAnimeID(anime.mal_id)
-    }
-
-    const handleNewsClick = () => {
-        
     }
 
     const handleNextReviews = () => {
@@ -310,16 +307,22 @@ const Cards = () => {
 
                                                         </div> 
 
+                                                        {/* Review body, limited to 500 characters */}
                                                         <p className="review-body">{review.review.length > 500 ?
                                                             `${review.review.substring(0, 500)}...` : item.description}                                                       
                                                         </p>
 
 
-                                                        <Button onClick={() => handlePrevReviews()} className="view-more-btn" variant="primary">View more</Button>
-                                                        <Button onClick={() => handleNextReviews()} className="view-more-btn" variant="primary">View more</Button>
+                                                        
                                                     </>
                                                 )
-                                            })}
+                                            })}         
+
+                                                    <div className="review-btn-container">
+                                                        
+                                                        <Button onClick={() => handleNextReviews()} className="more-reviews-btn" variant="primary">More reviews</Button>
+                                                    </div>
+
                                         </Tab>
 
 
@@ -365,6 +368,11 @@ const Cards = () => {
                                                                             ${date.getHours() % 12 === 0 ? 12 : date.getHours() % 12}:${date.getMinutes().toString().padStart(2, '0')}  
                                                                             ${date.getHours >= 12 ? 'PM' : 'AM'}`
 
+                                                    
+                                                    const handleNewsClick = () => {
+                                                        console.log('newsItem.url', newsItem.url)
+                                                    }
+
                                                         return(
                                                             <>
                                                             {/* ${date.getHours() === 0 ? date.getHours() + 12 : date.getHours()}:${date.getMinutes()} */}
@@ -380,7 +388,7 @@ const Cards = () => {
                                                                     <div className="primary-btn-container">
                                                                         <p className="news-author">{newsItem.author_username}</p>
                                                                         <p className="news-date">{formattedDate}</p>
-                                                                        <Button onClick={() => handleNewsClick()} className="full-story-btn" variant="primary">Full story</Button>
+                                                                        <Button onClick={() => handleNewsClick()} className="full-story-btn" variant="primary"><a className="news-story-link" href={newsItem.url} target="_blank">Full story</a></Button>
                                                                     </div>
 
                                                                 </div>

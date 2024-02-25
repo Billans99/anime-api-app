@@ -200,6 +200,10 @@
     margin-bottom: 10px;
 }
 
+.reviews-tab{
+    
+}
+
 .reviews-heading{
     text-align: center;
     margin: 30px 0px;
@@ -252,6 +256,17 @@
     margin-bottom: 30px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.518);
     padding-bottom: 20px;
+}
+
+.review-btn-container{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+
+}
+
+.more-reviews-btn{
+
 }
 
 .characters-heading{
@@ -346,6 +361,12 @@
     display: block;
     margin-top: 30px;
     
+}
+
+.news-story-link{
+    color: #ffffff;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .load-more-container{
