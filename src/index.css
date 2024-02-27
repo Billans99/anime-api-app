@@ -262,10 +262,21 @@
     
 }
 
-.review-recommendation{
+.green{
+    color: rgb(74, 201, 74);
+}
+
+.orange{
+    color: orange;
+}
+
+.red{
+    color: rgb(211, 107, 107);
+}
+
+.recommendation-container{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 1.3rem;
-    text-align: center;
     padding-top: 5px;
 }
 

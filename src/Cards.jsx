@@ -314,18 +314,32 @@ const Cards = () => {
                                                             </p>
 
                                                             {review.tags.map((recommendation) => {
+                                                                let recommendationColor = ''
 
-                                                                return(
+                                                                
                                                                     
-                                                                        <p className="review-recommendation">{recommendation}</p>
+                                                                        // <p className="review-recommendation">{recommendation}</p>
+                                                                    if (recommendation === 'Recommended') {
+                                                                        recommendationColor = 'green'
+                                                                    } else if (recommendation === 'Mixed Feelings') {
+                                                                        recommendationColor = 'orange'
+                                                                    } else {
+                                                                        recommendationColor = 'red'
+                                                                    }
 
-                                                                )
+                                                                    return(
+                                                                        <div className="recommendation-container">
+                                                                            <p className={recommendationColor}>{recommendation}</p>
+                                                                        </div>
+                                                                    )
+                                                                
+                                                                
                                                             })}
                                                         </div>
 
                                                     </>
                                                 )
-                                            })}         
+                                            })}             
 
                                                     <div className="review-btn-container">
                                                         

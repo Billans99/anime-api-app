@@ -10,7 +10,7 @@
 //        Complete logic for tag to display text color based on recommendation (green, orange, red)
 
 
-// - 2. Complete logic for handleNewsClick to actually open a new tab of the full article
+// - 2. Add green / orange text for characters dependant on Main or Supporting 
 
 // - 3. Add spinner component to show loading state when fetching data
 // - 4. Possibly change charactersData useState so it doesnt try to get data from initial render and only when btn is
