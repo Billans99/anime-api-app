@@ -196,8 +196,8 @@ const Cards = () => {
                         
                                 {selectedAnime.synopsis ? 
                                         <div className="view-more-summary">
-                                            <h3>Summary</h3>
-                                            <p>{selectedAnime.synopsis}</p>
+                                            <h3 className="summary-heading">Summary</h3>
+                                            <p className="summary-body">{selectedAnime.synopsis}</p>
                                         </div>
                                         : 
                                         <div className="view-more-summary">
@@ -208,8 +208,8 @@ const Cards = () => {
 
                                 {selectedAnime.background ? 
                                     <div className="view-more-background">
-                                        <h3>Background</h3>
-                                        <p>{selectedAnime.background}</p>
+                                        <h3 className="background-heading">Background</h3>
+                                        <p className="background-body">{selectedAnime.background}</p>
                                     </div>
                                     : 
                                     <div className="view-more-background">
@@ -229,8 +229,8 @@ const Cards = () => {
                                         <Tab className="general-info-tab" eventKey="general" title="General Info">
                                             <div className="view-more-container">
                                                 <div className="view-more-score">
-                                                    <h3>Score</h3>
-                                                    <p>{selectedAnime.score} / 10</p>
+                                                    <h3 className="score-heading">Score</h3>
+                                                    <p className="score-body">{selectedAnime.score} / 10</p>
                                                 </div>             
                                     
                                                 <div className="genre-score-container">
@@ -344,7 +344,7 @@ const Cards = () => {
                                                                 <Button onClick={() => loadMoreReviews()} className="more-reviews-btn" variant="primary">More reviews</Button>
                                                             }
 
-                                
+                                 
                                                     </div>
 
                                         </Tab>
@@ -417,7 +417,7 @@ const Cards = () => {
                                                                     <img className="news-image" src={newsItem.images.jpg.image_url}></img>
                                                                     <div className="news-body-container">
                                                                         <h4 className="news-title">{newsItem.title}</h4>
-                                                                        <p className="news-excerpt">{newsItem.excerpt}</p>
+                                                                        <p className="news-body">{newsItem.excerpt}</p>
                                                                     </div>
 
 

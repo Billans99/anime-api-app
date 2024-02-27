@@ -1,14 +1,10 @@
 
 // TO DO LIST: 
 
-//  set reviewsArray state to animeReviewsData.slice(0, 5).map((review)
-//  then on handleNextReviews, add 5 to both A and B of the state reviewsArray[a, and b]
-//  then animeReviewsData.slice(reviewsArray).map((review) => {
-//  return(
 
-// - 1. Give reviews ability to load next set of reviews
-//        Complete logic for tag to display text color based on recommendation (green, orange, red)
 
+// - 1. Change body text of all data to text-color (grey or close to it) to differentiate from headings (white)
+// Change main characters name and role to white, and supporting chars name and role to grey. 
 
 // - 2. Fix Characters section only displaying initial card's characters on click
 
