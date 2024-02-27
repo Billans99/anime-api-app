@@ -5,6 +5,22 @@
     margin: 0;
 }
 
+.green{
+    color: #4ac94a;
+}
+
+.orange{
+    color: #ffa500;
+}
+
+.red{
+    color: #d36b6b;
+}
+
+.grey{
+    color: #c1c1c1;
+}
+
 /* Header components  */
 .heading-container{
     text-align: center;
@@ -262,17 +278,6 @@
     
 }
 
-.green{
-    color: rgb(74, 201, 74);
-}
-
-.orange{
-    color: orange;
-}
-
-.red{
-    color: rgb(211, 107, 107);
-}
 
 .recommendation-container{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;

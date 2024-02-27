@@ -314,11 +314,9 @@ const Cards = () => {
                                                             </p>
 
                                                             {review.tags.map((recommendation) => {
-                                                                let recommendationColor = ''
 
-                                                                
+                                                                let recommendationColor = ''
                                                                     
-                                                                        // <p className="review-recommendation">{recommendation}</p>
                                                                     if (recommendation === 'Recommended') {
                                                                         recommendationColor = 'green'
                                                                     } else if (recommendation === 'Mixed Feelings') {
@@ -355,15 +353,27 @@ const Cards = () => {
                                             <h3 className="characters-heading">Characters</h3>
                                             <div className="characters-container">
                                                     {animeCharactersData.map((character) => {
+
+                                                        let characterRoleColor = ''
+
+                                                        if (character.role === 'Main') {
+                                                            characterRoleColor = 'green'
+                                                        } else if (character.role === 'Supporting') {
+                                                            characterRoleColor = 'grey'
+                                                        }
+
                                                         return(
                                                             <>
                                                                 <div className="characters-content">
                                                                     <img className="character-image" src={character.character.images.jpg.image_url} alt="Image of anime character"></img>
                                                                     <p className="character-name">{character.character.name}</p>
-                                                                    <p className="character-role">{character.role}</p>
+                                                                    <p className={characterRoleColor}>{character.role}</p>
                                                                 </div>
                                                             </>
                                                         )
+                                                        
+
+                                                        
                                                     })}
                                             </div>
                                         </Tab>

@@ -10,7 +10,7 @@
 //        Complete logic for tag to display text color based on recommendation (green, orange, red)
 
 
-// - 2. Add green / orange text for characters dependant on Main or Supporting 
+// - 2. Fix Characters section only displaying initial card's characters on click
 
 // - 3. Add spinner component to show loading state when fetching data
 // - 4. Possibly change charactersData useState so it doesnt try to get data from initial render and only when btn is
