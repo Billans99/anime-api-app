@@ -307,13 +307,22 @@ const Cards = () => {
 
                                                         </div> 
 
-                                                        {/* Review body, limited to 500 characters */}
-                                                        <p className="review-body">{review.review.length > 500 ?
-                                                            `${review.review.substring(0, 500)}...` : item.description}                                                       
-                                                        </p>
+                                                        <div className="review-body-container">
+                                                            {/* Review body, limited to 500 characters */}
+                                                            <p className="review-body">{review.review.length > 500 ?
+                                                                `${review.review.substring(0, 500)}...` : item.description}                                                       
+                                                            </p>
 
+                                                            {review.tags.map((recommendation) => {
 
-                                                        
+                                                                return(
+                                                                    
+                                                                        <p className="review-recommendation">{recommendation}</p>
+
+                                                                )
+                                                            })}
+                                                        </div>
+
                                                     </>
                                                 )
                                             })}         
@@ -368,7 +377,7 @@ const Cards = () => {
                                                                             ${date.getHours() % 12 === 0 ? 12 : date.getHours() % 12}:${date.getMinutes().toString().padStart(2, '0')}  
                                                                             ${date.getHours >= 12 ? 'PM' : 'AM'}`
 
-                                                    
+
                                                     const handleNewsClick = () => {
                                                         console.log('newsItem.url', newsItem.url)
                                                     }
