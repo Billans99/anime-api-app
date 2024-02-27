@@ -39,6 +39,10 @@ const Cards = () => {
         getReviewsData()
     }, [selectedAnimeID])
 
+    // useEffect(() => {
+    //     getReviewsData()
+    // }, reviewsArray)
+
     useEffect(() => {
         getNewsData()
     }, [selectedAnimeID])
@@ -102,7 +106,7 @@ const Cards = () => {
 
 
     // load more button that loads additional 25 anime titles to page
-    const loadMore = () => {
+    const loadMoreAnime = () => {
         setCurrentPage(currentPage + 1)
     }
 
@@ -112,12 +116,8 @@ const Cards = () => {
         setSelectedAnimeID(anime.mal_id)
     }
 
-    const handleNextReviews = () => {
-
-    }
-
-    const handlePrevReviews = () => {
-
+    const loadMoreReviews = () => {
+        setReviewsArray([reviewsArray[0], reviewsArray[1] + 5])
     }
 
     
@@ -223,9 +223,9 @@ const Cards = () => {
                                     <Tabs
                                         defaultActiveKey="profile"
                                         id="uncontrolled-tab-example"
-                                        className="tabs-container"
+                                        className="tabs-container">
 
-                                    >
+
                                         <Tab className="general-info-tab" eventKey="general" title="General Info">
                                             <div className="view-more-container">
                                                 <div className="view-more-score">
@@ -287,7 +287,7 @@ const Cards = () => {
                                             <h3 className="reviews-heading">Reviews</h3>
 
                                             {/* view-more reviews data */}
-                                            {animeReviewsData.slice(0, 5).map((review) => {
+                                            {animeReviewsData.slice(reviewsArray[0], reviewsArray[1]).map((review) => {
                                                 return(
                                                     <>
                                                         <div className="reviews-container">
@@ -340,8 +340,11 @@ const Cards = () => {
                                             })}             
 
                                                     <div className="review-btn-container">
-                                                        
-                                                        <Button onClick={() => handleNextReviews()} className="more-reviews-btn" variant="primary">More reviews</Button>
+                                                            {reviewsArray[1] < animeReviewsData.length &&
+                                                                <Button onClick={() => loadMoreReviews()} className="more-reviews-btn" variant="primary">More reviews</Button>
+                                                            }
+
+                                
                                                     </div>
 
                                         </Tab>
@@ -446,7 +449,7 @@ const Cards = () => {
 
             {/* Load another 25 anime titles button */}
             <div className="load-more-container">
-                <Button onClick={loadMore} className="load-more-btn" variant="secondary">Load More</Button>
+                <Button onClick={loadMoreAnime} className="load-more-btn" variant="secondary">Load More</Button>
             </div>
 
         </>
