@@ -7,7 +7,8 @@ import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import Tab from 'react-bootstrap/Tab'
 import Tabs from 'react-bootstrap/Tabs'
-import ProgressBar from 'react-bootstrap/ProgressBar'
+import Carousel from 'react-bootstrap/Carousel'
+
 
 
 
@@ -19,6 +20,7 @@ const Cards = () => {
     const [animeReviewsData, setAnimeReviewsData] = useState([])
     const [newsData, setNewsData] = useState([])
     const [statsData, setStatsData] = useState([])
+    const [picturesData, setPicturesData] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
     const [reviewsArray, setReviewsArray] = useState([0, 5])
     const [loading, setLoading] = useState(false)
@@ -46,7 +48,11 @@ const Cards = () => {
 
     useEffect(() => {
         getStatsData()
-    }, selectedAnimeID)
+    }, [selectedAnimeID])
+
+    useEffect(() => {
+        getPicturesData()
+    }, [selectedAnimeID])
 
     // Fetch anime data from Jikan API, and set the state of animeData to the response data
     const getAnimeData = async () => {
@@ -111,6 +117,17 @@ const Cards = () => {
             setStatsData(response.data.data)
         }   catch (error) {
             console.error('error fetching data', error)
+        }
+   }
+
+   const getPicturesData = async () => {
+        try {
+            const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/pictures`)
+            console.log('picturesResponse', response)
+            setPicturesData(response.data.data)
+
+        } catch (error) {
+            console.error('error fetching picture data', error)
         }
    }
   
@@ -258,7 +275,7 @@ const Cards = () => {
                                                     <h3>Genres</h3>
                                                         {selectedAnime.genres.map((genre) => {
                                                             return <Card.Subtitle className="view-more-genre">{genre.name}</Card.Subtitle>
-                                                        })}                                         
+                                                        })}                                        
                                                 </div>
 
                                                 <div className="view-more-release">
@@ -475,6 +492,47 @@ const Cards = () => {
                                                 <p className="stats-total">Total: {statsData.total}</p>
                                             </div>
                                         </Tab>
+
+
+                                        <Tab className="pictures-tab" eventKey="pictures" title="Pictures">
+
+                                            <h3 className="pictures-heading">Pictures</h3>
+                                            
+                                            <>
+                                                    
+                                                    
+                                                        {/* <img className="pictures-anime" src={picture.jpg.image_url} alt="pictures from this specific anime"></img> */}
+                                                        
+                                                        <Carousel>
+                                                            {picturesData.map((picture, index) => {
+
+                                                                return(
+                                                                <Carousel.Item key={index}>
+                                                                    
+                                                                        <img className="carousel-pictures" src={picture.jpg.image_url} alt="pictures from this anime" />
+                                                                    
+                                                                    <Carousel.Caption>
+                                                                        <div className="carousel-caption">
+                                                                            <h3>{selectedAnime.title} - {index + 1}</h3>
+                                                                        </div>
+                                                                        
+                                                                    </Carousel.Caption>
+                                                                </Carousel.Item>
+                                                                )
+                                                            })}
+                                                            
+                                                        </Carousel>
+
+
+                                                    </>
+                                                
+                                            
+
+                                            
+                                        </Tab>
+
+                                        
+
 
 
                                     </Tabs>
