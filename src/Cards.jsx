@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import Tab from 'react-bootstrap/Tab'
 import Tabs from 'react-bootstrap/Tabs'
+import ProgressBar from 'react-bootstrap/ProgressBar'
 
 
 
@@ -17,13 +18,13 @@ const Cards = () => {
     const [animeCharactersData, setAnimeCharactersData] = useState([])
     const [animeReviewsData, setAnimeReviewsData] = useState([])
     const [newsData, setNewsData] = useState([])
+    const [statsData, setStatsData] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
     const [reviewsArray, setReviewsArray] = useState([0, 5])
-    const [show, setShow] = useState()
     const [loading, setLoading] = useState(false)
     const [selectedAnime, setSelectedAnime] = useState(null)
     const [selectedAnimeID, setSelectedAnimeID] = useState(null)
-  
+
     
 
     // Immediately load anime data (once) on initial render of page, if current page changes, useEffect will run again
@@ -39,13 +40,13 @@ const Cards = () => {
         getReviewsData()
     }, [selectedAnimeID])
 
-    // useEffect(() => {
-    //     getReviewsData()
-    // }, reviewsArray)
-
     useEffect(() => {
         getNewsData()
     }, [selectedAnimeID])
+
+    useEffect(() => {
+        getStatsData()
+    }, selectedAnimeID)
 
     // Fetch anime data from Jikan API, and set the state of animeData to the response data
     const getAnimeData = async () => {
@@ -103,8 +104,16 @@ const Cards = () => {
         }
    }
 
-
-
+   const getStatsData = async () => {
+        try {
+            const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/statistics`)
+            console.log('statsResponse', response)
+            setStatsData(response.data.data)
+        }   catch (error) {
+            console.error('error fetching data', error)
+        }
+   }
+  
     // load more button that loads additional 25 anime titles to page
     const loadMoreAnime = () => {
         setCurrentPage(currentPage + 1)
@@ -134,8 +143,12 @@ const Cards = () => {
                 {/* Map each anime anime to a card  */}
                 {animeData.map((anime) => {
                     return(
+                    
+
                 
-                    // Cards that display anime titles and view-more button that opens view-more modal
+                   
+                        
+                    // Cards that display anime titles and view-more button that opens view-more modal 
                     <div className="cards-content">
                         <Card style={{ width: '21rem' }}>
                             <Card.Img className="cards-image" variant="top" src={anime.images.jpg.image_url} />
@@ -162,6 +175,7 @@ const Cards = () => {
 
                         
                     </div>
+                    
                 )})}
             </div>
 
@@ -227,7 +241,14 @@ const Cards = () => {
 
 
                                         <Tab className="general-info-tab" eventKey="general" title="General Info">
+
+                                            <div className="general-info-heading">
+                                                <h3>General Info</h3>
+                                            </div>
+                                            
+
                                             <div className="view-more-container">
+
                                                 <div className="view-more-score">
                                                     <h3 className="score-heading">Score</h3>
                                                     <p className="score-body">{selectedAnime.score} / 10</p>
@@ -294,7 +315,7 @@ const Cards = () => {
 
                                                             <img className="avatar-image" 
                                                                     src={review.user.images.jpg.image_url} 
-                                                                    alt="Image of anime character">
+                                                                    alt="A reviewers avatar">
                                                             </img>
 
                                                             <div className="review-username">
@@ -360,7 +381,7 @@ const Cards = () => {
                                                         let characterRoleColor = ''
 
                                                         if (character.role === 'Main') {
-                                                            characterRoleColor = 'green'
+                                                            characterRoleColor = 'white'
                                                         } else if (character.role === 'Supporting') {
                                                             characterRoleColor = 'grey'
                                                         }
@@ -383,6 +404,7 @@ const Cards = () => {
 
                                         {/* News data */}
                                         <Tab className="news-tab" eventKey="news" title="News">
+                                        
                                             
                                             {/* view-more characters data */}
                                             <h3 className="news-heading">News for {selectedAnime.title}</h3>
@@ -437,6 +459,23 @@ const Cards = () => {
                                                     })}
                                             
                                         </Tab>
+
+
+                                        <Tab className="stats-tab" eventKey="stats" title="Stats">
+
+                                            <h3 className="stats-heading">Stats for {selectedAnime.title}</h3>
+
+
+                                            <div className="stats-container">
+                                                <p className="stats-completed">Completed: {statsData.completed}</p>
+                                                <p className="stats-on-hold">On hold: {statsData.on_hold}</p>
+                                                <p className="stats-watching">Watching: {statsData.watching}</p>
+                                                <p className="stats-dropped">Dropped: {statsData.dropped}</p>
+                                                <p className="stats-planned-watch">Plan to watch: {statsData.plan_to_watch}</p>                    
+                                                <p className="stats-total">Total: {statsData.total}</p>
+                                            </div>
+                                        </Tab>
+
 
                                     </Tabs>
                                 </div>      
