@@ -8,6 +8,8 @@ import Modal from 'react-bootstrap/Modal'
 import Tab from 'react-bootstrap/Tab'
 import Tabs from 'react-bootstrap/Tabs'
 import Carousel from 'react-bootstrap/Carousel'
+import ProgressBar from 'react-bootstrap/ProgressBar'
+
 
 
 
@@ -481,7 +483,7 @@ const Cards = () => {
                                         <Tab className="stats-tab" eventKey="stats" title="Stats">
 
                                             <h3 className="stats-heading">Stats for {selectedAnime.title}</h3>
-
+                                                    
 
                                             <div className="stats-container">
                                                 <p className="stats-completed">Completed: {statsData.completed}</p>
@@ -490,6 +492,29 @@ const Cards = () => {
                                                 <p className="stats-dropped">Dropped: {statsData.dropped}</p>
                                                 <p className="stats-planned-watch">Plan to watch: {statsData.plan_to_watch}</p>                    
                                                 <p className="stats-total">Total: {statsData.total}</p>
+                                            </div>
+
+
+                                            <div className="progress-bar-container">
+                                                <h3>Viewers Ratings</h3>
+                                            
+                                                <ProgressBar>
+                                                {statsData.scores && statsData.scores.map((score, index) => {
+                                                        let variant = '';
+                                                        if (index < 4) {
+                                                            variant = 'danger'
+                                                        } else if ( index < 6) {
+                                                            variant = 'warning'
+                                                        } else {
+                                                            variant = 'success'
+                                                        }
+
+                                                        return(
+                                                            <ProgressBar key={index} variant={variant} now={score.percentage} />
+                                                        );
+                                                        
+                                                    })}
+                                                </ProgressBar>
                                             </div>
                                         </Tab>
 

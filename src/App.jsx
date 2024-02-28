@@ -1,7 +1,8 @@
 
 // TO DO LIST: 
 
-// - Add progress bar for stats-tab later
+// - 1. Add progress bar for stats-tab later
+
 
 // - 2. See if theres a way to load some of the character and reviews data more efficiently, sometimes it doesn't load fast enough and shows previous characters and reviews data
 // - 3. Makes more comments to explain code
