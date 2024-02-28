@@ -528,7 +528,7 @@ const Cards = () => {
                                                     
                                                         {/* <img className="pictures-anime" src={picture.jpg.image_url} alt="pictures from this specific anime"></img> */}
                                                         
-                                                        <Carousel>
+                                                        <Carousel className="foo-bar">
                                                             {picturesData.map((picture, index) => {
 
                                                                 return(

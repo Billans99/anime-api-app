@@ -505,13 +505,17 @@
     margin-bottom: 30px;
 }
 
-.carousel-pictures-container{
-
+.foo-bar{
+    align-items: center;
 }
 
-.anime-pictures{
-    justify-content: center;
+.carousel-pictures{
+    align-items: center;
     border: 1px solid white;
+    width: 225px;
+    height: 380px;
+    margin-bottom: 70px;
+
 }
 
 .carousel-caption{
