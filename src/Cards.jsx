@@ -258,7 +258,7 @@ const Cards = () => {
                                         id="uncontrolled-tab-example"
                                         className="tabs-container">
 
-
+                                        {/* General info tab  */}
                                         <Tab className="general-info-tab" eventKey="general" title="General Info">
 
                                             <div className="general-info-heading">
@@ -321,7 +321,7 @@ const Cards = () => {
                                             </div>
                                         </Tab>
 
-
+                                        {/* Reviews tab */}
                                         <Tab className="reviews-tab" eventKey="reviews" title="Reviews">
 
                                             <h3 className="reviews-heading">Reviews</h3>
@@ -389,7 +389,7 @@ const Cards = () => {
 
                                         </Tab>
 
-
+                                        {/* Characters data */}
                                         <Tab className="characters-tab" eventKey="characters" title="Characters">
                                             
                                             {/* view-more characters data */}
@@ -421,7 +421,7 @@ const Cards = () => {
                                             </div>
                                         </Tab>
 
-                                        {/* News data */}
+                                        {/* News tab */}
                                         <Tab className="news-tab" eventKey="news" title="News">
                                         
                                             
@@ -479,7 +479,7 @@ const Cards = () => {
                                             
                                         </Tab>
 
-
+                                        {/* Stats tab */}
                                         <Tab className="stats-tab" eventKey="stats" title="Stats">
 
                                             <h3 className="stats-heading">Stats for {selectedAnime.title}</h3>
@@ -518,7 +518,7 @@ const Cards = () => {
                                             </div>
                                         </Tab>
 
-
+                                        {/* Pictures tab */}
                                         <Tab className="pictures-tab" eventKey="pictures" title="Pictures">
 
                                             <h3 className="pictures-heading">Pictures</h3>
@@ -526,8 +526,8 @@ const Cards = () => {
                                             <>
                                                     
                                                     
-                                                        {/* <img className="pictures-anime" src={picture.jpg.image_url} alt="pictures from this specific anime"></img> */}
-                                                        
+                                                    
+                                                        {/* Carousel  */}
                                                         <Carousel className="foo-bar">
                                                             {picturesData.map((picture, index) => {
 
