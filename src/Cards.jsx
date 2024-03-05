@@ -28,6 +28,7 @@ const Cards = () => {
     const [loading, setLoading] = useState(false)
     const [selectedAnime, setSelectedAnime] = useState(null)
     const [selectedAnimeID, setSelectedAnimeID] = useState(null)
+    const [recommendationsData, setRecommendationsData] = useState([])
 
     
 
@@ -54,6 +55,10 @@ const Cards = () => {
 
     useEffect(() => {
         getPicturesData()
+    }, [selectedAnimeID])
+
+    useEffect(() => {
+        getRecommendationsData()
     }, [selectedAnimeID])
 
     // Fetch anime data from Jikan API, and set the state of animeData to the response data
@@ -132,6 +137,16 @@ const Cards = () => {
             console.error('error fetching picture data', error)
         }
    }
+
+   const getRecommendationsData = async () => {
+    try {
+        const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/recommendations`)
+        console.log('recommendationsResponse', response)
+        setRecommendationsData(response.data.data)
+    } catch (error) {
+        console.error('error fetching character data', error)
+    }
+   }
   
     // load more button that loads additional 25 anime titles to page
     const loadMoreAnime = () => {
@@ -162,10 +177,8 @@ const Cards = () => {
                 {/* Map each anime anime to a card  */}
                 {animeData.map((anime) => {
                     return(
-                    
 
-                
-                   
+
                         
                     // Cards that display anime titles and view-more button that opens view-more modal 
                     <div className="cards-content">
@@ -511,7 +524,7 @@ const Cards = () => {
 
                                                         return(
                                                             <ProgressBar key={index} variant={variant} now={score.percentage} />
-                                                        );
+                                                        )
                                                         
                                                     })}
                                                 </ProgressBar>
@@ -528,7 +541,7 @@ const Cards = () => {
                                                     
                                                     
                                                         {/* Carousel  */}
-                                                        <Carousel className="foo-bar">
+                                                        <Carousel className="carousel-container">
                                                             {picturesData.map((picture, index) => {
 
                                                                 return(
@@ -556,6 +569,46 @@ const Cards = () => {
                                             
                                         </Tab>
 
+                                        {/* Recommendations tab  */}
+                                        <Tab className="recommendations-tab" eventKey="recommendations" title="Recommendations">
+
+                                            <h3 className="recommendations-heading">Recommendations for {selectedAnime.title}</h3>
+
+                                            <div className="recommendations-flex-container">
+                                                {recommendationsData.map((recommendation) => {
+                                                    
+
+
+                                                    return(
+                                                        <>
+                                                            <div className="recommendations-container">
+
+                                                                <p className="recommendations-title">{recommendation.entry.title}</p>
+
+                                                                <div className="recommendations-image-container"> 
+                                                                    <img className="recommendations-image" src={recommendation.entry.images.jpg.image_url} alt="Recommended anime's image"></img>
+                                                                </div>
+
+                                                            
+                                                            </div>
+                                                        </>
+                                                    )
+
+                                                })}
+                                            
+                                            </div>
+
+                                           
+                                            
+                                                    
+                                                    
+                                                    
+                                                        
+                                                            
+                                                    
+
+                                            
+                                        </Tab>
                                         
 
 

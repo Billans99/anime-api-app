@@ -5,6 +5,9 @@
 
 // - 1. Flesh out app and add as much data as possible to the view-more-modals and anime-app to keep learning more
 //        Add recommendations tab to app (Jikan Recommendations section)
+//          Make flex container for recommendations
+//          Make recommendation title + image clickable via anchor tag to go to that anime page
+
 //        Add related anime tab to app (Jikan Relations section)
 //        Add theme music tab to app (Jikan themes section)
 //        Add external information tab to app (Jikan External section)
