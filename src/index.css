@@ -186,7 +186,7 @@
 
 .tabs-container{
     background-color: #dcdcdcf3;
-    border-radius: 25px;
+    border-radius: 10px;
 }
 
 .view-more-summary{
@@ -204,7 +204,6 @@
 }
 
 .view-more-background{
-    padding-bottom: 10px;
     padding-top: 15px;
 }
 
@@ -214,6 +213,31 @@
 
 .background-body{
     color: #c8c8c8;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.relations-header{
+    
+}
+
+.relations-container{
+    margin-top: 30px;
+}
+
+.relations-type{
+   color: #efefef;
+   font-size: 1.3rem;
+   text-align: center;
+}
+
+.entry-name{
+    color: white;
+}
+
+.entry-type{
+    border-bottom: 1px solid #9f9f9f;
+    padding-bottom: 15px;
 }
 
 .general-info-tab{

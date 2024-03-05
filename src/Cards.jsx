@@ -29,7 +29,7 @@ const Cards = () => {
     const [selectedAnime, setSelectedAnime] = useState(null)
     const [selectedAnimeID, setSelectedAnimeID] = useState(null)
     const [recommendationsData, setRecommendationsData] = useState([])
-
+    const [relationsData, setRelationsData] = useState([])
     
 
     // Immediately load anime data (once) on initial render of page, if current page changes, useEffect will run again
@@ -59,6 +59,10 @@ const Cards = () => {
 
     useEffect(() => {
         getRecommendationsData()
+    }, [selectedAnimeID])
+
+    useEffect(() => {
+        getRelationsData()
     }, [selectedAnimeID])
 
     // Fetch anime data from Jikan API, and set the state of animeData to the response data
@@ -139,14 +143,25 @@ const Cards = () => {
    }
 
    const getRecommendationsData = async () => {
-    try {
-        const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/recommendations`)
-        console.log('recommendationsResponse', response)
-        setRecommendationsData(response.data.data)
-    } catch (error) {
-        console.error('error fetching character data', error)
-    }
+        try {
+            const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/recommendations`)
+            console.log('recommendationsResponse', response)
+            setRecommendationsData(response.data.data)
+        } catch (error) {
+            console.error('error fetching character data', error)
+        }
    }
+
+   const getRelationsData = async () => {
+        try {
+            const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/relations`)
+            console.log('relationsResponse', response)
+            setRelationsData(response.data.data)
+
+        } catch (error) {
+            console.error('error fetching relations data', error)
+        }
+    }
   
     // load more button that loads additional 25 anime titles to page
     const loadMoreAnime = () => {
@@ -158,11 +173,6 @@ const Cards = () => {
         setSelectedAnime(anime)
         setSelectedAnimeID(anime.mal_id)
     }
-
-    // const handleRecommendationsClick = (recommendation) => {
-    //     console.log('UserRecommendations', recommendation)
-
-    // }
 
     const loadMoreReviews = () => {
         setReviewsArray([reviewsArray[0], reviewsArray[1] + 5])
@@ -268,6 +278,34 @@ const Cards = () => {
                                         <p>The background for {selectedAnime.title} is unavailable.</p>
                                     </div>
                                 }
+
+
+                                <h3 className="relations-header">Relations</h3>
+
+                                {relationsData.map((relation) => {
+
+                                    return(
+                                        <div className="relations-container">
+
+                                            <p className="relations-type">{relation.relation} </p>
+                                            
+                                            {relation.entry.map((entry) => {
+
+                                                return(
+                                                    <>
+                                                        <a className="entry-name" href={entry.url} target="_blank">{entry.name}</a>
+                                                        <p className="entry-type">({entry.type})</p>
+                                                        
+                                                    </>
+                                                )
+                                            })}
+
+
+                                        </div>
+                                        
+                                    )
+                                })}
+
 
                                 {/* Tabs with more info */}
                                 <div className="modal-tab-container">
@@ -609,20 +647,30 @@ const Cards = () => {
                                                 })}
                                             
                                             </div>
-
-                                           
-                                            
-                                                    
-                                                    
-                                                    
-                                                        
-                                                            
-                                                    
-
                                             
                                         </Tab>
                                         
+                                        <Tab className="" eventKey="" title="Foo bar">
 
+                                           
+                                        </Tab>
+
+                                        <Tab className="" eventKey="" title="Foo bar">
+
+                                           
+                                        </Tab>
+
+                                        <Tab className="" eventKey="" title="Foo bar">
+
+                                           
+                                        </Tab>
+
+                                        <Tab className="" eventKey="" title="Foo bar">
+
+                                           
+                                        </Tab>
+
+                                       
 
 
                                     </Tabs>
@@ -643,4 +691,4 @@ const Cards = () => {
     )
 }
 
-export default Cards;
+export default Cards
