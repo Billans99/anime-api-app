@@ -196,7 +196,7 @@ const Cards = () => {
     
     console.log('selectedAnime', selectedAnime)
     console.log('selectedAnimeID', selectedAnimeID)
-    console.log('themeMusicData', themeMusicData)
+    
     
 
     return (
@@ -669,13 +669,28 @@ const Cards = () => {
                                         
                                         <Tab className="theme-music-tab" eventKey="theme-music" title="Theme Music">
                                                 
-                                            <h3 className="theme-music-ending">Ending Theme Music</h3>
-                                                {themeMusicData.endings.map((endingTheme) => {
-                                                    
-                                                    return(
-                                                        <p>{endingTheme}</p>
-                                                    )
-                                                })}
+                                            <h3 className="theme-music-heading">Theme Music</h3>
+
+                                            <h3 className="theme-music-opening">Opening Theme</h3>
+                                               
+                                            {themeMusicData.openings && themeMusicData.openings.map((opening) => {
+                                                
+                                                return(
+                                                    <p className="theme-opening-body">{opening}</p>
+                                                )
+                                            })}
+                                            
+
+                                            <h3 className="theme-music-ending">Ending Theme</h3>
+
+                                            {themeMusicData.endings && themeMusicData.endings.map((ending) => {
+
+                                                return(
+                                                    <p className="theme-ending-body">{ending}</p>
+                                                )
+                                            })}
+                                                
+                                                
                                            
                                            
                                         </Tab>
