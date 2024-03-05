@@ -159,6 +159,11 @@ const Cards = () => {
         setSelectedAnimeID(anime.mal_id)
     }
 
+    // const handleRecommendationsClick = (recommendation) => {
+    //     console.log('UserRecommendations', recommendation)
+
+    // }
+
     const loadMoreReviews = () => {
         setReviewsArray([reviewsArray[0], reviewsArray[1] + 5])
     }
@@ -571,7 +576,7 @@ const Cards = () => {
 
                                         {/* Recommendations tab  */}
                                         <Tab className="recommendations-tab" eventKey="recommendations" title="Recommendations">
-
+                                        
                                             <h3 className="recommendations-heading">Recommendations for {selectedAnime.title}</h3>
 
                                             <div className="recommendations-flex-container">
@@ -582,14 +587,21 @@ const Cards = () => {
                                                     return(
                                                         <>
                                                             <div className="recommendations-container">
-
-                                                                <p className="recommendations-title">{recommendation.entry.title}</p>
+                                                                
+                                                                <a className="recommendations-title" target="_blank" href={recommendation.entry.url}>{recommendation.entry.title}</a>
 
                                                                 <div className="recommendations-image-container"> 
-                                                                    <img className="recommendations-image" src={recommendation.entry.images.jpg.image_url} alt="Recommended anime's image"></img>
+                                                                    <a target="_blank" href={recommendation.entry.url}><img className="recommendations-image" src={recommendation.entry.images.jpg.image_url} alt="Recommended anime's image"></img></a>
                                                                 </div>
 
-                                                            
+                                                                <div className="elaboration-btn-container">
+                                                                    <Button variant="warning" className="recommendations-tab-btn">
+                                                                            <a className="elaboration-link" target="_blank" href={recommendation.url}>
+                                                                                User Elaborations
+                                                                            </a>
+                                                                    </Button>
+
+                                                                </div>
                                                             </div>
                                                         </>
                                                     )
