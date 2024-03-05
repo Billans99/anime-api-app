@@ -30,7 +30,7 @@ const Cards = () => {
     const [selectedAnimeID, setSelectedAnimeID] = useState(null)
     const [recommendationsData, setRecommendationsData] = useState([])
     const [relationsData, setRelationsData] = useState([])
-    
+    const [themeMusicData, setThemeMusicData] = useState([])
 
     // Immediately load anime data (once) on initial render of page, if current page changes, useEffect will run again
     useEffect(() => {
@@ -63,6 +63,10 @@ const Cards = () => {
 
     useEffect(() => {
         getRelationsData()
+    }, [selectedAnimeID])
+
+    useEffect(() => {
+        getThemeMusicData()
     }, [selectedAnimeID])
 
     // Fetch anime data from Jikan API, and set the state of animeData to the response data
@@ -162,6 +166,17 @@ const Cards = () => {
             console.error('error fetching relations data', error)
         }
     }
+
+    const getThemeMusicData = async () => {
+        try {
+            const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/themes`)
+            console.log('themeMusicResponse', response)
+            setThemeMusicData(response.data.data)
+
+        } catch (error) {
+            console.error('Error fetching themeMusic data', error)
+        }
+    }
   
     // load more button that loads additional 25 anime titles to page
     const loadMoreAnime = () => {
@@ -181,7 +196,7 @@ const Cards = () => {
     
     console.log('selectedAnime', selectedAnime)
     console.log('selectedAnimeID', selectedAnimeID)
-    
+    console.log('themeMusicData', themeMusicData)
     
 
     return (
@@ -274,17 +289,19 @@ const Cards = () => {
                                     </div>
                                     : 
                                     <div className="view-more-background">
-                                        <h3>Background</h3>
-                                        <p>The background for {selectedAnime.title} is unavailable.</p>
+                                        <h3 className="background-heading">Background</h3>
+                                        <p className="background-body">The background for {selectedAnime.title} is unavailable.</p>
                                     </div>
                                 }
 
 
+                                
                                 <h3 className="relations-header">Relations</h3>
-
+                                    
                                 {relationsData.map((relation) => {
-
+                                    
                                     return(
+                                        
                                         <div className="relations-container">
 
                                             <p className="relations-type">{relation.relation} </p>
@@ -300,10 +317,10 @@ const Cards = () => {
                                                 )
                                             })}
 
-
                                         </div>
                                         
-                                    )
+                                        
+                                        )
                                 })}
 
 
@@ -650,10 +667,19 @@ const Cards = () => {
                                             
                                         </Tab>
                                         
-                                        <Tab className="" eventKey="" title="Foo bar">
-
+                                        <Tab className="theme-music-tab" eventKey="theme-music" title="Theme Music">
+                                                
+                                            <h3 className="theme-music-ending">Ending Theme Music</h3>
+                                                {themeMusicData.endings.map((endingTheme) => {
+                                                    
+                                                    return(
+                                                        <p>{endingTheme}</p>
+                                                    )
+                                                })}
+                                           
                                            
                                         </Tab>
+                                            
 
                                         <Tab className="" eventKey="" title="Foo bar">
 

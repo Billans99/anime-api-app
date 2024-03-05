@@ -222,22 +222,25 @@
 }
 
 .relations-container{
-    margin-top: 30px;
+    
 }
 
 .relations-type{
-   color: #efefef;
-   font-size: 1.3rem;
+   color: #ffffff;
+   font-size: 1.1rem;
    text-align: center;
+   border-bottom: 1px solid #9f9f9f;
+   margin-top: 10px;
 }
 
 .entry-name{
-    color: white;
+    color: rgb(232, 232, 232);
 }
 
 .entry-type{
-    border-bottom: 1px solid #9f9f9f;
+    
     padding-bottom: 15px;
+    color: rgb(214, 214, 214);
 }
 
 .general-info-tab{
