@@ -206,33 +206,6 @@
 .background-body{
     color: #e8e8e8;
     padding-bottom: 25px;
-    border-bottom: 1px solid #e2e2e2;
-}
-
-.relations-header{
-    
-}
-
-.relations-container{
-    
-}
-
-.relations-type{
-   color: #ffffff;
-   font-size: 1.1rem;
-   text-align: center;
-   border-bottom: 1px solid #9f9f9f;
-   margin-top: 10px;
-}
-
-.entry-name{
-    color: #e8e8e8;
-}
-
-.entry-type{
-    
-    padding-bottom: 15px;
-    color: #d6d6d6;
 }
 
 .general-info-tab{
@@ -629,6 +602,35 @@
 
 .theme-ending-body{
     color: #e8e8e8;
+}
+
+.relations-tab{
+    
+}
+
+.relations-header{
+    
+}
+
+.relations-container{
+    
+}
+
+.relations-type{
+   color: #ffffff;
+   font-size: 1.1rem;
+   text-align: center;
+   border-bottom: 1px solid #9f9f9f;
+   margin-top: 10px;
+}
+
+.entry-name{
+    color: #e8e8e8;
+}
+
+.entry-type{
+    padding-bottom: 15px;
+    color: #d6d6d6;
 }
 
 .load-more-container{

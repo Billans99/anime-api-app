@@ -295,34 +295,6 @@ const Cards = () => {
                                 }
 
 
-                                
-                                <h3 className="relations-header">Relations</h3>
-                                    
-                                {relationsData.map((relation) => {
-                                    
-                                    return(
-                                        
-                                        <div className="relations-container">
-
-                                            <p className="relations-type">{relation.relation} </p>
-                                            
-                                            {relation.entry.map((entry) => {
-
-                                                return(
-                                                    <>
-                                                        <a className="entry-name" href={entry.url} target="_blank">{entry.name}</a>
-                                                        <p className="entry-type">({entry.type})</p>
-                                                        
-                                                    </>
-                                                )
-                                            })}
-
-                                        </div>
-                                        
-                                        
-                                        )
-                                })}
-
 
                                 {/* Tabs with more info */}
                                 <div className="modal-tab-container">
@@ -671,18 +643,17 @@ const Cards = () => {
                                                 
                                             <h3 className="theme-music-heading">Theme Music</h3>
 
+
                                             <h3 className="theme-music-opening">Opening Theme</h3>
-                                               
                                             {themeMusicData.openings && themeMusicData.openings.map((opening) => {
                                                 
                                                 return(
                                                     <p className="theme-opening-body">{opening}</p>
                                                 )
                                             })}
-                                            
+
 
                                             <h3 className="theme-music-ending">Ending Theme</h3>
-
                                             {themeMusicData.endings && themeMusicData.endings.map((ending) => {
 
                                                 return(
@@ -691,13 +662,36 @@ const Cards = () => {
                                             })}
                                                 
                                                 
-                                           
-                                           
                                         </Tab>
                                             
 
-                                        <Tab className="" eventKey="" title="Foo bar">
+                                        <Tab className="relations-tab" eventKey="relations" title="Relations">
 
+                                            <h3 className="relations-header">Relations</h3>
+                                        
+                                            {relationsData.map((relation) => {
+                                                
+                                                return(
+                                                    
+                                                    <div className="relations-container">
+            
+                                                        <p className="relations-type">{relation.relation} </p>
+                                                        
+                                                        {relation.entry.map((entry) => {
+            
+                                                            return(
+                                                                <>
+                                                                    <a className="entry-name" href={entry.url} target="_blank">{entry.name}{entry.type}</a>
+                                                                    <p className="entry-type">({entry.type})</p>
+                                                                    
+                                                                </>
+                                                            )
+                                                        })}
+            
+                                                    </div>
+                                                
+                                                    )
+                                            })}
                                            
                                         </Tab>
 
@@ -711,6 +705,12 @@ const Cards = () => {
                                            
                                         </Tab>
 
+
+                                        <Tab className="" eventKey="" title="Foo bar">
+
+                                           
+                                        </Tab>
+                                            
                                        
 
 
