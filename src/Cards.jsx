@@ -681,7 +681,7 @@ const Cards = () => {
             
                                                             return(
                                                                 <>
-                                                                    <a className="entry-name" href={entry.url} target="_blank">{entry.name}{entry.type}</a>
+                                                                    <a className="entry-name" href={entry.url} target="_blank">{entry.name}</a>
                                                                     <p className="entry-type">({entry.type})</p>
                                                                     
                                                                 </>
