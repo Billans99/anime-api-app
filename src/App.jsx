@@ -7,8 +7,7 @@
 
 
 
-//        Add external information tab to app (Jikan External section)
-//        Add Streaming tab to app (Jikan streaming section)
+
 //        Add voice actors tab to app (Jikan Character voice actors section)
 
 //        Add random btn, top anime, and popular anime, recommendations (these are different to anime specific recommendations 
@@ -19,7 +18,7 @@
 
 // - 3. Makes more comments to explain code
 // - 4. See if theres a way to load some of the character and reviews data more efficiently, sometimes it doesn't load fast enough and shows previous characters and reviews data
-// - 5. Add manga to the app
+
 
 
 

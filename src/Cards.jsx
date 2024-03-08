@@ -32,6 +32,7 @@ const Cards = () => {
     const [relationsData, setRelationsData] = useState([])
     const [themeMusicData, setThemeMusicData] = useState([])
     const [externalLinksData, setExternalLinksData] = useState([])
+    const [streamingData, setStreamingData] = useState([])
 
     // Immediately load anime data (once) on initial render of page, if current page changes, useEffect will run again
     useEffect(() => {
@@ -72,6 +73,10 @@ const Cards = () => {
 
     useEffect(() => {
         getExternalLinksData()
+    }, [selectedAnimeID])
+
+    useEffect(() => {
+        getStreamingData()
     }, [selectedAnimeID])
 
     // Fetch anime data from Jikan API, and set the state of animeData to the response data
@@ -191,6 +196,17 @@ const Cards = () => {
 
         } catch (error) {
             console.error('error fetching external links data' , error)
+        }
+    }
+
+    const getStreamingData = async () => {
+        try {
+            const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/streaming`)
+            console.log('streamingResponse', response)
+            setStreamingData(response.data.data)
+
+        } catch (error) {
+            console.error('error fetching streaming data', error)
         }
     }
   
@@ -722,7 +738,10 @@ const Cards = () => {
                                                 <div className="external-links-container">
 
                                                     <p className="external-link-name">{externalLink.name}</p>
-                                                    <p className="external-link-url">{externalLink.url}</p>
+
+                                                    <p className="external-link-url">
+                                                        <a className="external-link" target="_blank" href={externalLink.url}>{externalLink.url}</a>
+                                                    </p>
 
                                                 </div>
                                             )
@@ -730,8 +749,24 @@ const Cards = () => {
 
                                         </Tab>
 
-                                        <Tab className="" eventKey="" title="Foo bar">
+                                        <Tab className="streaming-platforms-tab" eventKey="streaming-platforms" title="Streaming platforms">
 
+
+                                        <h3 className="streaming-platforms-heading">Streaming Platforms</h3>
+                                        {streamingData.map((stream) => {
+
+                                            return(
+                                                <div className="streaming-platforms-container">
+
+                                                    <p className="streaming-platforms-name">{stream.name}</p>
+
+                                                    <p className="streaming-plaforms-url">
+                                                        <a className="streaming-platforms-link" target="_blank" href={stream.url}>{stream.url}</a>
+                                                    </p>
+
+                                                </div>
+                                            )
+                                        })}
                                            
                                         </Tab>
 

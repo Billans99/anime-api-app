@@ -651,11 +651,43 @@
 }
 
 .external-link-name{
-    white-space: normal;
+    
 }
 
 .external-link-url{
     
+}
+
+.external-link{
+    color: #ffffff;
+}
+
+.streaming-platforms-tab{
+
+}
+
+.streaming-platforms-heading{
+    text-align: center;
+    margin: 30px 0px;
+}
+
+.streaming-platforms-container{
+    word-wrap: break-word;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgb(139, 139, 139);
+    padding-bottom: 17px;
+}
+
+.streaming-platforms-name{
+
+}
+
+.streaming-plaforms-url{
+    color: white;
+}
+
+.streaming-platforms-link{
+    color: #ffffff;
 }
 
 .load-more-container{
