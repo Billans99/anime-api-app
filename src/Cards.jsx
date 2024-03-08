@@ -31,6 +31,7 @@ const Cards = () => {
     const [recommendationsData, setRecommendationsData] = useState([])
     const [relationsData, setRelationsData] = useState([])
     const [themeMusicData, setThemeMusicData] = useState([])
+    const [externalLinksData, setExternalLinksData] = useState([])
 
     // Immediately load anime data (once) on initial render of page, if current page changes, useEffect will run again
     useEffect(() => {
@@ -67,6 +68,10 @@ const Cards = () => {
 
     useEffect(() => {
         getThemeMusicData()
+    }, [selectedAnimeID])
+
+    useEffect(() => {
+        getExternalLinksData()
     }, [selectedAnimeID])
 
     // Fetch anime data from Jikan API, and set the state of animeData to the response data
@@ -177,6 +182,17 @@ const Cards = () => {
             console.error('Error fetching themeMusic data', error)
         }
     }
+
+    const getExternalLinksData = async () => {
+        try {
+            const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/external`)
+            console.log('externalLinksResponse', response)
+            setExternalLinksData(response.data.data)
+
+        } catch (error) {
+            console.error('error fetching external links data' , error)
+        }
+    }
   
     // load more button that loads additional 25 anime titles to page
     const loadMoreAnime = () => {
@@ -205,7 +221,7 @@ const Cards = () => {
             {/* Individual cards display different anime from the api */}
             <div className="cards-container">
                 {/* Map each anime anime to a card  */}
-                {animeData.map((anime) => {
+                {animeData && animeData.map((anime) => {
                     return(
 
 
@@ -320,7 +336,7 @@ const Cards = () => {
                                     
                                                 <div className="genre-score-container">
                                                     <h3>Genres</h3>
-                                                        {selectedAnime.genres.map((genre) => {
+                                                        {selectedAnime.genres && selectedAnime.genres.map((genre) => {
                                                             return <Card.Subtitle className="view-more-genre">{genre.name}</Card.Subtitle>
                                                         })}                                        
                                                 </div>
@@ -352,14 +368,14 @@ const Cards = () => {
 
                                                 <div className="view-more-producers">
                                                     <h3>Producers</h3>
-                                                    {selectedAnime.producers.map((producer) => {
+                                                    {selectedAnime.producers && selectedAnime.producers.map((producer) => {
                                                         return <p>{producer.name}</p>
                                                     })}
                                                 </div>
 
                                                 <div className="view-more-studios">
                                                     <h3>Studios</h3>
-                                                    {selectedAnime.studios.map((studio) => {
+                                                    {selectedAnime.studios && selectedAnime.studios.map((studio) => {
                                                         return <p>{studio.name}</p>
                                                     })}
                                                 </div>
@@ -372,7 +388,7 @@ const Cards = () => {
                                             <h3 className="reviews-heading">Reviews</h3>
 
                                             {/* view-more reviews data */}
-                                            {animeReviewsData.slice(reviewsArray[0], reviewsArray[1]).map((review) => {
+                                            {animeReviewsData && animeReviewsData.slice(reviewsArray[0], reviewsArray[1]).map((review) => {
                                                 return(
                                                     <>
                                                         <div className="reviews-container">
@@ -645,6 +661,8 @@ const Cards = () => {
 
 
                                             <h3 className="theme-music-opening">Opening Theme</h3>
+                                            {/* Component is being rendered before data is 
+                                            received, need to add && to map to prevent this */}
                                             {themeMusicData.openings && themeMusicData.openings.map((opening) => {
                                                 
                                                 return(
@@ -667,7 +685,7 @@ const Cards = () => {
 
                                         <Tab className="relations-tab" eventKey="relations" title="Relations">
 
-                                            <h3 className="relations-header">Relations</h3>
+                                            <h3 className="relations-heading">Relations</h3>
                                         
                                             {relationsData.map((relation) => {
                                                 
@@ -695,9 +713,21 @@ const Cards = () => {
                                            
                                         </Tab>
 
-                                        <Tab className="" eventKey="" title="Foo bar">
+                                        <Tab className="external-links-tab" eventKey="external-links" title="External Links">
 
-                                           
+                                            <h3 className="external-link-heading">External Links</h3>
+                                        {externalLinksData.map((externalLink) => {
+
+                                            return(
+                                                <div className="external-links-container">
+
+                                                    <p className="external-link-name">{externalLink.name}</p>
+                                                    <p className="external-link-url">{externalLink.url}</p>
+
+                                                </div>
+                                            )
+                                        })}
+
                                         </Tab>
 
                                         <Tab className="" eventKey="" title="Foo bar">

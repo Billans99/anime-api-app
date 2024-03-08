@@ -608,8 +608,9 @@
     
 }
 
-.relations-header{
-    
+.relations-heading{
+    margin: 30px;
+    text-align: center;
 }
 
 .relations-container{
@@ -631,6 +632,30 @@
 .entry-type{
     padding-bottom: 15px;
     color: #d6d6d6;
+}
+
+.external-links-tab{
+
+}
+
+.external-link-heading{
+    text-align: center;
+    margin: 30px 0px;
+}
+
+.external-links-container{
+    word-wrap: break-word;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgb(139, 139, 139);
+    padding-bottom: 17px;
+}
+
+.external-link-name{
+    white-space: normal;
+}
+
+.external-link-url{
+    
 }
 
 .load-more-container{
