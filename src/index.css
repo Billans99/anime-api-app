@@ -29,15 +29,15 @@
 
 /* Header components  */
 .heading-container{
-    text-align: center;
-    height: 120px;
+    /* height: 150px; */
     padding-top: 10px;
-    /* padding-bottom: 35px; */
     border: 1px solid #979797;
     background-color: #e6e6e6;
+    padding-bottom: 15px;
 }
 
 .heading-title{
+    text-align: center;
     font-size: 40px;
     font-weight: 500;
     padding-top: 20px;
@@ -46,20 +46,46 @@
 
 .categories-container{
     display: flex;
-    justify-content: center;
     padding-top: 10px;
-    display: inline-block;
-    height: 100px;
+    margin-bottom: 10px;
+    display: block;
+    /* gap: 30px; */
 }
 
-.upcoming-category{
+.categories-container > Button{
+    margin-left: 10px;
+}
+
+.category-top{
+
+}
+
+.category-popular{
+
+}
+
+.category-random{
+
+}
+
+.category-recommendations{
+
+}
+
+.category-home{
+    justify-content: flex-end;
+    float: right;
+    margin-right: 10px;
+}
+
+/* .upcoming-category{
     margin-right: 15px;
     margin-bottom: 18px; 
 }
 
 .popular-category{
  margin-bottom: 18px;
-}
+} */
 
 .newsletter-alert{
     text-align: center;
@@ -310,7 +336,7 @@
 }
 
 .review-body{
-    color: #c8c8c8;
+    color: #e8e8e8;
 }
 
 

@@ -769,16 +769,8 @@ const Cards = () => {
                                         })}
                                            
                                         </Tab>
-
-
-                                        <Tab className="" eventKey="" title="Foo bar">
-
-                                           
-                                        </Tab>
                                             
-                                       
-
-
+                                
                                     </Tabs>
                                 </div>      
 

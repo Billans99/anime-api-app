@@ -16,28 +16,21 @@ const Header = (props) => {
                 {/* <Badge bg="primary">Hot</Badge> */}
             </h1>
         
-                {/* upcoming, popular, and search container  */}
-            {/* <div className="categories-container"> */}
-
-
-                {/* upcoming anime category (onClick function)  */}
-                {/* <Button className="upcoming-category" variant="primary">Upcoming</Button> */}
                 
-                {/* popular anime category (onClick function) */}
-                {/* <Button className="popular-category" variant="warning">Popular</Button> */}
-
+            <div className="categories-container">
                 
-                {/* <div className="search-container"> */}
-                    {/* Search bar  */}
-                    {/* <input className="search-bar" name="search-form" id="search-form" type="search" placeholder="Search for anime titles..." /> */}
-                    
-                    {/* Search button  */}
-                    {/* <Button className="search-button" variant="primary" size="sm"> */}
-                        {/* Search */}
-                     {/* </Button> */}
-                {/* </div> */}
+                <Button className="category-top" variant="primary">Top</Button>
+                
+                <Button className="category-popular" variant="success">Popular</Button>
 
-            {/* </div> */}
+                <Button className="category-recommendations" variant="warning">Recommendations</Button>
+
+                <Button className="category-random" variant="secondary">Random</Button>
+
+                <Button className="category-home" variant="dark">Home</Button>
+                
+
+            </div>
 
 
         </div>
