@@ -34,7 +34,7 @@ const Cards = () => {
     const [externalLinksData, setExternalLinksData] = useState([])
     const [streamingData, setStreamingData] = useState([])
 
-    // Immediately load anime data (once) on initial render of page, if current page changes, useEffect will run again
+    // Immediately execute and load data (once) on initial render of page, if dependancy changes, load data again
     useEffect(() => {
         getAnimeData()
     }, [currentPage])
@@ -98,7 +98,7 @@ const Cards = () => {
         }
     }
 
-    //  get data from character endpoint after clicking view-more button
+    //  get character data from endpoint
    const getCharactersData = async () => {
         try {
             setLoading(true)
@@ -111,7 +111,7 @@ const Cards = () => {
             console.error("Error fetching data", error)
         }
    }
-
+   // get reviews data from endpoint
    const getReviewsData = async () => {
         try {
             const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/reviews`)
@@ -124,6 +124,7 @@ const Cards = () => {
         
    }
 
+   // get news data from endpoint
    const getNewsData = async () => {
         try {
             const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/news`)
@@ -135,6 +136,7 @@ const Cards = () => {
         }
    }
 
+    // get stats data from endpoint
    const getStatsData = async () => {
         try {
             const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/statistics`)
@@ -145,6 +147,7 @@ const Cards = () => {
         }
    }
 
+   //  get pictures data from endpoint
    const getPicturesData = async () => {
         try {
             const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/pictures`)
@@ -156,6 +159,7 @@ const Cards = () => {
         }
    }
 
+   // get recommendations data from endpoint
    const getRecommendationsData = async () => {
         try {
             const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/recommendations`)
@@ -166,6 +170,7 @@ const Cards = () => {
         }
    }
 
+    // get relations data from endpoint
    const getRelationsData = async () => {
         try {
             const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/relations`)
@@ -177,6 +182,7 @@ const Cards = () => {
         }
     }
 
+    // get theme music data from endpoint
     const getThemeMusicData = async () => {
         try {
             const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/themes`)
@@ -188,6 +194,7 @@ const Cards = () => {
         }
     }
 
+    // get external links data from endpoint
     const getExternalLinksData = async () => {
         try {
             const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/external`)
@@ -199,6 +206,7 @@ const Cards = () => {
         }
     }
 
+    // get streaming data from endpoint
     const getStreamingData = async () => {
         try {
             const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/streaming`)
@@ -210,7 +218,7 @@ const Cards = () => {
         }
     }
   
-    // load more button that loads additional 25 anime titles to page
+    // load more button that loads additional 25 anime titles to page by appending to previous array
     const loadMoreAnime = () => {
         setCurrentPage(currentPage + 1)
     }
@@ -221,11 +229,12 @@ const Cards = () => {
         setSelectedAnimeID(anime.mal_id)
     }
 
+    // Load more reviews function, handles btn click to load more reviews
     const loadMoreReviews = () => {
         setReviewsArray([reviewsArray[0], reviewsArray[1] + 5])
     }
 
-    
+    // logging states to check if states are being updated correctly
     console.log('selectedAnime', selectedAnime)
     console.log('selectedAnimeID', selectedAnimeID)
     
@@ -301,7 +310,7 @@ const Cards = () => {
 
                             <Modal.Body className="modal-body">  
 
-                        
+                                {/* Synopsis / Summary */}
                                 {selectedAnime.synopsis ? 
                                         <div className="view-more-summary">
                                             <h3 className="summary-heading">Summary</h3>
@@ -314,6 +323,7 @@ const Cards = () => {
                                         </div>
                                     }   
 
+                                {/* Background information of anime */}
                                 {selectedAnime.background ? 
                                     <div className="view-more-background">
                                         <h3 className="background-heading">Background</h3>
@@ -398,6 +408,7 @@ const Cards = () => {
                                             </div>
                                         </Tab>
 
+
                                         {/* Reviews tab */}
                                         <Tab className="reviews-tab" eventKey="reviews" title="Reviews">
 
@@ -456,6 +467,7 @@ const Cards = () => {
                                                 )
                                             })}             
 
+                                                    {/* load more reviews button */}
                                                     <div className="review-btn-container">
                                                             {reviewsArray[1] < animeReviewsData.length &&
                                                                 <Button onClick={() => loadMoreReviews()} className="more-reviews-btn" variant="primary">More reviews</Button>
@@ -463,8 +475,8 @@ const Cards = () => {
 
                                  
                                                     </div>
-
                                         </Tab>
+
 
                                         {/* Characters data */}
                                         <Tab className="characters-tab" eventKey="characters" title="Characters">
@@ -497,6 +509,7 @@ const Cards = () => {
                                                     })}
                                             </div>
                                         </Tab>
+                                        
 
                                         {/* News tab */}
                                         <Tab className="news-tab" eventKey="news" title="News">
