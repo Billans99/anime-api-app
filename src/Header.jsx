@@ -28,11 +28,9 @@ const Header = (props) => {
                 
                 <Button className="category-top" variant="primary" onClick={() => props.handleTopAnimeClick()}>Top</Button>
                 
-                <Button className="category-popular" variant="success">Popular</Button>
+                <Button className="category-popular" variant="success">Recommendations</Button>
 
-                <Button className="category-recommendations" variant="warning">Recommendations</Button>
-
-                <Button className="category-random" variant="secondary">Random</Button>
+                <Button className="category-recommendations" variant="warning">Random</Button>
 
                 <Button className="category-home" variant="dark" onClick={() => props.handleShowHomeClick()}>Home</Button>
                 
