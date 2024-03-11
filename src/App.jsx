@@ -3,10 +3,8 @@
 
 
 
-// - Complete top btn functionality
-//     All handle button clicks should turn that state true but everything else false.
-//     Complete logic for switching states between topAnime and anime 
-//     Complete load more btn logic
+// - Fix recommendation button not working to change page
+
 
 
 
@@ -39,6 +37,7 @@ const App = () => {
 
   const [showTopAnime, setShowTopAnime] = useState(false)
   const [showRecommendationAnime, setShowRecommendationAnime] = useState(false)
+  const [showHomeCards, setShowHomeCards] = useState(true)
 
 
 
@@ -80,9 +79,12 @@ const App = () => {
         handleRecommendationAnimeClick={handleRecommendationAnimeClick}
         />
       {/* <NewsletterAlert/> */}
-      {/* {showTopAnime ? <TopAnimeCards/> : <Cards/>} */}
+      <Cards/>
+      {showTopAnime ? <TopAnimeCards/> : <Cards/>}
+      {showRecommendationAnime ? <RecommendationAnimeCards/> : <Cards/>}
+
       {/* {showRecommendationAnime ? <RecommendationAnimeCards/> : <Cards/>} */}
-      <RecommendationAnimeCards/>
+      {/* <RecommendationAnimeCards/> */}
     </>
   )
 }
