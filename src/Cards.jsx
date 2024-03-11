@@ -16,7 +16,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar'
 
 
     // Cards component
-const Cards = () => {
+const Cards = (anime) => {
     const [animeData, setAnimeData] = useState([])
     const [animeCharactersData, setAnimeCharactersData] = useState([])
     const [animeReviewsData, setAnimeReviewsData] = useState([])
@@ -509,7 +509,7 @@ const Cards = () => {
                                                     })}
                                             </div>
                                         </Tab>
-                                        
+
 
                                         {/* News tab */}
                                         <Tab className="news-tab" eventKey="news" title="News">

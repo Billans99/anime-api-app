@@ -22,6 +22,7 @@ import Header from './Header.jsx'
 import NewsletterAlert from './NewsletterAlert.jsx'
 import Cards from './Cards.jsx'
 import React, { useEffect, useState } from "react"
+import TopAnimeCards from './TopAnimeCards.jsx'
 
 
 
@@ -35,7 +36,8 @@ const App = () => {
     <>
       <Header/>
       {/* <NewsletterAlert/> */}
-      <Cards/>
+      <TopAnimeCards/>
+      {/* <Cards/> */}
     </>
   )
 }
