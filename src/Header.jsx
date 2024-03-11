@@ -34,7 +34,7 @@ const Header = (props) => {
 
                 <Button className="category-random" variant="secondary">Random</Button>
 
-                <Button className="category-home" variant="dark">Home</Button>
+                <Button className="category-home" variant="dark" onClick={() => props.handleShowHomeClick()}>Home</Button>
                 
 
             </div>

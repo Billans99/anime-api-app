@@ -5,13 +5,16 @@
 
 // - Complete top btn functionality
 
-//     Complete top btn functionality in Header
-//     Complete view more modal logic
 //     Complete logic for switching states between topAnime and anime 
 //     Complete load more btn logic
 
-//        Add random btn, top anime, and popular anime, recommendations (these are different to anime specific recommendations 
-//           as these are random recommendations, home) to the header
+
+
+// Functionality for the rest of the header buttons
+//     Complete logic for switching states between topAnime and anime 
+//     Complete button functionality from header
+//     Complete view more modal logic
+//     Complete load more btn logic
 
 // - 2. Make more comments to explain code
 
@@ -44,13 +47,20 @@ const App = () => {
     setShowTopAnime(true)
 }
 
+  const handleShowHomeClick = () => {
+    setShowTopAnime(false)
+    // set all the shows to false similar to above
+  }
 
 
 
 
   return (
     <>
-      <Header handleTopAnimeClick={handleTopAnimeClick}/>
+      <Header 
+        handleTopAnimeClick={handleTopAnimeClick}
+        handleShowHomeClick={handleShowHomeClick}
+        />
       {/* <NewsletterAlert/> */}
       {showTopAnime ? <TopAnimeCards/> : <Cards/>}
     </>
