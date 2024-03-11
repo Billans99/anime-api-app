@@ -60,15 +60,11 @@
 
 }
 
-.category-popular{
+.category-recommendations{
 
 }
 
 .category-random{
-
-}
-
-.category-recommendations{
 
 }
 
@@ -78,18 +74,52 @@
     margin-right: 10px;
 }
 
-/* .upcoming-category{
-    margin-right: 15px;
-    margin-bottom: 18px; 
-}
-
-.popular-category{
- margin-bottom: 18px;
-} */
-
 .newsletter-alert{
     text-align: center;
   
+}
+
+.anime-recommendations-heading{
+    text-align: center;
+    padding: 30px 0px;
+    background-color: #2f2f2f;
+    color: white;
+    border: 1px solid black;
+}
+
+.anime-recommendations-container{
+    width: 50%;
+    border: 1px solid #a6a6a6;
+    background-color: #d4d4d4;
+    color: #555555;
+    margin-top: -10px;
+}
+
+.anime-recommendations-username{
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.anime-recommendations-header{
+    padding-bottom: 15px;
+    margin-top: 35px;
+    margin-left: 15px;
+    justify-content: center;
+}
+
+.anime-recommendations-title{
+    text-align: center;
+}
+
+.anime-recommendations-images{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.anime-recommendations-content{
+    margin: 10px;
 }
 
 /* Cards components  */
@@ -559,7 +589,6 @@
 
 .recommendations-container{
     width: 50%;
-    /* height: 320px; */
     border: 1px solid #a6a6a6;
     background-color: rgb(65, 27, 5);
 }

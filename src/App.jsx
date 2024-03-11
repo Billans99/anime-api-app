@@ -4,7 +4,7 @@
 
 
 // - Complete top btn functionality
-
+//     All handle button clicks should turn that state true but everything else false.
 //     Complete logic for switching states between topAnime and anime 
 //     Complete load more btn logic
 
@@ -30,7 +30,7 @@ import NewsletterAlert from './NewsletterAlert.jsx'
 import Cards from './Cards.jsx'
 import React, { useEffect, useState } from "react"
 import TopAnimeCards from './TopAnimeCards.jsx'
-
+import RecommendationAnimeCards from './RecommendationAnimeCards.jsx'
 
 
 
@@ -38,18 +38,35 @@ import TopAnimeCards from './TopAnimeCards.jsx'
 const App = () => {
 
   const [showTopAnime, setShowTopAnime] = useState(false)
+  const [showRecommendationAnime, setShowRecommendationAnime] = useState(false)
 
 
 
 
 
   const handleTopAnimeClick = () => {
+    setShowRecommendationAnime(false)
+    // setShowRandomAnime(false)
     setShowTopAnime(true)
+    
 }
+
+  const handleRecommendationAnimeClick = () => {
+    setShowTopAnime(false)
+    // setShowRandomAnime(false)
+    setShowRecommendationAnime(true)
+  }
+
+  // const handleRandomAnimeClick = () => {
+  //   setShowTopAnime(false)
+  //   setShowRecommendationAnime(false)
+  //   setShowRandomAnime(true)
+  // }
 
   const handleShowHomeClick = () => {
     setShowTopAnime(false)
-    // set all the shows to false similar to above
+    setShowRecommendationAnime(false)
+    // setShowRandomAnime(false)
   }
 
 
@@ -60,9 +77,12 @@ const App = () => {
       <Header 
         handleTopAnimeClick={handleTopAnimeClick}
         handleShowHomeClick={handleShowHomeClick}
+        handleRecommendationAnimeClick={handleRecommendationAnimeClick}
         />
       {/* <NewsletterAlert/> */}
-      {showTopAnime ? <TopAnimeCards/> : <Cards/>}
+      {/* {showTopAnime ? <TopAnimeCards/> : <Cards/>} */}
+      {/* {showRecommendationAnime ? <RecommendationAnimeCards/> : <Cards/>} */}
+      <RecommendationAnimeCards/>
     </>
   )
 }
