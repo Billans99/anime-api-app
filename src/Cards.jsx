@@ -2,13 +2,14 @@
 
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import Card from 'react-bootstrap/Card'
+
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import Tab from 'react-bootstrap/Tab'
 import Tabs from 'react-bootstrap/Tabs'
 import Carousel from 'react-bootstrap/Carousel'
 import ProgressBar from 'react-bootstrap/ProgressBar'
+import Card from 'react-bootstrap/Card'
 
 
 
@@ -16,7 +17,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar'
 
 
     // Cards component
-const Cards = (anime) => {
+const Cards = () => {
     const [animeData, setAnimeData] = useState([])
     const [animeCharactersData, setAnimeCharactersData] = useState([])
     const [animeReviewsData, setAnimeReviewsData] = useState([])

@@ -1,11 +1,18 @@
 // import Badge from 'react-bootstrap/Badge'
 import Button from 'react-bootstrap/Button'
-import axios from 'axios'
+import React, { useState, useEffect } from "react"
+
 
 
 const Header = (props) => {
 
-        
+    
+
+
+
+
+
+
 
     return(
         <>
@@ -19,7 +26,7 @@ const Header = (props) => {
                 
             <div className="categories-container">
                 
-                <Button className="category-top" variant="primary">Top</Button>
+                <Button className="category-top" variant="primary" onClick={() => props.handleTopAnimeClick()}>Top</Button>
                 
                 <Button className="category-popular" variant="success">Popular</Button>
 

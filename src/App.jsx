@@ -3,8 +3,12 @@
 
 
 
-// - 1. Flesh out app and add as much data as possible to the view-more-modals and anime-app to keep learning more
+// - Complete top btn functionality
 
+//     Complete top btn functionality in Header
+//     Complete view more modal logic
+//     Complete logic for switching states between topAnime and anime 
+//     Complete load more btn logic
 
 //        Add random btn, top anime, and popular anime, recommendations (these are different to anime specific recommendations 
 //           as these are random recommendations, home) to the header
@@ -30,14 +34,25 @@ import TopAnimeCards from './TopAnimeCards.jsx'
 
 const App = () => {
 
- 
+  const [showTopAnime, setShowTopAnime] = useState(false)
+
+
+
+
+
+  const handleTopAnimeClick = () => {
+    setShowTopAnime(true)
+}
+
+
+
+
 
   return (
     <>
-      <Header/>
+      <Header handleTopAnimeClick={handleTopAnimeClick}/>
       {/* <NewsletterAlert/> */}
-      <TopAnimeCards/>
-      {/* <Cards/> */}
+      {showTopAnime ? <TopAnimeCards/> : <Cards/>}
     </>
   )
 }
