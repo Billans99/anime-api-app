@@ -3,7 +3,7 @@
 
 
 
-// - Fix recommendation button not working to change page
+// - Fix state so only one set of Cards are rendered and displayed at a time (rather than Cards being appended to the page)
 
 
 
@@ -15,6 +15,8 @@
 //     Complete load more btn logic
 
 // - 2. Make more comments to explain code
+
+// - 3. Find a way to access non-rate limited api data from Jikan API. (about half the data you get from the current api call is rate limited)
 
 
 
