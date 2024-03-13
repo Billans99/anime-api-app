@@ -13,13 +13,15 @@ const RecommendationAnimeCards = () => {
     const [recommendationAnimeData, setRecommendationAnimeData] = useState([])
     const [selectedAnime, setSelectedAnime] = useState(null)
     const [selectedAnimeID, setSelectedAnimeID] = useState(null)
+    const [loading, setLoading] = useState(false)
+    const [currentPage, setCurrentPage] = useState(1)
     
 
 
 
     useEffect(() => {
         getRecommendationAnimeData()
-    }, [])
+    }, [currentPage])
 
 
 
@@ -27,10 +29,14 @@ const RecommendationAnimeCards = () => {
     // Fetch Recommended anime data from recommendation anime endpoint
     const getRecommendationAnimeData = async () => {
             try {
+                if (loading) return
 
-                const response = await axios.get('https://api.jikan.moe/v4/recommendations/anime')
+                setLoading(true)
+                const response = await axios.get(`https://api.jikan.moe/v4/recommendations/anime?page=${currentPage}&q=&sfw`)
                 console.log('recommendationAnimeResponse', response)
-                setRecommendationAnimeData(response.data.data)
+                setRecommendationAnimeData(prevData => [...prevData, ...response.data.data])
+                setCurrentPage(response.data.pagination.current_page)
+                setLoading(false)
 
             } catch (error) {
                 console.error('Error fetching recommendationAnime Data', error)

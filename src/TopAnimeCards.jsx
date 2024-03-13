@@ -31,7 +31,7 @@ const TopAnimeCards = () => {
 
     useEffect(() => {
         getTopAnimeData()
-    }, [])
+    }, [currentPage])
 
     useEffect(() => {
         getCharactersData()
@@ -80,10 +80,14 @@ const TopAnimeCards = () => {
     // Fetch top anime data from top anime endpoint
     const getTopAnimeData = async () => {
             try {
+                if (loading) return
 
-                const response = await axios.get('https://api.jikan.moe/v4/top/anime')
+                setLoading(true)
+                const response = await axios.get(`https://api.jikan.moe/v4/top/anime?page=${currentPage}&q=&sfw`)
                 console.log('topAnimeResponse', response)
-                setTopAnimeData(response.data.data)
+                setTopAnimeData(prevData => [...prevData, ...response.data.data])
+                setCurrentPage(response.data.pagination.current_page)
+                setLoading(false)
 
             } catch (error) {
                 console.error('Error fetching topAnime Data', error)
@@ -213,6 +217,7 @@ const TopAnimeCards = () => {
     // load more button that loads additional 25 anime titles to page by appending to previous array
     const loadMoreAnime = () => {
         setCurrentPage(currentPage + 1)
+        console.log('currentPage', currentPage)
     }
 
     // Handles logic for view more button

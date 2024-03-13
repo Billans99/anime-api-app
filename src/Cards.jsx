@@ -83,9 +83,7 @@ const Cards = () => {
     // Fetch anime data from Jikan API, and set the state of animeData to the response data
     const getAnimeData = async () => {
         try {
-            if (loading) {
-                return
-            }
+            if (loading) return
 
             setLoading(true)
             const response = await axios.get(`https://api.jikan.moe/v4/anime?page=${currentPage}&q=&sfw`)

@@ -3,9 +3,6 @@
 
 
 
-// - Fix TopAnimeCards component to displayed more anime after loadMore btn is clicked
-
-
 
 
 // Functionality for the rest of the header buttons
@@ -88,7 +85,7 @@ const App = () => {
 
       {showHomeCards ? <Cards/> :
         showTopAnime ? <TopAnimeCards/> :
-        showRecommendationAnime ? <RecommendationAnimeCards/> : <TopAnimeCards/>}
+        showRecommendationAnime ? <RecommendationAnimeCards/> : <Cards/>}
 
     </>
   )
