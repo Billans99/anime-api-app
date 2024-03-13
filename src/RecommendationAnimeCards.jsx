@@ -37,12 +37,6 @@ const RecommendationAnimeCards = () => {
             }
         }
 
-     
-    // load more button that loads additional 25 anime titles to page by appending to previous array
-    // const loadMoreAnime = () => {
-    //     setCurrentPage(currentPage + 1)
-    // }
-
 
         return(
             <>

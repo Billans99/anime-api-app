@@ -3,7 +3,7 @@
 
 
 
-// - Fix state so only one set of Cards are rendered and displayed at a time (rather than Cards being appended to the page)
+// - Fix TopAnimeCards component to displayed more anime after loadMore btn is clicked
 
 
 
@@ -46,6 +46,7 @@ const App = () => {
 
 
   const handleTopAnimeClick = () => {
+    setShowHomeCards(false)
     setShowRecommendationAnime(false)
     // setShowRandomAnime(false)
     setShowTopAnime(true)
@@ -53,12 +54,14 @@ const App = () => {
 }
 
   const handleRecommendationAnimeClick = () => {
+    setShowHomeCards(false)
     setShowTopAnime(false)
     // setShowRandomAnime(false)
     setShowRecommendationAnime(true)
   }
 
   // const handleRandomAnimeClick = () => {
+  //   setShowHomeCards(false)
   //   setShowTopAnime(false)
   //   setShowRecommendationAnime(false)
   //   setShowRandomAnime(true)
@@ -67,7 +70,8 @@ const App = () => {
   const handleShowHomeClick = () => {
     setShowTopAnime(false)
     setShowRecommendationAnime(false)
-    // setShowRandomAnime(false)
+// setShowRandomAnime(false)
+    setShowHomeCards(true)
   }
 
 
@@ -81,12 +85,11 @@ const App = () => {
         handleRecommendationAnimeClick={handleRecommendationAnimeClick}
         />
       {/* <NewsletterAlert/> */}
-      <Cards/>
-      {showTopAnime ? <TopAnimeCards/> : <Cards/>}
-      {showRecommendationAnime ? <RecommendationAnimeCards/> : <Cards/>}
 
-      {/* {showRecommendationAnime ? <RecommendationAnimeCards/> : <Cards/>} */}
-      {/* <RecommendationAnimeCards/> */}
+      {showHomeCards ? <Cards/> :
+        showTopAnime ? <TopAnimeCards/> :
+        showRecommendationAnime ? <RecommendationAnimeCards/> : <TopAnimeCards/>}
+
     </>
   )
 }
