@@ -34,6 +34,7 @@
     border: 1px solid #979797;
     background-color: #e6e6e6;
     padding-bottom: 15px;
+    
 }
 
 .heading-title{
@@ -47,8 +48,9 @@
 .categories-container{
     display: flex;
     padding-top: 10px;
-    margin-bottom: 10px;
+    padding-bottom: 10px;
     display: block;
+    border-bottom: 0.9px solid #979797;
     /* gap: 30px; */
 }
 
