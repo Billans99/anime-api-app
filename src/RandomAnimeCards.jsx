@@ -46,39 +46,42 @@ const RandomAnimeCards = () => {
 
                     return(
                         <>
-                        <div className="random-card-header-container">
+                        <h3 className="random-card-header-title">Title: {anime.title_english} | {anime.title_japanese}</h3>
 
-                            <h3 className="random-card-header-title">Title: {anime.title_english} | {anime.title_japanese}</h3>
+                        <div className="random-card-flex-container">
 
-                            <img className="random-card-header-image" src={anime.images.jpg.large_image_url} alt="An image of a random anime"></img>
+                            <div className="random-card-body-container">
+                                <h3>Summary</h3>
+                                {anime.synopsis ? <p>{anime.synopsis}</p> : <p>This summary is not available</p>}
+
+                                <h3>Background</h3>
+                                {anime.background ? <p>{anime.background}</p> : <p>The background for this anime is not available</p>}
+                                
+                                <p>Rating: {anime.rating}</p>
+
+                                <p>Score: {anime.score} / 10</p>
+
+                                <p>Anime Rank: {anime.rank}</p>
+
+                                <p>Popularity: {anime.popularity}</p>
+
+                                <p>status: {anime.status}</p>
+
+                                <p>Season: {anime.season}</p>
+
+                                <p>Year: {anime.year}</p>
+
+                                <p>URL: {anime.url}</p>
+                            </div>
+
+                            <div className="random-card-image-container">
+                                <img className="random-card-image" src={anime.images.jpg.large_image_url} alt="An image of a random anime"></img>
+                            </div>
+
                         </div>
 
 
-                        <div className="random-card-body-container">
-                            <h3>Summary</h3>
-                            {anime.synopsis ? <p>{anime.synopsis}</p> : <p>This summary is not available</p>}
-                            
-
-                            <h3>Background</h3>
-                            {anime.background ? <p>{anime.background}</p> : <p>The background for this anime is not available</p>}
-                            
-                            
-                            <p>Rating: {anime.rating}</p>
-
-                            <p>Score: {anime.score} / 10</p>
-
-                            <p>Anime Rank: {anime.rank}</p>
-
-                            <p>Popularity: {anime.popularity}</p>
-
-                            <p>status: {anime.status}</p>
-
-                            <p>Season: {anime.season}</p>
-
-                            <p>Year: {anime.year}</p>
-
-                            <p>URL: {anime.url}</p>
-                        </div>
+                        
                         
                         </>
                     )

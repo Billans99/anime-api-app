@@ -128,24 +128,41 @@
 
 }
 
-.random-card-header-container{
-    text-align: center;
-    background-color: rgb(67, 67, 67);
-    color: white;
+.random-card-flex-container{
+    display: flex;
+    background-color: #e3e3e3;
+    color: rgb(0, 0, 0);
+    margin-top: -8px;
     padding-bottom: 10px;
+    height: 100vh;
 }
 
 .random-card-header-title{
     padding-top: 10px;
+    margin-top: -16px;
+    text-align: center;
+    color: white;
+    background-color: #434343;
+    padding-bottom: 10px;
 }
 
-.random-card-header-image{
+.random-card-image-container{
+    width: 30%;
+    height: 100%;
+    text-align: center;
+}
 
+.random-card-image{
+    width: 80%;
+    height: auto;
+    justify-content: right;
+    margin-top: 30px;
 }
 
 .random-card-body-container{
     padding: 20px;
     background-color: #e3e3e3;
+    width: 70%;
 }
 
 /* Cards components  */
