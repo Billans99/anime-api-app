@@ -30,7 +30,7 @@ const Header = (props) => {
                 
                 <Button className="category-recommendations" variant="success" onClick={() => props.handleRecommendationAnimeClick()}>Recommendations</Button>
 
-                <Button className="category-random" variant="warning">Random</Button>
+                <Button className="category-random" variant="warning" onClick={() => props.handleRandomAnimeClick()}>Random</Button>
 
                 <Button className="category-home" variant="dark" onClick={() => props.handleShowHomeClick()}>Home</Button>
                 

@@ -90,7 +90,7 @@
 .anime-recommendations-container{
     width: 50%;
     border: 1px solid #a6a6a6;
-    background-color: #d4d4d4;
+    background-color: #ededed;
     color: #555555;
     margin-top: -10px;
 }
@@ -120,6 +120,30 @@
 
 .anime-recommendations-content{
     margin: 10px;
+}
+
+.random-card-container{
+
+}
+
+.random-card-header-container{
+    text-align: center;
+    background-color: rgb(67, 67, 67);
+    color: white;
+    padding-bottom: 10px;
+}
+
+.random-card-header-title{
+    padding-top: 10px;
+}
+
+.random-card-header-image{
+
+}
+
+.random-card-body-container{
+    padding: 20px;
+    background-color: #e3e3e3;
 }
 
 /* Cards components  */

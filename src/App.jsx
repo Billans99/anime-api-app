@@ -1,7 +1,7 @@
 
 // TO DO LIST: 
 
-
+// - 1. Add search feature to app
 
 
 
@@ -28,15 +28,17 @@ import Cards from './Cards.jsx'
 import React, { useEffect, useState } from "react"
 import TopAnimeCards from './TopAnimeCards.jsx'
 import RecommendationAnimeCards from './RecommendationAnimeCards.jsx'
+import RandomAnimeCards from './RandomAnimeCards.jsx'
 
 
 
 
 const App = () => {
 
+  const [showHomeCards, setShowHomeCards] = useState(true)
   const [showTopAnime, setShowTopAnime] = useState(false)
   const [showRecommendationAnime, setShowRecommendationAnime] = useState(false)
-  const [showHomeCards, setShowHomeCards] = useState(true)
+  const [showRandomAnime, setShowRandomAnime] = useState(false)
 
 
 
@@ -45,7 +47,7 @@ const App = () => {
   const handleTopAnimeClick = () => {
     setShowHomeCards(false)
     setShowRecommendationAnime(false)
-    // setShowRandomAnime(false)
+    setShowRandomAnime(false)
     setShowTopAnime(true)
     
 }
@@ -53,21 +55,21 @@ const App = () => {
   const handleRecommendationAnimeClick = () => {
     setShowHomeCards(false)
     setShowTopAnime(false)
-    // setShowRandomAnime(false)
+    setShowRandomAnime(false)
     setShowRecommendationAnime(true)
   }
 
-  // const handleRandomAnimeClick = () => {
-  //   setShowHomeCards(false)
-  //   setShowTopAnime(false)
-  //   setShowRecommendationAnime(false)
-  //   setShowRandomAnime(true)
-  // }
+  const handleRandomAnimeClick = () => {
+    setShowHomeCards(false)
+    setShowTopAnime(false)
+    setShowRecommendationAnime(false)
+    setShowRandomAnime(true)
+  }
 
   const handleShowHomeClick = () => {
     setShowTopAnime(false)
     setShowRecommendationAnime(false)
-// setShowRandomAnime(false)
+setShowRandomAnime(false)
     setShowHomeCards(true)
   }
 
@@ -77,15 +79,17 @@ const App = () => {
   return (
     <>
       <Header 
-        handleTopAnimeClick={handleTopAnimeClick}
         handleShowHomeClick={handleShowHomeClick}
+        handleTopAnimeClick={handleTopAnimeClick}
         handleRecommendationAnimeClick={handleRecommendationAnimeClick}
+        handleRandomAnimeClick={handleRandomAnimeClick}
         />
       {/* <NewsletterAlert/> */}
 
       {showHomeCards ? <Cards/> :
         showTopAnime ? <TopAnimeCards/> :
-        showRecommendationAnime ? <RecommendationAnimeCards/> : <Cards/>}
+        showRecommendationAnime ? <RecommendationAnimeCards/> : 
+        showRandomAnime ? <RandomAnimeCards/> : <Cards/>}
 
     </>
   )
