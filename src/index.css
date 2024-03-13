@@ -56,6 +56,8 @@
 
 .categories-container > Button{
     margin-left: 10px;
+    border: 0.9px solid #717171;
+    box-shadow: 1px 1px 4px #4c4c4c;
 }
 
 .category-top{
@@ -82,6 +84,7 @@
 }
 
 .anime-recommendations-heading{
+    margin-top: -16px;
     text-align: center;
     padding: 30px 0px;
     background-color: #2f2f2f;
@@ -146,6 +149,17 @@
     padding-bottom: 10px;
 }
 
+.more-random-btn-container{
+    
+    
+}
+
+.more-random-btn{
+    border: 0.5px solid #c3c3c3;
+    margin-left: 50px;
+    color: #e7e7e7;
+}
+
 .random-card-image-container{
     width: 30%;
     height: 100%;
@@ -157,12 +171,31 @@
     height: auto;
     justify-content: right;
     margin-top: 30px;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-right: -30px;
 }
 
 .random-card-body-container{
     padding: 20px;
     background-color: #e3e3e3;
     width: 70%;
+}
+
+.random-card-summary-heading{
+    
+}
+
+.random-card-summary{
+    margin-bottom: 30px;
+}
+
+.random-card-background-heading{
+   
+}
+
+.random-card-background{
+    margin-bottom: 30px;
 }
 
 /* Cards components  */
@@ -178,7 +211,9 @@
 }
 
 .cards-content{
-    
+    border: 0.9px solid #717171;
+    box-shadow: 1px 1px 10px #4b4b4b;
+    border-radius: 10px;
 }
 
 .cards-footer-container{
@@ -207,6 +242,8 @@
     display: inline-block;
     justify-content: flex-end;
     height: 35px;
+    border: 0.9px solid rgb(113, 113, 113);
+    box-shadow: 1px 1px 4px #3c3c3c;
 }
 
 .cards-image{
@@ -798,7 +835,8 @@
 
 /* load 25 more anime titles button  */
 .load-more-btn{
-    
+    border: 0.9px solid rgb(113, 113, 113);
+    box-shadow: 1px 1px 4px black;
 }
 
 .load-more-btn:hover{

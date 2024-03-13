@@ -66,6 +66,10 @@ const App = () => {
     setShowRandomAnime(true)
   }
 
+  // const handleMoreRandomAnimeClick = () => {
+  //   setCount(count + 1)
+  // }
+
   const handleShowHomeClick = () => {
     setShowTopAnime(false)
     setShowRecommendationAnime(false)
@@ -83,6 +87,7 @@ setShowRandomAnime(false)
         handleTopAnimeClick={handleTopAnimeClick}
         handleRecommendationAnimeClick={handleRecommendationAnimeClick}
         handleRandomAnimeClick={handleRandomAnimeClick}
+        // handleMoreRandomAnimeClick={handleMoreRandomAnimeClick}
         />
       {/* <NewsletterAlert/> */}
 

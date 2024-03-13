@@ -3,17 +3,17 @@ import React, { useState, useEffect } from 'react'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 
-const RandomAnimeCards = () => {
+const RandomAnimeCards = (props) => {
 
     const [randomAnimeData, setRandomAnimeData] = useState()
     const [loading, setLoading] = useState(false)
-    
+    const [count, setCount] = useState(1)
 
 
 
     useEffect(() => {
         getRandomAnimeData()
-    }, [])
+    }, [count])
 
 
 
@@ -34,10 +34,20 @@ const RandomAnimeCards = () => {
             }
         }
 
-        console.log('randomAnimeData', randomAnimeData)
-
+       
  
+
+        const handleMoreRandomAnimeClick = () => {
+            setCount(count + 1)
+          }
+
+
+
+          console.log('randomAnimeData', randomAnimeData)
+
     
+
+
         return(
             <>
 
@@ -46,16 +56,25 @@ const RandomAnimeCards = () => {
 
                     return(
                         <>
-                        <h3 className="random-card-header-title">Title: {anime.title_english} | {anime.title_japanese}</h3>
+                        <h3 className="random-card-header-title">
+
+                            Title: {anime.title_english} {anime.title_japanese} 
+
+                            <span className="more-random-btn-container">
+                                <Button className="more-random-btn" variant="primary" onClick={() => handleMoreRandomAnimeClick()}>Find Another Random Anime</Button>
+                            </span>
+
+                        </h3>
 
                         <div className="random-card-flex-container">
 
                             <div className="random-card-body-container">
-                                <h3>Summary</h3>
-                                {anime.synopsis ? <p>{anime.synopsis}</p> : <p>This summary is not available</p>}
+                                
+                                <h3 className="random-card-summary-heading">Summary</h3>
+                                {anime.synopsis ? <p className="random-card-summary">{anime.synopsis}</p> : <p className="random-card-summary">This summary is not available</p>}
 
-                                <h3>Background</h3>
-                                {anime.background ? <p>{anime.background}</p> : <p>The background for this anime is not available</p>}
+                                <h3 className="random-card-background-heading">Background</h3>
+                                {anime.background ? <p className="random-card-background">{anime.background}</p> : <p className="random-card-background">The background for this anime is not available</p>}
                                 
                                 <p>Rating: {anime.rating}</p>
 
@@ -71,7 +90,7 @@ const RandomAnimeCards = () => {
 
                                 <p>Year: {anime.year}</p>
 
-                                <p>URL: {anime.url}</p>
+                                <p>Learn more here: <a href={anime.url}>{anime.url}</a></p>
                             </div>
 
                             <div className="random-card-image-container">
@@ -79,6 +98,8 @@ const RandomAnimeCards = () => {
                             </div>
 
                         </div>
+
+                        
 
 
                         
@@ -88,20 +109,6 @@ const RandomAnimeCards = () => {
                 })}
 
             </div>
-            
-
-                {/* Map each anime anime to a card  */}
-                
-
-                    {/* // Cards that display anime titles and view-more button that opens view-more modal  */}
-                    {/* <div className="random-card-container">
-                        <div className="random-card-image">
-                            <img src={randomAnimeData.images.jpg.image_url} alt="An image of a random anime"></img>
-                        </div>
-                        
-                        
-                    
-                    </div> */}
                     
 
         </>
