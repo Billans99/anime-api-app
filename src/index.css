@@ -78,6 +78,15 @@
     margin-right: 10px;
 }
 
+.search-bar{
+    width: 30vw;
+    margin: 0 auto;
+    display: block;
+    float: right;
+    box-shadow: 1px 1px 1px #aaaaaa;
+    border-radius: 3px;
+}
+
 .newsletter-alert{
     text-align: center;
   
@@ -157,7 +166,12 @@
 .more-random-btn{
     border: 0.5px solid #c3c3c3;
     margin-left: 50px;
-    color: #e7e7e7;
+    color: #ffffff;
+}
+
+.random-card-url-link{
+    text-decoration: none;
+
 }
 
 .random-card-image-container{

@@ -8,6 +8,8 @@ const RandomAnimeCards = (props) => {
     const [randomAnimeData, setRandomAnimeData] = useState()
     const [loading, setLoading] = useState(false)
     const [count, setCount] = useState(1)
+    // set query intitial state to empty string
+    const [q, setQ] = useState('')
 
 
 
@@ -77,8 +79,8 @@ const RandomAnimeCards = (props) => {
                                 {anime.background ? <p className="random-card-background">{anime.background}</p> : <p className="random-card-background">The background for this anime is not available</p>}
                                 
                                 <p>Rating: {anime.rating}</p>
-
-                                <p>Score: {anime.score} / 10</p>
+                                
+                                <p>Score: {anime.score}</p>
 
                                 <p>Anime Rank: {anime.rank}</p>
 
@@ -90,7 +92,7 @@ const RandomAnimeCards = (props) => {
 
                                 <p>Year: {anime.year}</p>
 
-                                <p>Learn more here: <a href={anime.url}>{anime.url}</a></p>
+                                <p>Learn more here: <a className="random-card-url-link" href={anime.url}>{anime.url}</a></p>
                             </div>
 
                             <div className="random-card-image-container">

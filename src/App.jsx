@@ -1,7 +1,9 @@
 
 // TO DO LIST: 
 
-// - 1. Add search feature to app
+// - 1. Add && before each map function to check if the data is available before mapping through it
+// - 2. Update RandomAnimeCards' endpoint to be safe for work animes
+// - 3. Add search feature to app
 
 
 
@@ -39,6 +41,9 @@ const App = () => {
   const [showTopAnime, setShowTopAnime] = useState(false)
   const [showRecommendationAnime, setShowRecommendationAnime] = useState(false)
   const [showRandomAnime, setShowRandomAnime] = useState(false)
+
+  // const [isloading, setIsloading] = useState(true);
+  // const [FactsData, setFactsData] = useState([]);
 
 
 

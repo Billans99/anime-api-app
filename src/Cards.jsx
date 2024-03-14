@@ -482,7 +482,7 @@ const Cards = () => {
                                             {/* view-more characters data */}
                                             <h3 className="characters-heading">Characters</h3>
                                             <div className="characters-container">
-                                                    {animeCharactersData.map((character) => {
+                                                    {animeCharactersData && animeCharactersData.map((character) => {
 
                                                         let characterRoleColor = ''
 
@@ -516,7 +516,7 @@ const Cards = () => {
                                             {/* view-more characters data */}
                                             <h3 className="news-heading">News for {selectedAnime.title}</h3>
                                             
-                                                    {newsData.map((newsItem) => {
+                                                    {newsData && newsData.map((newsItem) => {
                                                     
                                                     // create new date object with the date from newsItem (api data)
                                                     const date = new Date(newsItem.date)
@@ -617,7 +617,7 @@ const Cards = () => {
                                                     
                                                         {/* Carousel  */}
                                                         <Carousel className="carousel-container">
-                                                            {picturesData.map((picture, index) => {
+                                                            {picturesData && picturesData.map((picture, index) => {
 
                                                                 return(
                                                                 <Carousel.Item key={index}>
