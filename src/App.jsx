@@ -41,11 +41,7 @@ const App = () => {
   const [showTopAnime, setShowTopAnime] = useState(false)
   const [showRecommendationAnime, setShowRecommendationAnime] = useState(false)
   const [showRandomAnime, setShowRandomAnime] = useState(false)
-
-  // const [isloading, setIsloading] = useState(true);
-  // const [FactsData, setFactsData] = useState([]);
-
-
+  const [searchInput, setSearchInput] = useState("")
 
 
 
@@ -83,6 +79,10 @@ setShowRandomAnime(false)
   }
 
 
+  const handleChange = (event) => {
+    setSearchInput(event.target.value)
+  }
+
 
 
   return (
@@ -92,14 +92,15 @@ setShowRandomAnime(false)
         handleTopAnimeClick={handleTopAnimeClick}
         handleRecommendationAnimeClick={handleRecommendationAnimeClick}
         handleRandomAnimeClick={handleRandomAnimeClick}
-        // handleMoreRandomAnimeClick={handleMoreRandomAnimeClick}
+        searchInput={searchInput}
+        handleChange={handleChange}
         />
       {/* <NewsletterAlert/> */}
 
-      {showHomeCards ? <Cards/> :
+      {showHomeCards ? <Cards searchInput={searchInput}/> :
         showTopAnime ? <TopAnimeCards/> :
         showRecommendationAnime ? <RecommendationAnimeCards/> : 
-        showRandomAnime ? <RandomAnimeCards/> : <Cards/>}
+        showRandomAnime ? <RandomAnimeCards/> : <Cards searchInput={searchInput}/>}
 
     </>
   )

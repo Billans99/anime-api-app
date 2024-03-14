@@ -7,11 +7,48 @@ import Form from 'react-bootstrap/Form'
 
 const Header = (props) => {
     
+    // const [searchInput, setSearchInput] = useState("")
+    const [animeData, setAnimeData] = useState([])
+    const [loading, setLoading] = useState(false)
+    
 
 
-    // set query intitial state to empty string
-    // const [q, setQ] = useState('')
-    // const [searchParam] = useState(['titles', 'title'])
+
+
+    useEffect(() => {
+        getAnimeData()
+    }, [props.searchInput])
+
+
+
+    const getAnimeData = async () => {
+        try {
+            if (loading) return
+
+            setLoading(true)
+            const response = await axios.get(`https://api.jikan.moe/v4/anime?page=${currentPage}&q=&sfw`)
+            console.log('animeSearchResponse', response)
+            setAnimeData(response.data.data)
+            setCurrentPage(response.data.pagination.current_page)
+            setLoading(false)
+    
+        } catch (error) {
+            console.error("Error fetching search data: ", error)
+        }
+    }
+
+    // const handleChange = (e) => {
+    //     e.preventDefault();
+    //     setSearchInput(e.target.value);
+    //     console.log(searchInput)
+    //   };
+      
+      if (props.searchInput.length > 0) {
+          animeData.filter((anime) => {
+          return anime.title.match(props.searchInput);
+      });
+      }
+
 
 
 
@@ -39,6 +76,7 @@ const Header = (props) => {
                 <Button className="category-home" variant="dark" onClick={() => props.handleShowHomeClick()}>Home</Button>
 
 
+
                 <Form className="search-bar">
                     <Form.Group className="mb-3" controlId="search-bar">
                         {/* <Form.Label></Form.Label> */}
@@ -47,12 +85,13 @@ const Header = (props) => {
                             id="search-form" 
                             name="search-form" 
                             type="search" 
-                            // value={q} 
-                            onChange={(e) => setQ(e.target.value)} 
+                            value={props.searchInput} 
+                            onChange={props.handleChange} 
                             placeholder="Search for anime" />
 
                     </Form.Group>
                 </Form>
+
                 
 
             </div>

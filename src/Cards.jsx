@@ -16,7 +16,7 @@ import Card from 'react-bootstrap/Card'
 
 
     // Cards component
-const Cards = () => {
+const Cards = (props) => {
     const [animeData, setAnimeData] = useState([])
     const [animeCharactersData, setAnimeCharactersData] = useState([])
     const [animeReviewsData, setAnimeReviewsData] = useState([])
@@ -243,8 +243,12 @@ const Cards = () => {
 
             {/* Individual cards display different anime from the api */}
             <div className="cards-container">
-                {/* Map each anime anime to a card  */}
-                {animeData && animeData.map((anime) => {
+
+            {animeData.filter(anime => anime.title && anime.title.toLowerCase().includes(props.searchInput.toLowerCase())).map((anime, index) => {
+                
+
+                
+                
                     return(
 
 
@@ -277,7 +281,9 @@ const Cards = () => {
                         
                     </div>
                     
-                )})}
+                )
+})}
+                
             </div>
 
 
