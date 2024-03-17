@@ -34,6 +34,9 @@ const Cards = (props) => {
     const [externalLinksData, setExternalLinksData] = useState([])
     const [streamingData, setStreamingData] = useState([])
 
+
+    const { setSearchAnimeData } = props
+
     // get Data on initial render of page, if dependancy changes, load data again
     useEffect(() => {
         getAnimeData()

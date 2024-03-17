@@ -26,7 +26,7 @@ const Header = (props) => {
             if (loading) return
 
             setLoading(true)
-            const response = await axios.get(`https://api.jikan.moe/v4/anime?page=${currentPage}&q=&sfw`)
+            const response = await axios.get(`https://api.jikan.moe/v4/anime?q=${props.searchInput}&page=${currentPage}&sfw`);
             console.log('animeSearchResponse', response)
             setAnimeData(response.data.data)
             setCurrentPage(response.data.pagination.current_page)
@@ -36,12 +36,6 @@ const Header = (props) => {
             console.error("Error fetching search data: ", error)
         }
     }
-
-    // const handleChange = (e) => {
-    //     e.preventDefault();
-    //     setSearchInput(e.target.value);
-    //     console.log(searchInput)
-    //   };
       
       if (props.searchInput.length > 0) {
           animeData.filter((anime) => {

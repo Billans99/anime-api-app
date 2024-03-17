@@ -31,6 +31,7 @@ import React, { useEffect, useState } from "react"
 import TopAnimeCards from './TopAnimeCards.jsx'
 import RecommendationAnimeCards from './RecommendationAnimeCards.jsx'
 import RandomAnimeCards from './RandomAnimeCards.jsx'
+import axios from 'axios'
 
 
 
@@ -42,6 +43,9 @@ const App = () => {
   const [showRecommendationAnime, setShowRecommendationAnime] = useState(false)
   const [showRandomAnime, setShowRandomAnime] = useState(false)
   const [searchInput, setSearchInput] = useState("")
+  const [searchAnimeData, setSearchAnimeData] = useState([])
+  const [currentPage, setCurrentPage] = useState(1)
+  
 
 
 
@@ -74,13 +78,23 @@ const App = () => {
   const handleShowHomeClick = () => {
     setShowTopAnime(false)
     setShowRecommendationAnime(false)
-setShowRandomAnime(false)
+    setShowRandomAnime(false)
     setShowHomeCards(true)
   }
 
 
-  const handleChange = (event) => {
-    setSearchInput(event.target.value)
+  const handleChange = async (event) => {
+    try{
+      const newSearchInput = event.target.value
+      setSearchInput(newSearchInput)
+      const response = await axios.get(`https://api.jikan.moe/v4/anime?q=${searchInput}&page=${currentPage}&sfw`)
+      const data = response.data.results
+      setSearchAnimeData(data)
+
+    } catch (error) {
+      console.error('Error fetching search data', error)
+    }
+    
   }
 
 
@@ -97,7 +111,10 @@ setShowRandomAnime(false)
         />
       {/* <NewsletterAlert/> */}
 
-      {showHomeCards ? <Cards searchInput={searchInput}/> :
+      {showHomeCards ? <Cards 
+        setSearchAnimeData={setSearchAnimeData}
+        searchInput={searchInput} 
+        /> :
         showTopAnime ? <TopAnimeCards/> :
         showRecommendationAnime ? <RecommendationAnimeCards/> : 
         showRandomAnime ? <RandomAnimeCards/> : <Cards searchInput={searchInput}/>}
