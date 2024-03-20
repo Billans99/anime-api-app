@@ -7,11 +7,29 @@ import Form from 'react-bootstrap/Form'
 
 const Header = (props) => {
     
+    
+   
+    const [loading, setLoading] = useState(false)
+    
 
 
-    // set query intitial state to empty string
-    // const [q, setQ] = useState('')
-    // const [searchParam] = useState(['titles', 'title'])
+    const getAnimeData = async () => {
+        try {
+            if (loading) return
+
+            setLoading(true)
+            // const response = await axios.get(`https://api.jikan.moe/v4/anime?q=${props.searchInput}&page=${currentPage}&sfw`)
+            console.log('animeSearchResponse', response)
+            setAnimeData(response.data.data)
+            setCurrentPage(response.data.pagination.current_page)
+            setLoading(false)
+    
+        } catch (error) {
+            console.error("Error fetching search data: ", error)
+        }
+    }
+      
+
 
 
 
@@ -39,6 +57,7 @@ const Header = (props) => {
                 <Button className="category-home" variant="dark" onClick={() => props.handleShowHomeClick()}>Home</Button>
 
 
+
                 <Form className="search-bar">
                     <Form.Group className="mb-3" controlId="search-bar">
                         {/* <Form.Label></Form.Label> */}
@@ -47,12 +66,13 @@ const Header = (props) => {
                             id="search-form" 
                             name="search-form" 
                             type="search" 
-                            // value={q} 
-                            onChange={(e) => setQ(e.target.value)} 
+                            // value=
+                            // onChange=
                             placeholder="Search for anime" />
 
                     </Form.Group>
                 </Form>
+
                 
 
             </div>
