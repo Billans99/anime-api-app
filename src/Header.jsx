@@ -66,8 +66,6 @@ const Header = (props) => {
                             id="search-form" 
                             name="search-form" 
                             type="search" 
-                            // value=
-                            // onChange=
                             placeholder="Search for anime" />
 
                     </Form.Group>

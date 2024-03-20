@@ -8,8 +8,8 @@ const RandomAnimeCards = (props) => {
     const [randomAnimeData, setRandomAnimeData] = useState()
     const [loading, setLoading] = useState(false)
     const [count, setCount] = useState(1)
-    // set query intitial state to empty string
-    const [q, setQ] = useState('')
+    
+   
 
 
 

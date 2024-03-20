@@ -22,6 +22,7 @@ import TopAnimeCards from './TopAnimeCards.jsx'
 import RecommendationAnimeCards from './RecommendationAnimeCards.jsx'
 import RandomAnimeCards from './RandomAnimeCards.jsx'
 import axios from 'axios'
+import axios from 'axios'
 
 
 
@@ -98,10 +99,7 @@ const App = () => {
         /> :
         showTopAnime ? <TopAnimeCards/> :
         showRecommendationAnime ? <RecommendationAnimeCards/> : 
-        showRandomAnime ? <RandomAnimeCards/> : 
-        <Cards
-          
-         />}
+        showRandomAnime ? <RandomAnimeCards/> : <Cards/>}
 
     </>
   )
