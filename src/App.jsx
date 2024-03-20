@@ -21,9 +21,8 @@ import React, { useEffect, useState } from "react"
 import TopAnimeCards from './TopAnimeCards.jsx'
 import RecommendationAnimeCards from './RecommendationAnimeCards.jsx'
 import RandomAnimeCards from './RandomAnimeCards.jsx'
+import SearchCards from './SearchCards.jsx'
 import axios from 'axios'
-import axios from 'axios'
-
 
 
 
@@ -33,53 +32,73 @@ const App = () => {
   const [showTopAnime, setShowTopAnime] = useState(false)
   const [showRecommendationAnime, setShowRecommendationAnime] = useState(false)
   const [showRandomAnime, setShowRandomAnime] = useState(false)
+  const [showSearchAnime, setShowSearchAnime] = useState(false)
+
+  const [searchAnimeData, setSearchAnimeData] = useState([])
   
   
 
 
-
+  // show top anime cards and hide the rest
   const handleTopAnimeClick = () => {
     setShowHomeCards(false)
     setShowRecommendationAnime(false)
     setShowRandomAnime(false)
+    setShowSearchAnime(false)
     setShowTopAnime(true)
     
 }
 
+  // show recommendation anime cards and hide the rest
   const handleRecommendationAnimeClick = () => {
     setShowHomeCards(false)
     setShowTopAnime(false)
     setShowRandomAnime(false)
+    setShowSearchAnime(false)
     setShowRecommendationAnime(true)
   }
 
+  // show random anime cards and hide the rest
   const handleRandomAnimeClick = () => {
     setShowHomeCards(false)
     setShowTopAnime(false)
     setShowRecommendationAnime(false)
+    setShowSearchAnime(false)
     setShowRandomAnime(true)
   }
 
+  // sets rest of show states to false and only shows home cards
   const handleShowHomeClick = () => {
     setShowTopAnime(false)
     setShowRecommendationAnime(false)
     setShowRandomAnime(false)
+    setShowSearchAnime(false)
     setShowHomeCards(true)
   }
 
-  // const handleSearch = async (event) => {
-  //   try{
-  //     const newSearchInput = event.target.value
-  //     setSearchInput(newSearchInput)
-  //     const response = await axios.get(`https://api.jikan.moe/v4/anime?q=${newSearchInput}&page=1&sfw`)
-  //     const data = response.data.results
-  //     setSearchAnimeData(data)
+  // sets rest of show states to false and only shows search cards
+  const handleShowSearchAnime = () => {
+    setShowTopAnime(false)
+    setShowRecommendationAnime(false)
+    setShowRandomAnime(false)
+    setShowHomeCards(false)
+    setShowSearchAnime(true)
+  }
 
-  //   } catch (error) {
-  //     console.error('Error fetching search data', error)
-  //   }
-  // }
+  // function called every time search input changes, sets searchAnimeData to the response from the api
+  const handleSearch = async (query) => {
+    try {
+      const response = await axios.get(`https://api.jikan.moe/v4/anime?q=${query}`)
+      // it may be response.data.results instead
+      const data = response.data.data
+      setSearchAnimeData(data)
+      handleShowSearchAnime()
 
+    } catch (error) {
+      console.error('Error fetching search data', error)
+    }
+  }
+  
 
 
 
@@ -90,7 +109,7 @@ const App = () => {
         handleTopAnimeClick={handleTopAnimeClick}
         handleRecommendationAnimeClick={handleRecommendationAnimeClick}
         handleRandomAnimeClick={handleRandomAnimeClick}
-        
+        handleSearch={handleSearch}
         />
       {/* <NewsletterAlert/> */}
 
@@ -99,7 +118,9 @@ const App = () => {
         /> :
         showTopAnime ? <TopAnimeCards/> :
         showRecommendationAnime ? <RecommendationAnimeCards/> : 
-        showRandomAnime ? <RandomAnimeCards/> : <Cards/>}
+        showRandomAnime ? <RandomAnimeCards/> : 
+        showSearchAnime ? <SearchCards searchAnimeData={searchAnimeData}/> : 
+        <Cards/>}
 
     </>
   )

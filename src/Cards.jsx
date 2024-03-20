@@ -16,7 +16,7 @@ import Card from 'react-bootstrap/Card'
 
 
     // Cards component
-const Cards = (props) => {
+const Cards = () => {
     const [animeData, setAnimeData] = useState([])
     const [animeCharactersData, setAnimeCharactersData] = useState([])
     const [animeReviewsData, setAnimeReviewsData] = useState([])
@@ -34,10 +34,7 @@ const Cards = (props) => {
     const [externalLinksData, setExternalLinksData] = useState([])
     const [streamingData, setStreamingData] = useState([])
 
-
-    const { setSearchAnimeData } = props
-
-    // get Data on initial render of page, if dependancy changes, load data again
+    // Immediately execute and load data (once) on initial render of page, if dependancy changes, load data again
     useEffect(() => {
         getAnimeData()
     }, [currentPage])
@@ -82,8 +79,7 @@ const Cards = (props) => {
         getStreamingData()
     }, [selectedAnimeID])
 
-    // Get data functions from endpoints
-    // Get anime cards data
+    // Fetch anime data from Jikan API, and set the state of animeData to the response data
     const getAnimeData = async () => {
         try {
             if (loading) return
@@ -225,7 +221,7 @@ const Cards = (props) => {
         setCurrentPage(currentPage + 1)
     }
 
-    // Handles logic for view more button, open modal and sets selected anime to the anime object that was clicked
+    // Handles logic for view more button
     const handleViewMore = (anime) => {
         setSelectedAnime(anime)
         setSelectedAnimeID(anime.mal_id)
@@ -247,18 +243,13 @@ const Cards = (props) => {
 
             {/* Individual cards display different anime from the api */}
             <div className="cards-container">
-            
-            {/* Filters the anime data based on the title key, and the search input from the header */}
-            {animeData && animeData.filter(anime => anime.title && anime.title.toLowerCase().includes(props.searchInput.toLowerCase())).map((anime, index) => {
-                
-
-                
-                
+                {/* Map each anime anime to a card  */}
+                {animeData && animeData.map((anime) => {
                     return(
 
 
                         
-                    // Cards that display anime titles and view-more button that opens the view-more modal 
+                    // Cards that display anime titles and view-more button that opens view-more modal 
                     <div className="cards-content">
                         <Card style={{ width: '21rem' }}>
                             <Card.Img className="cards-image" variant="top" src={anime.images.jpg.image_url} />
@@ -286,12 +277,10 @@ const Cards = (props) => {
                         
                     </div>
                     
-                )
-})}
-                
+                )})}
             </div>
 
-            {/* if selected anime is a truthy value, return the modal */}
+
             {selectedAnime && (
                         // Modal popup that displays more information about the anime title
                         //  when view-more button is clicked
@@ -444,14 +433,13 @@ const Cards = (props) => {
 
                                                         </div> 
 
-
                                                         <div className="review-body-container">
                                                             {/* Review body, limited to 500 characters */}
                                                             <p className="review-body">{review.review.length > 500 ?
                                                                 `${review.review.substring(0, 500)}...` : item.description}                                                       
                                                             </p>
 
-                                                            {review.tags && review.tags.map((recommendation) => {
+                                                            {review.tags.map((recommendation) => {
 
                                                                 let recommendationColor = ''
                                                                     
@@ -477,14 +465,14 @@ const Cards = (props) => {
                                                 )
                                             })}             
 
-
                                                     {/* load more reviews button */}
                                                     <div className="review-btn-container">
                                                             {reviewsArray[1] < animeReviewsData.length &&
                                                                 <Button onClick={() => loadMoreReviews()} className="more-reviews-btn" variant="primary">More reviews</Button>
                                                             }
-                                                    </div>
 
+                                 
+                                                    </div>
                                         </Tab>
 
 
@@ -662,7 +650,7 @@ const Cards = (props) => {
                                             <h3 className="recommendations-heading">Recommendations for {selectedAnime.title}</h3>
 
                                             <div className="recommendations-flex-container">
-                                                {recommendationsData && recommendationsData.map((recommendation) => {
+                                                {recommendationsData.map((recommendation) => {
                                                     
 
 
@@ -694,7 +682,6 @@ const Cards = (props) => {
                                             
                                         </Tab>
                                         
-                                        {/* theme music tab */}
                                         <Tab className="theme-music-tab" eventKey="theme-music" title="Theme Music">
                                                 
                                             <h3 className="theme-music-heading">Theme Music</h3>
@@ -718,16 +705,16 @@ const Cards = (props) => {
                                                     <p className="theme-ending-body">{ending}</p>
                                                 )
                                             })}
-                                                                   
+                                                
+                                                
                                         </Tab>
                                             
 
-                                        {/* anime related to the current selected anime tab */}
                                         <Tab className="relations-tab" eventKey="relations" title="Relations">
 
                                             <h3 className="relations-heading">Relations</h3>
                                         
-                                            {relationsData && relationsData.map((relation) => {
+                                            {relationsData.map((relation) => {
                                                 
                                                 return(
                                                     
@@ -735,7 +722,7 @@ const Cards = (props) => {
             
                                                         <p className="relations-type">{relation.relation} </p>
                                                         
-                                                        {relation.entry && relation.entry.map((entry) => {
+                                                        {relation.entry.map((entry) => {
             
                                                             return(
                                                                 <>
@@ -753,11 +740,10 @@ const Cards = (props) => {
                                            
                                         </Tab>
 
-                                        {/* External links tab */}
                                         <Tab className="external-links-tab" eventKey="external-links" title="External Links">
 
                                             <h3 className="external-link-heading">External Links</h3>
-                                        {externalLinksData && externalLinksData.map((externalLink) => {
+                                        {externalLinksData.map((externalLink) => {
 
                                             return(
                                                 <div className="external-links-container">
@@ -774,12 +760,11 @@ const Cards = (props) => {
 
                                         </Tab>
 
-                                        {/* streaming platforms tab */}
                                         <Tab className="streaming-platforms-tab" eventKey="streaming-platforms" title="Streaming platforms">
 
 
                                         <h3 className="streaming-platforms-heading">Streaming Platforms</h3>
-                                        {streamingData && streamingData.map((stream) => {
+                                        {streamingData.map((stream) => {
 
                                             return(
                                                 <div className="streaming-platforms-container">
