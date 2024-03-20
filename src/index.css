@@ -230,6 +230,14 @@
     border-radius: 10px;
 }
 
+.cards-image{
+    max-height: 400px;
+    min-height: 400px;
+    /* width: auto; */
+    border: 1px solid #808080;
+    border-radius: 5px;   
+}
+
 .cards-footer-container{
     display: flex;
     flex-direction: row;
@@ -258,13 +266,6 @@
     height: 35px;
     border: 0.9px solid rgb(113, 113, 113);
     box-shadow: 1px 1px 4px #3c3c3c;
-}
-
-.cards-image{
-    max-height: 400px;
-    /* width: auto; */
-    border: 1px solid #808080;
-    border-radius: 5px;   
 }
 
 .cards-body{
