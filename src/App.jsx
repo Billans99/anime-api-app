@@ -1,11 +1,12 @@
 
 // TO DO LIST: 
 
-// - 1. Implement search on through query parameter on the Jikan API
-// - 2. Update RandomAnimeCards' endpoint to be safe for work animes
-// - 3. Make more comments to explain code
+// - 1. Give minimum height to Cards images in CSS, some of the SearchCards are displaying smaller due to this
+// - 2. modify SearchCards component to only render safe-for-work cards
+// - 3. Update RandomAnimeCards' endpoint to be safe-for-work animes
+// - 4. Make more comments to explain code
 
-// - 4. Find a way to access non-rate limited api data from Jikan API. (about half the data you get from the current api call is rate limited)
+// - 5. Find a way to access non-rate limited api data from Jikan API. (about half the data you get from the current api call is rate limited)
 
 
 
