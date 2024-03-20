@@ -1,9 +1,7 @@
 
 // TO DO LIST: 
 
-// - 1. modify SearchCards component to only render safe-for-work cards
-// - 2. Update RandomAnimeCards' endpoint to be safe-for-work animes
-// - 3. Make more comments to explain code
+// - 1. Make more comments to explain code
 
 // - 4. Find a way to access non-rate limited api data from Jikan API. (about half the data you get from the current api call is rate limited)
 
@@ -87,11 +85,11 @@ const App = () => {
   // function called every time search input changes, sets searchAnimeData to the response from the api
   const handleSearch = async (query) => {
     try {
-      const response = await axios.get(`https://api.jikan.moe/v4/anime?q=${query}`)
-      // it may be response.data.results instead
-      const data = response.data.data
-      setSearchAnimeData(data)
+      const response = await axios.get(`https://api.jikan.moe/v4/anime?q=${query}&sfw=true`)
+      console.log('searchAnimeCardsResponse', response)
+      setSearchAnimeData(response.data.data)
       handleShowSearchAnime()
+      
 
     } catch (error) {
       console.error('Error fetching search data', error)

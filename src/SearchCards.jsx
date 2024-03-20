@@ -12,13 +12,11 @@ import Card from 'react-bootstrap/Card'
 
 const SearchCards = (props) => {
 
-    const [topAnimeData, setTopAnimeData] = useState([])
     const [animeCharactersData, setAnimeCharactersData] = useState([])
     const [animeReviewsData, setAnimeReviewsData] = useState([])
     const [newsData, setNewsData] = useState([])
     const [statsData, setStatsData] = useState([])
     const [picturesData, setPicturesData] = useState([])
-    const [currentPage, setCurrentPage] = useState(1)
     const [reviewsArray, setReviewsArray] = useState([0, 5])
     const [loading, setLoading] = useState(false)
     const [selectedAnime, setSelectedAnime] = useState(null)
@@ -188,12 +186,6 @@ const SearchCards = (props) => {
         } catch (error) {
             console.error('error fetching streaming data', error)
         }
-    }
-
-    // load more button that loads additional 25 anime titles to page by appending to previous array
-    const loadMoreAnime = () => {
-        setCurrentPage(currentPage + 1)
-        console.log('currentPage', currentPage)
     }
 
     // Handles logic for view more button
@@ -769,11 +761,6 @@ const SearchCards = (props) => {
                         </Modal>
                         )}
 
-
-            {/* Load another 25 anime titles button */}
-            <div className="load-more-container">
-                <Button onClick={loadMoreAnime} className="load-more-btn" variant="secondary">Load More</Button>
-            </div>
 
         </>
     )
