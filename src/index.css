@@ -73,9 +73,7 @@
 }
 
 .category-home{
-    justify-content: flex-end;
-    float: right;
-    margin-right: 10px;
+
 }
 
 .search-bar{
@@ -83,6 +81,7 @@
     margin: 0 auto;
     display: block;
     float: right;
+    margin-right: 2px;
     box-shadow: 1px 1px 1px #aaaaaa;
     border-radius: 3px;
 }

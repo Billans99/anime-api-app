@@ -1,6 +1,10 @@
 
 // TO DO LIST: 
 
+// - Move home button to the left
+// - Change btn colors all to blue
+// - getSearch to only execute once after button press (make button for it as well)
+// - Make a spinner when loading
 // - 1. Make more comments to explain code
 
 // - 4. Find a way to access non-rate limited api data from Jikan API. (about half the data you get from the current api call is rate limited)

@@ -12,7 +12,7 @@ const Header = (props) => {
     const [loading, setLoading] = useState(false)
     const [searchInput, setSearchInput] = useState('')
     
-      
+
     // call function every time search input changes
     const handleSearchInput = (event) => {
         setSearchInput(event.target.value)
@@ -35,14 +35,16 @@ const Header = (props) => {
 
                 
             <div className="categories-container">
+
+                <Button className="category-home" variant="primary" onClick={() => props.handleShowHomeClick()}>Home</Button>
                 
                 <Button className="category-top" variant="primary" onClick={() => props.handleTopAnimeClick()}>Top</Button>
                 
-                <Button className="category-recommendations" variant="success" onClick={() => props.handleRecommendationAnimeClick()}>Recommendations</Button>
+                <Button className="category-recommendations" variant="primary" onClick={() => props.handleRecommendationAnimeClick()}>Recommendations</Button>
 
-                <Button className="category-random" variant="warning" onClick={() => props.handleRandomAnimeClick()}>Random</Button>
+                <Button className="category-random" variant="primary" onClick={() => props.handleRandomAnimeClick()}>Random</Button>
 
-                <Button className="category-home" variant="dark" onClick={() => props.handleShowHomeClick()}>Home</Button>
+                
 
 
 
