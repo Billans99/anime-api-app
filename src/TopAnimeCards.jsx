@@ -7,6 +7,7 @@ import Tabs from 'react-bootstrap/Tabs'
 import Carousel from 'react-bootstrap/Carousel'
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import Card from 'react-bootstrap/Card'
+import LoadingSpinner from './LoadingSpinner.jsx'
 
 const TopAnimeCards = () => {
 
@@ -243,6 +244,10 @@ const TopAnimeCards = () => {
     
         return(
             <>
+
+                {loading && (
+                    <LoadingSpinner/>
+                )}
 
             {/* Individual cards display different anime from the api */}
             <div className="cards-container">

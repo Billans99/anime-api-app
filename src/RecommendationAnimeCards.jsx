@@ -1,12 +1,6 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
-import Button from 'react-bootstrap/Button'
-import Modal from 'react-bootstrap/Modal'
-import Tab from 'react-bootstrap/Tab'
-import Tabs from 'react-bootstrap/Tabs'
-import Carousel from 'react-bootstrap/Carousel'
-import ProgressBar from 'react-bootstrap/ProgressBar'
-import Card from 'react-bootstrap/Card'
+import LoadingSpinner from './LoadingSpinner.jsx'
 
 const RecommendationAnimeCards = () => {
 
@@ -46,6 +40,9 @@ const RecommendationAnimeCards = () => {
 
         return(
             <>
+
+            
+
             <h3 className="anime-recommendations-heading">Anime Recommendations List</h3>
 
              <div className="recommendations-flex-container">

@@ -1,13 +1,10 @@
 
 // TO DO LIST: 
 
-// - Move home button to the left
-// - Change btn colors all to blue
-// - getSearch to only execute once after button press (make button for it as well)
-// - Make a spinner when loading
-// - 1. Make more comments to explain code
 
-// - 4. Find a way to access non-rate limited api data from Jikan API. (about half the data you get from the current api call is rate limited)
+// - 1. Make a spinner when loading
+// - 2. Make more comments to explain code
+
 
 
 
@@ -24,6 +21,7 @@ import RecommendationAnimeCards from './RecommendationAnimeCards.jsx'
 import RandomAnimeCards from './RandomAnimeCards.jsx'
 import SearchCards from './SearchCards.jsx'
 import axios from 'axios'
+import LoadingSpinner from './LoadingSpinner.jsx'
 
 
 
@@ -34,7 +32,7 @@ const App = () => {
   const [showRecommendationAnime, setShowRecommendationAnime] = useState(false)
   const [showRandomAnime, setShowRandomAnime] = useState(false)
   const [showSearchAnime, setShowSearchAnime] = useState(false)
-
+  const [loading, setLoading] = useState(false)
   const [searchAnimeData, setSearchAnimeData] = useState([])
 
   
@@ -89,10 +87,14 @@ const App = () => {
   // function called every time search input changes, sets searchAnimeData to the response from the api
   const handleSearch = async (query) => {
     try {
+      if (loading) return
+
+      setLoading(true)
       const response = await axios.get(`https://api.jikan.moe/v4/anime?q=${query}&sfw=true`)
       console.log('searchAnimeCardsResponse', response)
       setSearchAnimeData(response.data.data)
       handleShowSearchAnime()
+      setLoading(false)
       
 
     } catch (error) {

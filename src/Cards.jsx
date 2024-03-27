@@ -9,6 +9,9 @@ import Tabs from 'react-bootstrap/Tabs'
 import Carousel from 'react-bootstrap/Carousel'
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import Card from 'react-bootstrap/Card'
+import Spinner from 'react-bootstrap/Spinner'
+import LoadingSpinner from './LoadingSpinner.jsx'
+
 
 
 
@@ -82,7 +85,7 @@ const Cards = () => {
     // Fetch anime data from Jikan API, and set the state of animeData to the response data
     const getAnimeData = async () => {
         try {
-            if (loading) return
+            if (loading) return 
 
             setLoading(true)
             const response = await axios.get(`https://api.jikan.moe/v4/anime?page=${currentPage}&q=&sfw`)
@@ -240,13 +243,18 @@ const Cards = () => {
 
     return (
         <>
+        
+            {loading && (
+                    <LoadingSpinner/>
+                )}
+
 
             {/* Individual cards display different anime from the api */}
             <div className="cards-container">
                 {/* Map each anime anime to a card  */}
                 {animeData && animeData.map((anime) => {
                     return(
-
+                        
 
                         
                     // Cards that display anime titles and view-more button that opens view-more modal 

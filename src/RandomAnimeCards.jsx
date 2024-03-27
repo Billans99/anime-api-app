@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import Button from 'react-bootstrap/Button'
-import Card from 'react-bootstrap/Card'
+import LoadingSpinner from './LoadingSpinner'
 
 const RandomAnimeCards = (props) => {
 
@@ -23,13 +23,13 @@ const RandomAnimeCards = (props) => {
     // Fetch random anime data from random anime endpoint
     const getRandomAnimeData = async () => {
             try {
-                // if (loading) return
+                if (loading) return
 
-                // setLoading(true)
+                setLoading(true)
                 const response = await axios.get('https://api.jikan.moe/v4/random/anime')
                 console.log('randomAnimeResponse', response)
                 setRandomAnimeData([response.data.data])
-                // setLoading(false)
+                setLoading(false)
 
             } catch (error) {
                 console.error('Error fetching randomAnime Data', error)
@@ -52,6 +52,10 @@ const RandomAnimeCards = (props) => {
 
         return(
             <>
+
+                {loading && (
+                    <LoadingSpinner/>
+                )}
 
             <div className="random-card-container">
                 {randomAnimeData && randomAnimeData.map((anime) => {
