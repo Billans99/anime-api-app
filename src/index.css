@@ -76,6 +76,12 @@
 
 }
 
+.search-btn{
+    float: right;
+    margin-right: 10px;
+    display: block;
+}
+
 .search-bar{
     width: 30vw;
     margin: 0 auto;

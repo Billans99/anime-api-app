@@ -36,7 +36,7 @@ const App = () => {
   const [showSearchAnime, setShowSearchAnime] = useState(false)
 
   const [searchAnimeData, setSearchAnimeData] = useState([])
-  
+
   
 
 

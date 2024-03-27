@@ -16,7 +16,7 @@ const Header = (props) => {
     // call function every time search input changes
     const handleSearchInput = (event) => {
         setSearchInput(event.target.value)
-        props.handleSearch(event.target.value)
+        
     }
 
 
@@ -44,11 +44,17 @@ const Header = (props) => {
 
                 <Button className="category-random" variant="primary" onClick={() => props.handleRandomAnimeClick()}>Random</Button>
 
+                <Button className="search-btn" variant="primary" onClick={() => props.handleSearch(searchInput)}>Search</Button>
+
+
                 
 
 
 
-                <Form className="search-bar" onSubmit={props.handleSearch}>
+                <Form className="search-bar" onSubmit={(event) => {
+                    event.preventDefault()
+                    props.handleSearch(searchInput)
+                }}>
                     <Form.Group className="mb-3" controlId="search-bar">
                         {/* <Form.Label></Form.Label> */}
                         <Form.Control 
@@ -57,7 +63,6 @@ const Header = (props) => {
                             name="search-form" 
                             type="search" 
                             placeholder="Search for anime"
-                            value={searchInput}
                             onChange={handleSearchInput}
                             />
                             
