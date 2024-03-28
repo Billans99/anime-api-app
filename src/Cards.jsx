@@ -18,7 +18,7 @@ import LoadingSpinner from './LoadingSpinner.jsx'
 
 
 
-    // Cards component
+// Cards component, also known as the home page as is loaded on initial render, and when "home" btn is clicked.
 const Cards = () => {
     const [animeData, setAnimeData] = useState([])
     const [animeCharactersData, setAnimeCharactersData] = useState([])
@@ -37,7 +37,10 @@ const Cards = () => {
     const [externalLinksData, setExternalLinksData] = useState([])
     const [streamingData, setStreamingData] = useState([])
 
-    // Immediately execute and load data (once) on initial render of page, if dependancy changes, load data again
+
+    // Immediately execute and load data (once) on initial render of page, if dependancy changes, load data again.
+
+    // If currentPage state changes, show more anime. Data is appended to the previous array in the getAnimeData function below.
     useEffect(() => {
         getAnimeData()
     }, [currentPage])
@@ -82,7 +85,7 @@ const Cards = () => {
         getStreamingData()
     }, [selectedAnimeID])
 
-    // Fetch anime data from Jikan API, and set the state of animeData to the response data
+    // Fetch anime data from Jikan API endpoint, and set the state of animeData to the response data object.
     const getAnimeData = async () => {
         try {
             if (loading) return 
@@ -99,7 +102,7 @@ const Cards = () => {
         }
     }
 
-    //  get character data from endpoint
+    //  Get character data from endpoint.
    const getCharactersData = async () => {
         try {
             setLoading(true)
@@ -112,7 +115,8 @@ const Cards = () => {
             console.error("Error fetching data", error)
         }
    }
-   // get reviews data from endpoint
+
+   // Get reviews data from endpoint.
    const getReviewsData = async () => {
         try {
             const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/reviews`)
@@ -125,7 +129,7 @@ const Cards = () => {
         
    }
 
-   // get news data from endpoint
+   // Get news data from endpoint.
    const getNewsData = async () => {
         try {
             const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/news`)
@@ -137,7 +141,7 @@ const Cards = () => {
         }
    }
 
-    // get stats data from endpoint
+    // Get stats data from endpoint.
    const getStatsData = async () => {
         try {
             const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/statistics`)
@@ -148,7 +152,7 @@ const Cards = () => {
         }
    }
 
-   //  get pictures data from endpoint
+   //  Get pictures data from endpoint.
    const getPicturesData = async () => {
         try {
             const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/pictures`)
@@ -160,7 +164,7 @@ const Cards = () => {
         }
    }
 
-   // get recommendations data from endpoint
+   // Get recommendations data from endpoint.
    const getRecommendationsData = async () => {
         try {
             const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/recommendations`)
@@ -171,7 +175,7 @@ const Cards = () => {
         }
    }
 
-    // get relations data from endpoint
+    // Get relations data from endpoint.
    const getRelationsData = async () => {
         try {
             const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/relations`)
@@ -183,7 +187,7 @@ const Cards = () => {
         }
     }
 
-    // get theme music data from endpoint
+    // Get theme music data from endpoint.
     const getThemeMusicData = async () => {
         try {
             const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/themes`)
@@ -195,7 +199,7 @@ const Cards = () => {
         }
     }
 
-    // get external links data from endpoint
+    // Get external links data from endpoint.
     const getExternalLinksData = async () => {
         try {
             const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/external`)
@@ -207,7 +211,7 @@ const Cards = () => {
         }
     }
 
-    // get streaming data from endpoint
+    // Get streaming data from endpoint.
     const getStreamingData = async () => {
         try {
             const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/streaming`)
@@ -219,23 +223,23 @@ const Cards = () => {
         }
     }
   
-    // load more button that loads additional 25 anime titles to page by appending to previous array
+    // Load more button that changes the currentPage state, loading 25 more animes to page by appending from previous array of data.
     const loadMoreAnime = () => {
         setCurrentPage(currentPage + 1)
     }
 
-    // Handles logic for view more button
+    // Handles logic for view more button, sets the anime object to selectedAnime state, and the mal_id to selectedAnimeID state when view-more button is clicked.
     const handleViewMore = (anime) => {
         setSelectedAnime(anime)
         setSelectedAnimeID(anime.mal_id)
     }
 
-    // Load more reviews function, handles btn click to load more reviews
+    // Load more reviews function inside the view-more modal. On click, loads another 5 reviews.
     const loadMoreReviews = () => {
         setReviewsArray([reviewsArray[0], reviewsArray[1] + 5])
     }
 
-    // logging states to check if states are being updated correctly
+    // Logging states to check if states are being updated correctly, when view-more btn is clicked. 
     console.log('selectedAnime', selectedAnime)
     console.log('selectedAnimeID', selectedAnimeID)
     
@@ -243,13 +247,13 @@ const Cards = () => {
 
     return (
         <>
-        
+            {/* Conditionally render Spinner component when loading state is true. */}
             {loading && (
                     <LoadingSpinner/>
                 )}
 
 
-            {/* Individual cards display different anime from the api */}
+            {/* Individual cards display each anime from the api. */}
             <div className="cards-container">
                 {/* Map each anime anime to a card  */}
                 {animeData && animeData.map((anime) => {
@@ -257,7 +261,8 @@ const Cards = () => {
                         
 
                         
-                    // Cards that display anime titles and view-more button that opens view-more modal 
+                    // Cards with image, title, score, and view-more btn. View-more button opens view-more modal displaying in-depth information about that anime.
+                    // Cards component is from react-bootstrap.
                     <div className="cards-content">
                         <Card style={{ width: '21rem' }}>
                             <Card.Img className="cards-image" variant="top" src={anime.images.jpg.image_url} />
@@ -272,6 +277,7 @@ const Cards = () => {
                                         <p className="score-info">{anime.score} / 10</p>
                                     </div>
 
+                                    {/* onClick of view-more btn, handleViewMore function is called, passing the anime object as an argument. */}
                                     <div>
                                         <Button onClick={() => handleViewMore(anime, anime.mal_id)} className="view-more-btn" variant="primary">View more</Button>
                                     </div>
@@ -279,23 +285,22 @@ const Cards = () => {
                             </Card.Body>
                         </Card>
                         
-                        {/* Evaluates to truthy and executes the modal code block  */}
-                        
-
-                        
                     </div>
                     
                 )})}
             </div>
 
 
+            {/* Modal popup that displays more information about the anime title when view-more button is clicked. */}
+
+            {/* Conditionally render the modal when selectedAnime is truthy. */}
             {selectedAnime && (
-                        // Modal popup that displays more information about the anime title
-                        //  when view-more button is clicked
+
                         <Modal className="view-more-modal"
                                 size="lg"
-                                // If selected anime is truthy, show the modal
+                                // If selectedAnime is truthy, show the modal.
                                 show={!!selectedAnime}
+                                // When the modal is closed, set selectedAnime to null, and selectedAnimeID to null.
                                 onHide={() => {
                                     setSelectedAnime(null)
                                     setSelectedAnimeID(null)
@@ -304,7 +309,7 @@ const Cards = () => {
                                 aria-labelledby="more anime info modal">
                             
                             <Modal.Header closeButton className="view-more-header">
-                                {/* View-more info image */}
+                                {/* View-more info card - selectedAnime image, title, synopsis, background, and tabs */}
                                 <Card style={{ width: '21rem' }}>
                                     <Card.Img className="view-more-image" variant="top" src={selectedAnime.images.jpg.image_url} />
                                 </Card>
@@ -357,10 +362,8 @@ const Cards = () => {
                                             <div className="general-info-heading">
                                                 <h3>General Info</h3>
                                             </div>
-                                            
-
+                                        
                                             <div className="view-more-container">
-
                                                 <div className="view-more-score">
                                                     <h3 className="score-heading">Score</h3>
                                                     <p className="score-body">{selectedAnime.score} / 10</p>
@@ -447,8 +450,8 @@ const Cards = () => {
                                                                 `${review.review.substring(0, 500)}...` : item.description}                                                       
                                                             </p>
 
+                                                            {/* Review colored tags - Recommended, Mixed Feelings, Not Recommended = green, orange, red */}
                                                             {review.tags.map((recommendation) => {
-
                                                                 let recommendationColor = ''
                                                                     
                                                                     if (recommendation === 'Recommended') {
@@ -465,7 +468,6 @@ const Cards = () => {
                                                                         </div>
                                                                     )
                                                                 
-                                                                
                                                             })}
                                                         </div>
 
@@ -473,7 +475,7 @@ const Cards = () => {
                                                 )
                                             })}             
 
-                                                    {/* load more reviews button */}
+                                                    {/* Load more reviews button */}
                                                     <div className="review-btn-container">
                                                             {reviewsArray[1] < animeReviewsData.length &&
                                                                 <Button onClick={() => loadMoreReviews()} className="more-reviews-btn" variant="primary">More reviews</Button>

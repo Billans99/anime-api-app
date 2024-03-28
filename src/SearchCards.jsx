@@ -71,11 +71,11 @@ const SearchCards = (props) => {
       //  get character data from endpoint
    const getCharactersData = async () => {
     try {
-        setLoading(true)
+        
         const response = await axios.get(`https://api.jikan.moe/v4/anime/${selectedAnimeID}/characters`)
         console.log('charResponse', response)
         setAnimeCharactersData(response.data.data)
-        setLoading(false)
+        
         
     } catch (error) {
         console.error("Error fetching data", error)
@@ -211,6 +211,11 @@ const SearchCards = (props) => {
     
         return(
             <>
+
+            {/* Conditionally render Spinner component when loading state is true. */}
+            {loading && (
+                <LoadingSpinner/>
+            )}
 
             {/* Individual cards display different anime from the api */}
             <div className="cards-container">

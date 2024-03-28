@@ -1,16 +1,6 @@
+// Using Jikan 4.0 API (REST) to fetch data.
 
-// TO DO LIST: 
-
-
-// - 1. Make a spinner when loading
-// - 2. Make more comments to explain code
-
-
-
-
-
-
-// Using Jikan 4.0 API (REST) to fetch data
+// Modify READ.ME file
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Header from './Header.jsx'
@@ -21,7 +11,6 @@ import RecommendationAnimeCards from './RecommendationAnimeCards.jsx'
 import RandomAnimeCards from './RandomAnimeCards.jsx'
 import SearchCards from './SearchCards.jsx'
 import axios from 'axios'
-import LoadingSpinner from './LoadingSpinner.jsx'
 
 
 
@@ -38,7 +27,7 @@ const App = () => {
   
 
 
-  // show top anime cards and hide the rest
+  // Show top anime cards and hide the rest.
   const handleTopAnimeClick = () => {
     setShowHomeCards(false)
     setShowRecommendationAnime(false)
@@ -48,7 +37,7 @@ const App = () => {
     
 }
 
-  // show recommendation anime cards and hide the rest
+  // Show recommendation anime and hide the rest.
   const handleRecommendationAnimeClick = () => {
     setShowHomeCards(false)
     setShowTopAnime(false)
@@ -57,7 +46,7 @@ const App = () => {
     setShowRecommendationAnime(true)
   }
 
-  // show random anime cards and hide the rest
+  // Show random anime and hide the rest.
   const handleRandomAnimeClick = () => {
     setShowHomeCards(false)
     setShowTopAnime(false)
@@ -66,7 +55,7 @@ const App = () => {
     setShowRandomAnime(true)
   }
 
-  // sets rest of show states to false and only shows home cards
+  // Show home cards and hide the rest.
   const handleShowHomeClick = () => {
     setShowTopAnime(false)
     setShowRecommendationAnime(false)
@@ -75,7 +64,7 @@ const App = () => {
     setShowHomeCards(true)
   }
 
-  // sets rest of show states to false and only shows search cards
+  // Show the searched anime and hide the rest.
   const handleShowSearchAnime = () => {
     setShowTopAnime(false)
     setShowRecommendationAnime(false)
@@ -84,7 +73,7 @@ const App = () => {
     setShowSearchAnime(true)
   }
 
-  // function called every time search input changes, sets searchAnimeData to the response from the api
+  // When search btn is clicked or enter key pressed, fetch search data with query and set the data object to searchAnimeData state.
   const handleSearch = async (query) => {
     try {
       if (loading) return
@@ -96,7 +85,7 @@ const App = () => {
       handleShowSearchAnime()
       setLoading(false)
       
-
+      // Handles what to do in case of an error.
     } catch (error) {
       console.error('Error fetching search data', error)
     }
@@ -107,6 +96,7 @@ const App = () => {
 
   return (
     <>
+      {/* Passing the functions as props to the Header component. */}
       <Header 
         handleShowHomeClick={handleShowHomeClick}
         handleTopAnimeClick={handleTopAnimeClick}
@@ -114,8 +104,8 @@ const App = () => {
         handleRandomAnimeClick={handleRandomAnimeClick}
         handleSearch={handleSearch}
         />
-      {/* <NewsletterAlert/> */}
 
+        {/* Ternary operator to display cards based on states and passing searchAnimeData object from App to SearchCards. */}
         {showHomeCards ? <Cards /> :
         showTopAnime ? <TopAnimeCards/> :
         showRecommendationAnime ? <RecommendationAnimeCards/> : 
