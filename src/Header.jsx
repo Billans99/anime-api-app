@@ -7,7 +7,6 @@ import Form from 'react-bootstrap/Form'
 
 const Header = (props) => {
     
-    
     const [searchInput, setSearchInput] = useState('')
     
 
@@ -38,9 +37,9 @@ const Header = (props) => {
                 
                 <Button className="category-top" variant="primary" onClick={() => props.handleTopAnimeClick()}>Top</Button>
                 
-                <Button className="category-recommendations" variant="primary" onClick={() => props.handleRecommendationAnimeClick()}>Recommendations</Button>
+                {/* <Button className="category-recommendations" variant="primary" onClick={() => props.handleRecommendationAnimeClick()}>Recommendations</Button> */}
 
-                <Button className="category-random" variant="primary" onClick={() => props.handleRandomAnimeClick()}>Random</Button>
+                {/* <Button className="category-random" variant="primary" onClick={() => props.handleRandomAnimeClick()}>Random</Button> */}
 
                 {/* Executes get request on click of the search button (users may also press enter, as onSubmit has preventDefault function and handleSearch function) */}
                 <Button className="search-btn" variant="primary" onClick={() => props.handleSearch(searchInput)}>Search</Button>
