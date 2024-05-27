@@ -31,18 +31,13 @@ Each card displays an image, title, score, and view button.
 Clicking the view button displays a modal popup with even more data such as genre, summary, background, and more. Click on a tab heading to view that specific information. 
 
 Click on the 'home' button at the top left of the app to return to the home section of cards which are assorted by the MyAnimeList mal_id. Note: The home page is the first page, you will see when opening the app. 
-    // The home page of anime cards will be Safe For Work.
 
 Click on the 'top' button to view animes that are assorted from the highest rated anime out of 10.
-    // The Top anime cards will be Safe For Work.
 
 Click the 'recommendations' button to view non-assorted anime recommendations whereby MyAnimeList users endorse two similar animes, and provide a description (typically discussing the similarities).
-    // PLEASE BE AWARE: The recommendations section may contain recommendations that are Not Safe For Work.
 
 To view random anime, click on the 'random' button. This page displays a brief summary of a random anime that can give you an idea of what you want to watch next. Click on 'Find Another Random Anime' to view another. 
-    // PLEASE BE AWARE: As there are no query parameters for the random anime endpoint, hentai/pornographic rated animes may appear that are not considered Safe For Work.
 
 Use the search bar at the top of the page to find specific anime, and either press enter, or click the search button on the right of the search bar to initiate the search. 
-    // The search will be safe for work. 
 
 To load more anime, click the Load More button at the bottom of the page.
